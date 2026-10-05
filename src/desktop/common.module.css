@@ -1,0 +1,98 @@
+/* Building blocks shared by the desktop windows. Values are lifted from the inline styles in Desktop.dc.html. */
+
+/* staggered entrance: set the delay inline (animation-delay) per element */
+.rise {
+  animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.btn {
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+
+.glow {
+  animation: glow 2.4s ease-out infinite;
+}
+
+.chip {
+  animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--acc, #ffb020);
+  color: var(--acc, #ffb020);
+}
+.chip:nth-child(2) { animation-delay: 0.05s; }
+.chip:nth-child(3) { animation-delay: 0.1s; }
+.chip:nth-child(4) { animation-delay: 0.15s; }
+.chip:nth-child(5) { animation-delay: 0.2s; }
+.chip:nth-child(6) { animation-delay: 0.25s; }
+
+/* left-hand list buttons (projects, hobbies) */
+.plist {
+  transition: background 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+}
+.plist:hover {
+  background: #2c201c;
+  padding-left: 20px;
+}
+
+/* the illustration banner above each detail pane */
+.art {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 168px;
+  border: 1px solid #54413a;
+  border-radius: 12px;
+  background: #1a1310;
+  overflow: hidden;
+}
+
+/* detail pane typography */
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.h2 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.h2Sm {
+  composes: h2;
+  font-size: 36px;
+}
+.lede {
+  margin: 0;
+  color: #bfae9d;
+}
+.bullets {
+  margin: 0;
+  padding-left: 20px;
+  color: #bfae9d;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stack {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #bfae9d;
+}
+.link {
+  color: var(--acc, #ffb020);
+  font-weight: 600;
+}

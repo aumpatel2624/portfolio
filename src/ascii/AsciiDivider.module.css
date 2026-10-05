@@ -1,0 +1,11 @@
+.divider {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--ascii-divider, var(--c-border, #3a4452));
+  user-select: none;
+}

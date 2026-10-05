@@ -1,0 +1,19 @@
+.frame {
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: calc(var(--cols) * 0.6) / var(--rows);
+  overflow: hidden;
+  user-select: none;
+}
+
+.pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  /* IBM Plex Mono advances 0.6em, so this makes the grid exactly as wide as the frame. */
+  font-size: calc(100cqw / (var(--cols) * 0.6));
+  line-height: 1;
+  white-space: pre;
+  color: var(--ascii-color, var(--acc, #ffb020));
+  text-rendering: optimizeSpeed;
+}
