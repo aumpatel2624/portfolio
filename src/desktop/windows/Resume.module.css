@@ -1,0 +1,53 @@
+.body {
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.sheet {
+  flex: 0 0 104px;
+  height: 136px;
+  box-sizing: border-box;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 6px;
+  background: #e9e6de;
+  rotate: -4deg;
+  box-shadow: 6px 6px 0 #000;
+}
+.title {
+  height: 8px;
+  width: 60%;
+  border-radius: 4px;
+  background: #8e897c;
+}
+.line {
+  height: 5px;
+  border-radius: 3px;
+  background: #c2bdb0;
+  animation: shimmer 2s ease-in-out infinite;
+}
+.text {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.rule {
+  --ascii-divider: #54413a;
+  font-size: 12px;
+}
+.download {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  background: var(--acc, #ffb020);
+  color: #1a120f;
+  font-weight: 600;
+}

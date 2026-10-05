@@ -1,0 +1,45 @@
+.art {
+  composes: art from '../common.module.css';
+  gap: 28px;
+  padding: 0 28px;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 210px;
+}
+.bubble {
+  align-self: flex-start;
+  padding: 8px 14px;
+  border-radius: 14px 14px 14px 4px;
+  background: #2c201c;
+  font-size: 13px;
+  animation: bubble 6s ease-in-out infinite;
+}
+.arrow {
+  font-size: 22px;
+  color: var(--acc, #ffb020);
+  animation: nudge 1.4s ease-in-out infinite;
+}
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.chip {
+  border: 1px solid var(--acc, #ffb020);
+  border-radius: 6px;
+  padding: 5px 10px;
+  animation: bubble 6s ease-in-out infinite;
+}
+.caption {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #7a6657;
+}

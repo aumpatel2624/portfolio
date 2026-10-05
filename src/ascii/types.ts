@@ -15,5 +15,7 @@ export interface AsciiArt {
 
 export interface AsciiWordmark {
   cols: number;
+  /** Column where a trailing accent-coloured glyph (the ".") begins. */
+  accentFrom?: number;
   lines: string[];
 }

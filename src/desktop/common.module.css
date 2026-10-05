@@ -6,7 +6,11 @@
 }
 
 .btn {
-  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 .btn:hover {
   transform: translateY(-2px);
@@ -22,22 +26,38 @@
 
 .chip {
   animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 .chip:hover {
   transform: translateY(-3px);
   border-color: var(--acc, #ffb020);
   color: var(--acc, #ffb020);
 }
-.chip:nth-child(2) { animation-delay: 0.05s; }
-.chip:nth-child(3) { animation-delay: 0.1s; }
-.chip:nth-child(4) { animation-delay: 0.15s; }
-.chip:nth-child(5) { animation-delay: 0.2s; }
-.chip:nth-child(6) { animation-delay: 0.25s; }
+.chip:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.chip:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.chip:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.chip:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.chip:nth-child(6) {
+  animation-delay: 0.25s;
+}
 
 /* left-hand list buttons (projects, hobbies) */
 .plist {
-  transition: background 0.2s ease, border-color 0.2s ease, padding-left 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    padding-left 0.2s ease;
 }
 .plist:hover {
   background: #2c201c;

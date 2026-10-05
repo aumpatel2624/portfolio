@@ -1,0 +1,58 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1b1226 0%, #3b1c2d 52%, #8a3328 100%);
+}
+.glow {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 760px;
+  height: 300px;
+  margin-left: -380px;
+  background: radial-gradient(ellipse at center, #e5604d55, transparent 70%);
+}
+.lights {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  gap: 18px;
+  padding: 14px 22px;
+  background: #150d12;
+  border: 1px solid #54413a;
+  border-radius: 14px;
+}
+.light {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #2a1a1a;
+}
+.streak {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffb020aa, transparent);
+}
+.road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24%;
+  background: linear-gradient(180deg, #1d1216, #0f0809);
+  border-top: 2px solid #54413a;
+}
+.dashes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 44%;
+  height: 6px;
+  opacity: 0.5;
+  background: repeating-linear-gradient(90deg, #f6ecdc 0 60px, transparent 60px 120px);
+  animation: dash 1.2s linear infinite;
+}

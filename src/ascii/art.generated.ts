@@ -638,6 +638,7 @@ export const fullAscii: AsciiArt = {
 
 export const aumWordmark: AsciiWordmark = {
   cols: 31,
+  accentFrom: 28,
   lines: [
     " █████╗ ██╗   ██╗███╗   ███╗",
     "██╔══██╗██║   ██║████╗ ████║",
@@ -650,8 +651,8 @@ export const aumWordmark: AsciiWordmark = {
 
 export const aumWordmarkSmall: AsciiWordmark = {
   cols: 29,
+  accentFrom: 25,
   lines: [
-    "",
     "   __ _  _   _  _ __ ___",
     "  / _` || | | || '_ ` _ \\",
     " | (_| || |_| || | | | | | _",

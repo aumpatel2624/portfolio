@@ -82,7 +82,8 @@ async function toAscii({ src, crop, sizes, focus }, size) {
     .raw()
     .toBuffer({ resolveWithObject: true });
 
-  const at = (x, y) => data[Math.min(rows - 1, Math.max(0, y)) * cols + Math.min(cols - 1, Math.max(0, x))] / 255;
+  const at = (x, y) =>
+    data[Math.min(rows - 1, Math.max(0, y)) * cols + Math.min(cols - 1, Math.max(0, x))] / 255;
   const ramp = RAMPS[size];
   const lines = [];
   for (let y = 0; y < rows; y += 1) {
@@ -90,7 +91,8 @@ async function toAscii({ src, crop, sizes, focus }, size) {
     for (let x = 0; x < cols; x += 1) {
       const lum = at(x, y);
       let mean = 0;
-      for (let dy = -1; dy <= 1; dy += 1) for (let dx = -1; dx <= 1; dx += 1) mean += at(x + dx, y + dy);
+      for (let dy = -1; dy <= 1; dy += 1)
+        for (let dx = -1; dx <= 1; dx += 1) mean += at(x + dx, y + dy);
       const edge = Math.max(0, lum - mean / 9) * 1.2;
       const d = Math.hypot((x / cols - focus.cx) / focus.rx, (y / rows - focus.cy) / focus.ry);
       const mask = 1 - smoothstep(0.55, 1, d);
@@ -103,7 +105,13 @@ async function toAscii({ src, crop, sizes, focus }, size) {
 }
 
 function wordmark(text, font) {
-  return figlet.textSync(text, { font, horizontalLayout: 'fitted' }).replace(/\s+$/gm, '').split('\n');
+  const lines = figlet
+    .textSync(text, { font, horizontalLayout: 'fitted' })
+    .replace(/\s+$/gm, '')
+    .split('\n');
+  while (lines.length && !lines[0]) lines.shift();
+  while (lines.length && !lines[lines.length - 1]) lines.pop();
+  return lines;
 }
 
 const esc = (s) => JSON.stringify(s);
@@ -123,13 +131,26 @@ for (const asset of ASSETS) {
   body += '  },\n};\n\n';
 }
 
-const marks = {
-  aumWordmark: wordmark('aum.', 'ANSI Shadow'),
-  aumWordmarkSmall: wordmark('aum.', 'Standard'),
-  notFound: wordmark('404', 'ANSI Shadow'),
+// accentFrom: the column where the trailing "." starts, so the renderer can tint it.
+const dotStart = (text, font) => {
+  const whole = wordmark(text, font);
+  const dot = wordmark('.', font);
+  const wholeW = Math.max(...whole.map((l) => l.length));
+  return wholeW - Math.max(...dot.map((l) => (l.trimStart().length ? l.length : 0)));
 };
-for (const [name, lines] of Object.entries(marks)) {
-  body += `export const ${name}: AsciiWordmark = {\n  cols: ${Math.max(...lines.map((l) => l.length))},\n  lines: [\n${lines.map((l) => `    ${esc(l)},`).join('\n')}\n  ],\n};\n\n`;
+const marks = {
+  aumWordmark: {
+    lines: wordmark('aum.', 'ANSI Shadow'),
+    accentFrom: dotStart('aum.', 'ANSI Shadow'),
+  },
+  aumWordmarkSmall: {
+    lines: wordmark('aum.', 'Standard'),
+    accentFrom: dotStart('aum.', 'Standard'),
+  },
+  notFound: { lines: wordmark('404', 'ANSI Shadow') },
+};
+for (const [name, { lines, accentFrom }] of Object.entries(marks)) {
+  body += `export const ${name}: AsciiWordmark = {\n  cols: ${Math.max(...lines.map((l) => l.length))},${accentFrom === undefined ? '' : `\n  accentFrom: ${accentFrom},`}\n  lines: [\n${lines.map((l) => `    ${esc(l)},`).join('\n')}\n  ],\n};\n\n`;
 }
 
 await mkdir(dirname(out), { recursive: true });
