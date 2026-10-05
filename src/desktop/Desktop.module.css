@@ -1,0 +1,66 @@
+.desktop {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 640px;
+  overflow: hidden;
+  background: #1a120f;
+  color: #f6ecdc;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* Wallpapers stack and crossfade. Hidden layers stop painting and their animations pause. */
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 1.1s ease,
+    visibility 0s linear 1.1s;
+}
+
+.layer * {
+  animation-play-state: paused;
+}
+
+.layerOn {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 1.1s ease,
+    visibility 0s;
+}
+
+.layerOn * {
+  animation-play-state: running;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, #1a120f 115%);
+}
+
+.dismiss {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Windows sit above the wallpaper and icons, below the taskbar. */
+.windows {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px;
+  pointer-events: none;
+  z-index: 10;
+}

@@ -1,0 +1,40 @@
+.body {
+  padding: 32px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.h2 {
+  margin: 0;
+  font-size: 44px;
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+.rule {
+  --ascii-divider: #54413a;
+  font-size: 12px;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 4px;
+}
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+}
+.primary {
+  background: var(--acc, #ffb020);
+  color: #1a120f;
+  font-weight: 600;
+}
+.secondary {
+  border: 1px solid #54413a;
+}

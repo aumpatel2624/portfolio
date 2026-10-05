@@ -1,0 +1,49 @@
+/* Design tokens. Desktop is the warm theme, classic is the cool one. */
+:root {
+  /* Desktop (warm) */
+  --d-bg: #1a120f;
+  --d-surface: #241a17;
+  --d-surface-2: #2c201c;
+  --d-sunken: #1a1310;
+  --d-sunken-2: #1e1512;
+  --d-chip: #3a2c26;
+  --d-hover: #43332c;
+  --d-border: #54413a;
+  --d-text: #f6ecdc;
+  --d-muted: #bfae9d;
+  --d-faint: #7a6657;
+  --d-danger: #e5604d;
+  --d-shadow: 8px 8px 0 #000;
+
+  /* Accent: switchable on the desktop, --acc2 is the ~18% alpha glow colour */
+  --acc: #ffb020;
+  --acc2: #ffb0202e;
+
+  /* TV screen (race wallpaper) */
+  --tv-top: #11161f;
+  --tv-bottom: #0a0d12;
+  --tv-line: #263041;
+  --tv-dash: #4a5568;
+  --tv-label: #9aa7b8;
+  --tv-text: #d7dee8;
+
+  /* Classic (cool) */
+  --c-bg: #0b0e13;
+  --c-surface: #141a22;
+  --c-border: #3a4452;
+  --c-track: #252d38;
+  --c-text: #f2f0ea;
+  --c-muted: #a3adbb;
+  --c-accent: #c6ff3d;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque', 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  /* Shape */
+  --r-window: 12px;
+  --r-pill: 999px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}

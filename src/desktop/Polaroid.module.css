@@ -1,0 +1,38 @@
+.polaroid {
+  position: absolute;
+  top: 76px;
+  right: 36px;
+  z-index: 2;
+  width: 132px;
+  padding: 8px 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none;
+  background: #f6ecdc;
+  color: #1a120f;
+  box-shadow: 6px 6px 0 #000;
+  rotate: 5deg;
+  cursor: pointer;
+  animation: fadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 2.6s both;
+  transition:
+    rotate 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    scale 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.polaroid:hover {
+  rotate: 0deg;
+  scale: 1.06;
+}
+.polaroid:focus-visible {
+  outline: 2px solid var(--acc, #ffb020);
+  outline-offset: 3px;
+}
+.photo {
+  width: 116px;
+  height: 116px;
+}
+.caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: center;
+}
