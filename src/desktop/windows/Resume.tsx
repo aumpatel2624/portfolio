@@ -1,5 +1,5 @@
 import { AsciiDivider } from '../../ascii/AsciiDivider';
-import { links } from '../../data/links';
+import { links, resumeNote } from '../../data/links';
 import { PlaceholderLink } from '../../lib/PlaceholderLink';
 import common from '../common.module.css';
 import styles from './Resume.module.css';
@@ -29,7 +29,7 @@ export function Resume() {
           Resume
         </h2>
         <p className={`${common.rise} ${common.lede}`} style={{ animationDelay: '0.14s' }}>
-          [ATTACH RESUME PDF: link it here once it&apos;s ready.]
+          {resumeNote}
         </p>
         <AsciiDivider pattern="[=]" className={styles.rule} />
         <PlaceholderLink

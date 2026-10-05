@@ -16,3 +16,6 @@ export const isPlaceholder = (value: string): boolean => /^\[.+\]$/.test(value.t
 /** `mailto:` for real addresses, `undefined` while the email is still a placeholder. */
 export const emailHref = (email: string): string | undefined =>
   isPlaceholder(email) ? undefined : `mailto:${email}`;
+
+/** Shown in the Resume window until the PDF is linked. */
+export const resumeNote = "[ATTACH RESUME PDF: link it here once it's ready.]";

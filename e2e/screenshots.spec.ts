@@ -11,9 +11,10 @@ for (const width of widths) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: `shots/desktop-${width}.png` });
       for (const name of ['projects', 'experience', 'skills', 'hobbies', 'contact', 'resume.pdf']) {
-        await page.getByRole('button', { name: `Open ${name}` }).click();
+        await page.getByRole('button', { name: `Open ${name}` }).first().dispatchEvent('click');
         await page.waitForTimeout(700);
         await page.screenshot({ path: `shots/desktop-${width}-${name.replace('.pdf', '')}.png` });
+        await page.keyboard.press('Escape');
       }
     }
     await page.goto('/classic');
