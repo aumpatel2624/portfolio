@@ -54,6 +54,6 @@ export const phonedeckCaseStudy = {
   ],
   result:
     'About 15,600 lines of code across four packages, 41 test files, and 31 pull requests merged in four days.',
-  next: '[CONFIRM] Signed Windows releases, and support for more than one laptop.',
+  next: 'Improve the UI and make PhoneDeck a more stable app.',
   talk: 'Want to talk about it?',
 } as const;

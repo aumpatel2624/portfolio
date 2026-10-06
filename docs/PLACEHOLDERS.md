@@ -7,7 +7,6 @@ lists what is left, warning only).
 | Placeholder                        | File                                  | Notes                                             |
 | ---------------------------------- | ------------------------------------- | ------------------------------------------------- |
 | `[repository link, public soon]`   | `src/data/links.ts` (`phonedeckRepo`) | Only fill once the repo is public                 |
-| `[CONFIRM]` (PhoneDeck next steps) | `src/data/caseStudy.ts` (`next`)      | Confirm the line, drop the tag                    |
 | Three wallpaper quotes and authors | `src/data/wallpapers.ts`              |                                                   |
 | `[add more photos]` (empty tile)   | `src/data/phone.ts` (`morePhotos`)    | Photos app on phones; add images to `phonePhotos` |
 
