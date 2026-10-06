@@ -1,7 +1,6 @@
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
-import { QUOTE_FADE_MS } from '../desktop/useWallpaper';
 import { CLOSE_MS } from './phoneState';
 import { PhoneOS } from './PhoneOS';
 
@@ -75,25 +74,11 @@ describe('PhoneOS', () => {
     expect(screen.getByRole('link', { name: /View SmartBin/ })).toBeInTheDocument();
   });
 
-  it('cycles the wallpaper with a toast and wraps around', () => {
-    vi.useFakeTimers();
+  it('has no wallpaper switcher, race widget or quote on the home screen', () => {
     renderPhone();
-    const cycle = () => {
-      act(() => screen.getByRole('button', { name: 'Change wallpaper' }).click());
-      act(() => void vi.advanceTimersByTime(QUOTE_FADE_MS));
-    };
-    cycle();
-    expect(screen.getByText('Wallpaper: Race day')).toBeInTheDocument();
-    cycle();
-    cycle();
-    cycle();
-    expect(screen.getByText('Wallpaper: Ink blossom')).toBeInTheDocument();
-  });
-
-  it('hides the quote slot on the blossom wallpaper, which has no quote', () => {
-    renderPhone();
-    expect(screen.getByText('Ink blossom')).toBeInTheDocument();
-    expect(document.getElementById('phone-quote')).toBeNull();
+    expect(screen.queryByRole('button', { name: /wallpaper|quote/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/RACE DAY/)).not.toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'Open About' })).toHaveLength(2);
   });
 
   it('closes the open app with Escape', async () => {

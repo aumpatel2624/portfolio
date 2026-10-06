@@ -1,23 +1,18 @@
 import { useCallback, useEffect, useReducer, useRef, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
+import { WallpaperPhoto } from '../components/WallpaperPhoto';
 import { AsciiArt } from '../ascii/AsciiArt';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
 import { aumWordmark, fullAscii } from '../ascii/art.generated';
 import { phoneCopy, phoneHomeApps, type PhoneAppId } from '../data/phone';
-import { wallpapers } from '../data/wallpapers';
 import { usePageMeta } from '../lib/usePageMeta';
 import { AppSheet } from './AppSheet';
-import { appIcons, dockIcons } from './icons';
+import { appIcons } from './icons';
 import { CLOSE_MS, initialPhoneState, phoneReducer } from './phoneState';
-import { RaceWidget } from './RaceWidget';
-import { usePhoneWallpaper } from './usePhoneWallpaper';
-import { Wallpapers } from './Wallpapers';
 import styles from './Phone.module.css';
 
 const BOOT_MS = 2300;
 const CLOCK_MS = 20_000;
-const LAP_MS = 5000;
-const LAPS = 57;
 
 /** The design's clock: hours are not zero-padded. */
 const formatTime = (d: Date) => `${d.getHours()}:${String(d.getMinutes()).padStart(2, '0')}`;
@@ -26,15 +21,15 @@ const reducedMotion = () =>
   typeof window !== 'undefined' &&
   !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-function Glyph({ d, stroke = 'var(--text)' }: { d: string; stroke?: string }) {
+function Glyph({ d }: { d: string }) {
   return (
     <svg
       width="28"
       height="28"
       viewBox="0 0 24 24"
       fill="none"
-      stroke={stroke}
-      strokeWidth="1.8"
+      stroke="var(--accent-2)"
+      strokeWidth="1.75"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -104,7 +99,7 @@ interface Props {
   accent?: '#3B82F6' | '#60A5FA';
 }
 
-/** The phone view: an iPhone-style home screen of apps over animated wallpapers. */
+/** The phone view: an iPhone-style home screen of apps over the ink-blossom wallpaper. */
 export function PhoneOS({ accent = '#3B82F6' }: Props) {
   usePageMeta({
     title: 'Aum · Full-stack engineer',
@@ -113,9 +108,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
   });
 
   const [state, dispatch] = useReducer(phoneReducer, initialPhoneState);
-  const wp = usePhoneWallpaper();
   const [time, setTime] = useState(() => formatTime(new Date()));
-  const [lap, setLap] = useState(1);
   const [booting, setBooting] = useState(() => !reducedMotion());
   const phone = useRef<HTMLDivElement>(null);
   const invoker = useRef<HTMLElement | null>(null);
@@ -123,11 +116,9 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
 
   useEffect(() => {
     const clock = setInterval(() => setTime(formatTime(new Date())), CLOCK_MS);
-    const laps = setInterval(() => setLap((l) => (l % LAPS) + 1), LAP_MS);
     const boot = setTimeout(() => setBooting(false), BOOT_MS);
     return () => {
       clearInterval(clock);
-      clearInterval(laps);
       clearTimeout(boot);
     };
   }, []);
@@ -174,7 +165,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
   }, []);
   const close = useCallback(() => dispatch({ type: 'close' }), []);
 
-  const current = wallpapers[wp.index] ?? wallpapers[0]!;
   const locked = state.app !== null || booting;
   // `inert` takes the covered home screen out of the tab order and the accessibility tree.
   const inertProps = { inert: locked ? '' : undefined } as object;
@@ -182,7 +172,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
   return (
     <div
       className={styles.root}
-      data-wp-light={current.light ? 'true' : undefined}
       style={{ '--acc': accent, '--acc2': `${accent}2E` } as CSSProperties}
     >
       <div
@@ -192,14 +181,12 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
           if (e.key === 'Escape' && state.app) close();
         }}
       >
-        <Wallpapers index={wp.index} />
+        <WallpaperPhoto variant="phone" />
         <StatusBar time={time} />
 
         <div className={styles.homeLayer} {...inertProps}>
           <main className={styles.home}>
             <h1 className="sr-only">Aum · Full-stack engineer</h1>
-            <RaceWidget lap={lap} laps={LAPS} />
-
             <div className={styles.widgets}>
               <button
                 type="button"
@@ -210,7 +197,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
                 <img
                   src="/images/aum-portrait.jpg"
                   alt=""
-                  width={164}
+                  width={358}
                   height={164}
                   className={styles.photoImg}
                 />
@@ -218,33 +205,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
                   {phoneCopy.widgetHello}
                   <span className={styles.acc}>.</span>
                 </span>
-              </button>
-              <button
-                type="button"
-                className={`${styles.widget} ${styles.quoteWidget}`}
-                aria-label="Next quote and wallpaper"
-                aria-describedby={current.quote ? 'phone-quote phone-quote-by' : undefined}
-                onClick={wp.cycle}
-              >
-                <span className={styles.wpName}>{current.name}</span>
-                {current.quote ? (
-                  <>
-                    <span
-                      id="phone-quote"
-                      className={styles.quote}
-                      style={{ opacity: wp.quoteVisible ? 1 : 0 }}
-                    >
-                      “{current.quote}”
-                    </span>
-                    <span
-                      id="phone-quote-by"
-                      className={styles.quoteBy}
-                      style={{ opacity: wp.quoteVisible ? 1 : 0 }}
-                    >
-                      {current.by}
-                    </span>
-                  </>
-                ) : null}
               </button>
             </div>
 
@@ -258,11 +218,8 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
                   style={{ animationDelay: `${(2.2 + i * 0.08).toFixed(2)}s` }}
                   onClick={(e) => open(app.id, e.currentTarget)}
                 >
-                  <span
-                    className={styles.tile}
-                    style={{ background: appIcons[app.id as keyof typeof appIcons].bg }}
-                  >
-                    <Glyph d={appIcons[app.id as keyof typeof appIcons].d} />
+                  <span className={styles.tile}>
+                    <Glyph d={appIcons[app.id]} />
                   </span>
                   <span className={styles.appLabel}>{app.label}</span>
                 </button>
@@ -283,8 +240,8 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
               style={{ animationDelay: '2.5s' }}
               onClick={(e) => open('contact', e.currentTarget)}
             >
-              <span className={styles.tile} style={{ background: dockIcons.contact.bg }}>
-                <Glyph d={dockIcons.contact.d} stroke={dockIcons.contact.fg} />
+              <span className={styles.tile}>
+                <Glyph d={appIcons.contact} />
               </span>
             </button>
             <button
@@ -294,8 +251,8 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
               style={{ animationDelay: '2.58s' }}
               onClick={(e) => open('resume', e.currentTarget)}
             >
-              <span className={styles.tile} style={{ background: dockIcons.resume.bg }}>
-                <Glyph d={dockIcons.resume.d} stroke={dockIcons.resume.fg} />
+              <span className={styles.tile}>
+                <Glyph d={appIcons.resume} />
               </span>
             </button>
             <Link
@@ -304,21 +261,10 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
               aria-label="Classic site"
               style={{ animationDelay: '2.66s' }}
             >
-              <span className={styles.tile} style={{ background: dockIcons.classic.bg }}>
-                <Glyph d={dockIcons.classic.d} stroke={dockIcons.classic.fg} />
+              <span className={styles.tile}>
+                <Glyph d={appIcons.classic} />
               </span>
             </Link>
-            <button
-              type="button"
-              className={styles.app}
-              aria-label="Change wallpaper"
-              style={{ animationDelay: '2.74s' }}
-              onClick={wp.cycle}
-            >
-              <span className={styles.tile} style={{ background: dockIcons.wallpaper.bg }}>
-                <Glyph d={dockIcons.wallpaper.d} stroke={dockIcons.wallpaper.fg} />
-              </span>
-            </button>
           </nav>
         </div>
 
@@ -334,10 +280,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
         >
           <span />
         </button>
-
-        <div className={styles.toastHost} role="status" aria-live="polite">
-          {wp.toast && <div className={styles.toast}>Wallpaper: {current.name}</div>}
-        </div>
 
         {booting && <Boot />}
       </div>
