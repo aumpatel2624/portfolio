@@ -28,6 +28,7 @@ const Experience = lazy(() =>
   import('./windows/Experience').then((m) => ({ default: m.Experience })),
 );
 const Skills = lazy(() => import('./windows/Skills').then((m) => ({ default: m.Skills })));
+const Setup = lazy(() => import('./windows/Setup').then((m) => ({ default: m.Setup })));
 const Hobbies = lazy(() => import('./windows/Hobbies').then((m) => ({ default: m.Hobbies })));
 const Contact = lazy(() => import('./windows/Contact').then((m) => ({ default: m.Contact })));
 const Resume = lazy(() => import('./windows/Resume').then((m) => ({ default: m.Resume })));
@@ -91,6 +92,7 @@ export function Desktop({ accent = '#3B82F6' }: Props) {
     projects: <Projects selected={project} onSelect={setProject} />,
     experience: <Experience />,
     skills: <Skills />,
+    setup: <Setup />,
     hobbies: <Hobbies selected={hobby} onSelect={setHobby} />,
     contact: <Contact />,
     resume: <Resume />,

@@ -1,5 +1,5 @@
 export type WindowId =
-  'about' | 'projects' | 'experience' | 'skills' | 'hobbies' | 'contact' | 'resume';
+  'about' | 'projects' | 'experience' | 'skills' | 'setup' | 'hobbies' | 'contact' | 'resume';
 
 export interface WindowDef {
   id: WindowId;
@@ -21,6 +21,7 @@ export const WINDOW_IDS: WindowId[] = [
   'projects',
   'experience',
   'skills',
+  'setup',
   'hobbies',
   'contact',
   'resume',
@@ -66,6 +67,16 @@ export const windowDefs: Record<WindowId, WindowDef> = {
     width: 640,
     dx: 70,
     dy: -20,
+  },
+  setup: {
+    id: 'setup',
+    title: 'setup',
+    path: '~/aum/setup/',
+    aria: 'setup',
+    kind: 'folder',
+    width: 720,
+    dx: -30,
+    dy: 20,
   },
   hobbies: {
     id: 'hobbies',

@@ -1,7 +1,15 @@
 import type { ProjectKey } from './projects';
 
 export type PhoneAppId =
-  'about' | 'projects' | 'experience' | 'skills' | 'hobbies' | 'photos' | 'contact' | 'resume';
+  | 'about'
+  | 'projects'
+  | 'experience'
+  | 'skills'
+  | 'setup'
+  | 'hobbies'
+  | 'photos'
+  | 'contact'
+  | 'resume';
 
 /** Home-screen grid, in order. Contact and Resume live in the dock. */
 export const phoneHomeApps: { id: PhoneAppId; label: string }[] = [
@@ -9,6 +17,7 @@ export const phoneHomeApps: { id: PhoneAppId; label: string }[] = [
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
+  { id: 'setup', label: 'Setup' },
   { id: 'hobbies', label: 'Hobbies' },
   { id: 'photos', label: 'Photos' },
 ];
@@ -19,6 +28,7 @@ export const phoneAppTitles: Record<PhoneAppId, string> = {
   projects: 'projects',
   experience: 'experience',
   skills: 'skills',
+  setup: 'setup',
   hobbies: 'hobbies',
   photos: 'photos',
   contact: 'contact',

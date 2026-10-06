@@ -1,0 +1,81 @@
+.body {
+  padding: 28px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.heading {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+.summary {
+  margin: 0;
+  color: var(--muted);
+}
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--sunken);
+  font-size: 14px;
+}
+.spec {
+  display: flex;
+  gap: 14px;
+}
+.spec dt {
+  flex: 0 0 72px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  padding-top: 1px;
+}
+.spec dd {
+  margin: 0;
+  min-width: 0;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chip {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  --skill-icon: var(--d-muted);
+}
+.chip:hover,
+.chip:focus-within {
+  --skill-icon: var(--acc, #ffb020);
+}
+.planned {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border: 1px dashed var(--acc);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--acc);
+}

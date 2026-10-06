@@ -40,6 +40,18 @@ describe('PhoneOS', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
+  it('opens Setup, flags planned items and keeps private details out', async () => {
+    const user = userEvent.setup();
+    renderPhone();
+    await user.click(screen.getByRole('button', { name: 'Open Setup' }));
+    const sheet = screen.getByRole('dialog', { name: 'setup' });
+    expect(within(sheet).getByRole('heading', { level: 1, name: 'Setup' })).toBeInTheDocument();
+    expect(within(sheet).getByRole('heading', { name: 'Homelab server' })).toBeInTheDocument();
+    const wol = within(sheet).getByText('Wake-on-LAN').closest('li');
+    expect(wol).toHaveTextContent('planned');
+    expect(sheet).not.toHaveTextContent(/cloudflare|tailscale|ssh|cuda|jev/i);
+  });
+
   it('drills into a project and back to the list', async () => {
     const user = userEvent.setup();
     renderPhone();
@@ -92,10 +104,10 @@ describe('PhoneOS', () => {
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
-  it('lays the six apps out in the grid and the three dock links, with no page dots', () => {
+  it('lays the seven apps out in the grid and the three dock links, with no page dots', () => {
     renderPhone();
     const grid = screen.getByRole('group', { name: 'Apps' });
-    expect(within(grid).getAllByRole('button')).toHaveLength(6);
+    expect(within(grid).getAllByRole('button')).toHaveLength(7);
     const dock = screen.getByRole('navigation', { name: 'Dock' });
     expect(within(dock).getAllByRole('button')).toHaveLength(2);
     expect(within(dock).getAllByRole('link')).toHaveLength(1);

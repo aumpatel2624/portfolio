@@ -1,6 +1,16 @@
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
-import { emailHref, links, resumeLabel, profile, projects, skills, workCards } from '../data';
+import {
+  emailHref,
+  links,
+  resumeLabel,
+  profile,
+  projects,
+  setup,
+  skills,
+  workCards,
+} from '../data';
+import { SkillIcon } from '../components/SkillIcon';
 import { PlaceholderLink } from '../lib/PlaceholderLink';
 import { usePageMeta } from '../lib/usePageMeta';
 import styles from './MobileHome.module.css';
@@ -141,6 +151,40 @@ export function MobileHome() {
                   {g.note && <p className={styles.text}>{g.note}</p>}
                 </div>
               ))}
+          </section>
+
+          <section className={styles.setup} aria-labelledby="m-setup">
+            <div className={styles.head}>
+              <div className={styles.label}>03 · Setup</div>
+              <h2 id="m-setup" className={styles.h2}>
+                What I build on
+              </h2>
+            </div>
+            {setup.map((section) => (
+              <div key={section.key} className={styles.setupGroup}>
+                <h3 className={styles.setupTitle}>{section.title}</h3>
+                <p className={styles.text}>{section.summary}</p>
+                {section.specs && (
+                  <dl className={styles.specs}>
+                    {section.specs.map((row) => (
+                      <div key={row.label} className={styles.spec}>
+                        <dt>{row.label}</dt>
+                        <dd>{row.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                <ul className={styles.chips} aria-label={section.itemsLabel ?? section.title}>
+                  {section.items.map((item) => (
+                    <li key={item.name} className={styles.chip}>
+                      <SkillIcon name={item.name} />
+                      {item.name}
+                      {item.planned && <span className={styles.planned}>planned</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </section>
 
           <section className={styles.contact} aria-labelledby="m-contact">

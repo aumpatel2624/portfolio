@@ -74,7 +74,7 @@ for (const width of [360, 390, 430, 767]) {
       });
     expect(await overflows()).toEqual({ page: false, elements: [] });
 
-    for (const app of ['About', 'Projects', 'Experience', 'Skills', 'Hobbies', 'Photos']) {
+    for (const app of ['About', 'Projects', 'Experience', 'Skills', 'Setup', 'Hobbies', 'Photos']) {
       await page
         .getByRole('button', { name: `Open ${app}` })
         .last()

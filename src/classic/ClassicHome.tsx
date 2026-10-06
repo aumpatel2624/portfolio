@@ -10,6 +10,7 @@ import {
   links,
   resumeLabel,
   profile,
+  setup,
   projects,
   skills,
   workCards,
@@ -43,6 +44,7 @@ function DesktopClassic() {
             <a href="#work">Work</a>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
+            <a href="#setup">Setup</a>
             <a href="#contact">Contact</a>
             <Link to="/" className={styles.desktopView}>
               Desktop view
@@ -259,8 +261,44 @@ function DesktopClassic() {
           </div>
         </section>
 
+        <section id="setup" className={styles.setup} aria-labelledby="setup-title">
+          <div className={styles.head}>
+            <div className={styles.label}>04 · Setup</div>
+            <h2 id="setup-title" className={styles.h2Sec}>
+              What I build on.
+            </h2>
+          </div>
+          <div className={styles.groups}>
+            {setup.map((section) => (
+              <div key={section.key} className={styles.setupGroup}>
+                <h3 className={styles.groupTitle}>{section.title}</h3>
+                <p className={styles.setupText}>{section.summary}</p>
+                {section.specs && (
+                  <dl className={styles.specs}>
+                    {section.specs.map((row) => (
+                      <div key={row.label} className={styles.spec}>
+                        <dt>{row.label}</dt>
+                        <dd>{row.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+                <ul className={styles.chips} aria-label={section.itemsLabel ?? section.title}>
+                  {section.items.map((item) => (
+                    <li key={item.name} className={styles.chip}>
+                      <SkillIcon name={item.name} />
+                      {item.name}
+                      {item.planned && <span className={styles.planned}>planned</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section id="contact" className={styles.contact}>
-          <div className={styles.contactLabel}>04 · Contact</div>
+          <div className={styles.contactLabel}>05 · Contact</div>
           <h2 className={styles.h2Contact}>{profile.contact.heading}</h2>
           <p className={styles.contactText}>{profile.contact.body}</p>
           <div className={styles.contactBtns}>

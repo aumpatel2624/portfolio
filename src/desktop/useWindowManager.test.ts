@@ -1,3 +1,4 @@
+import { WINDOW_IDS, windowDefs } from '../data/windows';
 import {
   closeWindow,
   initialWindowState,
@@ -44,6 +45,20 @@ describe('window manager', () => {
     expect(s.open).toEqual(['about']);
     expect(topWindow(s)).toBe('about');
     expect(topWindow(closeWindow(s, 'about'))).toBeNull();
+  });
+
+  it('registers the setup window right after skills', () => {
+    expect(WINDOW_IDS.indexOf('setup')).toBe(WINDOW_IDS.indexOf('skills') + 1);
+    expect(windowDefs.setup).toMatchObject({ id: 'setup', title: 'setup', path: '~/aum/setup/' });
+    expect(new Set(WINDOW_IDS).size).toBe(WINDOW_IDS.length);
+    expect(WINDOW_IDS.every((id) => windowDefs[id].id === id)).toBe(true);
+  });
+
+  it('opens and focuses the setup window above another', () => {
+    const s = open('about', 'setup');
+    expect(s.open).toEqual(['about', 'setup']);
+    expect(topWindow(s)).toBe('setup');
+    expect(topWindow(closeWindow(s, 'setup'))).toBe('about');
   });
 
   describe('taskbar toggle', () => {

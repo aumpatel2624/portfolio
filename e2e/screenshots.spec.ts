@@ -10,7 +10,15 @@ for (const width of widths) {
     if (width >= 768) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: `shots/desktop-${width}.png` });
-      for (const name of ['projects', 'experience', 'skills', 'hobbies', 'contact', 'resume.pdf']) {
+      for (const name of [
+        'projects',
+        'experience',
+        'skills',
+        'setup',
+        'hobbies',
+        'contact',
+        'resume.pdf',
+      ]) {
         await page
           .getByRole('button', { name: `Open ${name}` })
           .first()
@@ -23,7 +31,15 @@ for (const width of widths) {
     if (width === 390) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: 'shots/phone-390.png' });
-      for (const name of ['About', 'Projects', 'Experience', 'Skills', 'Hobbies', 'Photos']) {
+      for (const name of [
+        'About',
+        'Projects',
+        'Experience',
+        'Skills',
+        'Setup',
+        'Hobbies',
+        'Photos',
+      ]) {
         await page
           .getByRole('button', { name: `Open ${name}` })
           .last()
