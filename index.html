@@ -10,6 +10,23 @@
     />
     <meta name="theme-color" content="#1A120F" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/images/wallpaper-desktop.webp"
+      media="(min-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      imagesrcset="/images/wallpaper-phone-sm.webp 780w, /images/wallpaper-phone.webp 1170w"
+      imagesizes="(max-width: 430px) 100vw, 430px"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Aum" />

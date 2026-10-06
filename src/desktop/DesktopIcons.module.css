@@ -50,3 +50,11 @@
   text-align: center;
   word-break: break-word;
 }
+
+/* Light wallpaper: a dark pill keeps the label readable (AA) without touching the palette. */
+:global([data-wp-light='true']) .label {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  box-shadow: 0 1px 6px #0006;
+}

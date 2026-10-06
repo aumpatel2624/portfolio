@@ -12,6 +12,7 @@ import { wallpapers } from '../data/wallpapers';
 import type { ProjectKey } from '../data/projects';
 import type { HobbyKey } from '../data/hobbies';
 import { usePageMeta } from '../lib/usePageMeta';
+import { WallpaperPhoto } from '../components/WallpaperPhoto';
 import { BootScreen } from './BootScreen';
 import { DesktopIcons } from './DesktopIcons';
 import { Mug } from './Mug';
@@ -124,14 +125,16 @@ export function Desktop({ accent = '#3B82F6' }: Props) {
   };
 
   const layers: { index: number; node: ReactNode }[] = [
-    { index: 0, node: <RaceDay lap={lap} /> },
-    { index: 1, node: seen.has(1) ? <PaddockNight /> : null },
-    { index: 2, node: seen.has(2) ? <ReadingNook /> : null },
+    { index: 0, node: <WallpaperPhoto variant="desktop" /> },
+    { index: 1, node: seen.has(1) ? <RaceDay lap={lap} /> : null },
+    { index: 2, node: seen.has(2) ? <PaddockNight /> : null },
+    { index: 3, node: seen.has(3) ? <ReadingNook /> : null },
   ];
 
   return (
     <div
       className={styles.desktop}
+      data-wp-light={current.light ? 'true' : undefined}
       style={{ '--acc': accent, '--acc2': `${accent}2E` } as CSSProperties}
       onKeyDown={(e) => {
         if (e.key === 'Escape' && wm.state.startOpen) closeStart();
@@ -148,7 +151,9 @@ export function Desktop({ accent = '#3B82F6' }: Props) {
       ))}
 
       <Mug />
-      <QuoteCard quote={current.quote} by={current.by} visible={wp.quoteVisible} />
+      {current.quote && (
+        <QuoteCard quote={current.quote} by={current.by ?? ''} visible={wp.quoteVisible} />
+      )}
 
       <div className={styles.vignette} />
       {/* Clicking the bare wallpaper dismisses the Start menu. */}

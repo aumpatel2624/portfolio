@@ -83,10 +83,17 @@ describe('PhoneOS', () => {
       act(() => void vi.advanceTimersByTime(QUOTE_FADE_MS));
     };
     cycle();
-    expect(screen.getByText('Wallpaper: Paddock night')).toBeInTheDocument();
-    cycle();
-    cycle();
     expect(screen.getByText('Wallpaper: Race day')).toBeInTheDocument();
+    cycle();
+    cycle();
+    cycle();
+    expect(screen.getByText('Wallpaper: Ink blossom')).toBeInTheDocument();
+  });
+
+  it('hides the quote slot on the blossom wallpaper, which has no quote', () => {
+    renderPhone();
+    expect(screen.getByText('Ink blossom')).toBeInTheDocument();
+    expect(document.getElementById('phone-quote')).toBeNull();
   });
 
   it('closes the open app with Escape', async () => {

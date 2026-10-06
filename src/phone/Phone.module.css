@@ -457,3 +457,29 @@
     display: none;
   }
 }
+
+/* Light wallpaper: scrims and pills keep the status bar, labels and indicators readable (AA). */
+:global([data-wp-light='true']) .status {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--bg) 78%, transparent),
+    color-mix(in srgb, var(--bg) 40%, transparent) 65%,
+    transparent
+  );
+}
+:global([data-wp-light='true']) .appLabel {
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  text-shadow: none;
+}
+:global([data-wp-light='true']) .dots {
+  width: fit-content;
+  margin-inline: auto;
+  padding: 6px 10px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+}
+:global([data-wp-light='true']) .homeBar span {
+  background: var(--bg);
+}
