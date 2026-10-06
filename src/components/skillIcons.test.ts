@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { profile } from '../data/profile';
+import { setup } from '../data/setup';
 import { skills } from '../data/skills';
 import { skillIcons } from './skillIcons';
 
@@ -7,6 +8,7 @@ describe('skillIcons', () => {
   const names = new Set([
     ...skills.flatMap((g) => [...g.desktop, ...g.classic]),
     ...profile.build.tools,
+    ...setup.flatMap((s) => s.items.map((i) => i.name)),
   ]);
 
   it('maps only skills that exist', () => {

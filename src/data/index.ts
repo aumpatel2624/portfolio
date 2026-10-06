@@ -7,3 +7,4 @@ export * from './hobbies';
 export * from './wallpapers';
 export * from './windows';
 export * from './caseStudy';
+export * from './setup';

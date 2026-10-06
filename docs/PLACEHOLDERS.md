@@ -12,3 +12,12 @@ lists what is left, warning only).
 | Books intro                        | `src/data/hobbies.ts` (`books`)       | Reading now is filled (both titles). No favourite or genre to show |
 | Three wallpaper quotes and authors | `src/data/wallpapers.ts`              |                                                                    |
 | `[add more photos]` (empty tile)   | `src/data/phone.ts` (`morePhotos`)    | Photos app on phones; add images to `phonePhotos`                  |
+
+## Open questions
+
+| Question                                                       | Where               | Notes                                                                                                           |
+| -------------------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| What is "Jev"? It was listed under AI tools in the Setup list. | `src/data/setup.ts` | Left off the page because it is ambiguous (possibly a typo). Tell us what it is, or confirm it should stay out. |
+| Laptop specs (Lenovo LOQ)                                      | `src/data/setup.ts` | Not given, so the Daily laptop section lists only the model. Add CPU, RAM, storage if you want them shown.      |
+
+> > > > > > > 08ad892 (Add a Setup window, phone app and classic section)

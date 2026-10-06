@@ -9,6 +9,7 @@ export const appIcons: Record<PhoneAppId | 'classic', string> = {
   projects: 'M12 3l9 5-9 5-9-5 9-5z M3 12.5l9 5 9-5 M3 17l9 5 9-5',
   experience: 'M3 8h18v12H3z M9 8V5h6v3 M3 13h18',
   skills: 'M8 7l-5 5 5 5 M16 7l5 5-5 5 M14 4l-4 16',
+  setup: 'M3 4h18v12H3z M8 20h8 M12 16v4',
   hobbies: 'M5 21V4 M5 4h14v9H5 M10 4v9 M15 4v9 M5 8.5h14',
   photos: 'M3 5h18v14H3z M3 16l5-5 4 4 3-3 6 6 M16 9.5h.01',
   contact: 'M3 5h18v14H3z M3 6.5l9 7 9-7',

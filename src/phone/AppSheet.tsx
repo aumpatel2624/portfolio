@@ -7,6 +7,7 @@ import { Hobbies } from './apps/Hobbies';
 import { Photos } from './apps/Photos';
 import { Projects } from './apps/Projects';
 import { Resume } from './apps/Resume';
+import { Setup } from './apps/Setup';
 import { Skills } from './apps/Skills';
 import type { PhoneAction, PhoneState } from './phoneState';
 import styles from './Phone.module.css';
@@ -34,6 +35,8 @@ function Body({ state, dispatch, onOpen }: Omit<Props, 'onClose'>) {
       return <Experience />;
     case 'skills':
       return <Skills />;
+    case 'setup':
+      return <Setup />;
     case 'hobbies':
       return (
         <Hobbies selected={state.hobby} onSelect={(hobby) => dispatch({ type: 'hobby', hobby })} />
