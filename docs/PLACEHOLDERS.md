@@ -18,3 +18,4 @@ lists what is left, warning only).
 | IoT boards, current build                  | `src/data/hobbies.ts` (`iot`)         |                                                         |
 | Books intro, reading now, favourite, genre | `src/data/hobbies.ts` (`books`)       |                                                         |
 | Three wallpaper quotes and authors         | `src/data/wallpapers.ts`              |                                                         |
+| `[add more photos]` (empty tile)           | `src/data/phone.ts` (`morePhotos`)    | Photos app on phones; add images to `phonePhotos`       |

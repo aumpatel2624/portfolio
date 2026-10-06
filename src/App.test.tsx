@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { DesktopRoute } from './App';
+import { HomeRoute } from './App';
 
 vi.mock('./desktop/Desktop', () => ({ Desktop: () => <div>desktop</div> }));
+vi.mock('./phone/PhoneOS', () => ({ PhoneOS: () => <div>phone os</div> }));
 
 function mockNarrow(narrow: boolean) {
   vi.stubGlobal(
@@ -18,30 +20,33 @@ function mockNarrow(narrow: boolean) {
 function renderHome() {
   render(
     <MemoryRouter initialEntries={['/']}>
-      <Routes>
-        <Route path="/" element={<DesktopRoute />} />
-        <Route path="/classic" element={<div>classic</div>} />
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<HomeRoute />} />
+        </Routes>
+      </Suspense>
     </MemoryRouter>,
   );
 }
 
-describe('desktop route', () => {
+describe('home route', () => {
   afterEach(() => {
     vi.unstubAllEnvs();
     vi.unstubAllGlobals();
   });
 
-  it('redirects narrow screens to the classic site by default', () => {
+  it('shows the phone OS on narrow screens by default', async () => {
     mockNarrow(true);
     renderHome();
-    expect(screen.getByText('classic')).toBeInTheDocument();
+    expect(await screen.findByText('phone os')).toBeInTheDocument();
+    expect(screen.queryByText('desktop')).not.toBeInTheDocument();
   });
 
   it('shows the desktop on wide screens', () => {
     mockNarrow(false);
     renderHome();
     expect(screen.getByText('desktop')).toBeInTheDocument();
+    expect(screen.queryByText('phone os')).not.toBeInTheDocument();
   });
 
   it('shows the desktop on narrow screens when VITE_FORCE_DESKTOP=true', () => {
@@ -49,5 +54,6 @@ describe('desktop route', () => {
     mockNarrow(true);
     renderHome();
     expect(screen.getByText('desktop')).toBeInTheDocument();
+    expect(screen.queryByText('phone os')).not.toBeInTheDocument();
   });
 });

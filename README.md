@@ -1,9 +1,16 @@
 # Aum's portfolio
 
-A desktop-OS themed home (`/`), a classic one-page site (`/classic`) and a PhoneDeck case study
-(`/work/phonedeck`). Vite, React 18, strict TypeScript, plain CSS Modules, react-router-dom.
-Below 768px the desktop redirects to the classic layout, unless the build sets `VITE_FORCE_DESKTOP=true`
+A desktop-OS themed home (`/`), an iPhone-style phone OS (`/` below 768px), a classic one-page site
+(`/classic`) and a PhoneDeck case study (`/work/phonedeck`). Vite, React 18, strict TypeScript, plain
+CSS Modules, react-router-dom. Below 768px `/` renders the phone OS (`src/phone/`, lazy-loaded so
+desktop visitors never download it), unless the build sets `VITE_FORCE_DESKTOP=true`
 (see [Desktop-only deploys](#desktop-only-deploys)).
+
+## Phone OS preview
+
+To see the phone view on a desktop browser, narrow the window below 768px (or use the browser's
+device toolbar, for example 390x844). The view stays at most 430px wide and centred, and it reacts live
+as you resize. The dock's "Classic site" button leads to `/classic`.
 
 ## Run
 
@@ -14,7 +21,7 @@ npm run typecheck && npm run lint && npm test
 npm run build          # dev build (placeholders allowed)
 npm run build:prod     # fails while [placeholders] remain in src/data
 npm run test:e2e       # Playwright smoke test (builds, then serves a preview)
-npm run screenshots    # 390/768/1024/1440 screenshots into shots/
+npm run screenshots    # 390/768/1024/1440 screenshots (plus phone OS at 390) into shots/
 ```
 
 If Playwright has no matching browser, set `PW_CHROMIUM_PATH` to a Chromium binary.
@@ -41,7 +48,7 @@ once placeholders are filled (the config uses `npm run build` so previews work n
 ## Desktop-only deploys
 
 Set `VITE_FORCE_DESKTOP=true` at build time (see `.env.example`; copy to `.env.local`, never commit a
-`.env`) and `/` always renders the desktop, with no redirect to `/classic` on narrow screens. Windows,
+`.env`) and `/` always renders the desktop, never the phone OS, on narrow screens. Windows,
 taskbar and start menu are sized to fit phones. The flag is baked in at build, so rebuild after changing it:
 `VITE_FORCE_DESKTOP=true npm run build`.
 
@@ -49,7 +56,8 @@ taskbar and start menu are sized to fit phones. The flag is baked in at build, s
 
 - GitHub and LinkedIn stay placeholders as the spec lists them, even though the SmartBin URL is known.
 - Anonymised work cards on the classic page have no "Read case study" link: no such case studies exist.
-- The classic header has a small "Desktop view" link at 768px and above; narrower screens redirect `/` to `/classic`.
+- The classic header has a small "Desktop view" link at 768px and above. Phones no longer redirect from `/` to `/classic`; they get the phone OS, which links to the classic site from its dock.
+- Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. On screens shorter than 800px the page dots and the paddock traffic lights are hidden and the race-day cars sit on the dock, because they would otherwise run under the icon grid. Two small text colours (`#7A6657` on the photo placeholder and the "illustration" tag) are lightened to `#9A8776` for AA contrast.
 - Minimised windows unmount, as in the design; project and hobby selections persist.
 - Window drag is not implemented (out of scope unless everything else is done).
 - `sitemap.xml` is empty until the production domain is known.

@@ -49,14 +49,14 @@ test('desktop boots, opens windows, switches wallpaper and reaches the classic s
   );
 });
 
-test('narrow screens are redirected from the desktop to the classic layout', async ({ page }) => {
-  test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'flag disables the redirect');
+test('narrow screens get the phone OS instead of the desktop', async ({ page }) => {
+  test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'flag keeps the desktop on every width');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await expect(page).toHaveURL(/\/classic$/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Full-stack engineer building',
-  );
+  await expect(page).not.toHaveURL(/\/classic$/);
+  await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Open Projects' })).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
 });
 
 // Only meaningful for a build with VITE_FORCE_DESKTOP=true, e.g. `VITE_FORCE_DESKTOP=true npm run build`.
