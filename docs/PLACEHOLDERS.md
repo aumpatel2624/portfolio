@@ -19,4 +19,3 @@ lists what is left, warning only).
 | -------------------------------------------------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
 | What is "Jev"? It was listed under AI tools in the Setup list. | `src/data/setup.ts` | Left off the page because it is ambiguous (possibly a typo). Tell us what it is, or confirm it should stay out. |
 | Laptop specs (Lenovo LOQ)                                      | `src/data/setup.ts` | Not given, so the Daily laptop section lists only the model. Add CPU, RAM, storage if you want them shown.      |
-
