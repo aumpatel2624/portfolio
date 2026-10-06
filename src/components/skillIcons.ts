@@ -1,9 +1,11 @@
 import {
   siBun,
+  siClaudecode,
   siDocker,
   siElectron,
   siExpress,
   siGooglegemini,
+  siLinux,
   siMongodb,
   siNextdotjs,
   siNginx,
@@ -17,7 +19,7 @@ import {
   siTypescript,
 } from 'simple-icons';
 
-/** Skill name (as in src/data/skills.ts) -> simple-icons brand icon. Skills without one are left out on purpose. */
+/** Skill or tool name (as in src/data/skills.ts and profile.build.tools) -> simple-icons brand icon. Skills without one are left out on purpose. */
 export const skillIcons: Record<string, { title: string; path: string }> = {
   'Node.js': siNodedotjs,
   TypeScript: siTypescript,
@@ -35,4 +37,6 @@ export const skillIcons: Record<string, { title: string; path: string }> = {
   Electron: siElectron,
   Docker: siDocker,
   nginx: siNginx,
+  Linux: siLinux,
+  'Claude Code': siClaudecode,
 };

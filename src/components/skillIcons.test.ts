@@ -1,9 +1,13 @@
 import { describe, expect, it } from 'vitest';
+import { profile } from '../data/profile';
 import { skills } from '../data/skills';
 import { skillIcons } from './skillIcons';
 
 describe('skillIcons', () => {
-  const names = new Set(skills.flatMap((g) => [...g.desktop, ...g.classic]));
+  const names = new Set([
+    ...skills.flatMap((g) => [...g.desktop, ...g.classic]),
+    ...profile.build.tools,
+  ]);
 
   it('maps only skills that exist', () => {
     for (const name of Object.keys(skillIcons)) expect(names.has(name)).toBe(true);

@@ -21,6 +21,7 @@ export function Skills() {
               </li>
             ))}
           </ul>
+          {g.note && <p className={styles.note}>{g.note}</p>}
         </section>
       ))}
     </div>

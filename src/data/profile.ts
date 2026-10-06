@@ -31,6 +31,13 @@ export const profile = {
     mobileIntro:
       "Node.js and TypeScript in production, with MongoDB, PostgreSQL, Redis and RabbitMQ behind it. I've integrated Gemini and Groq models into recruiting and messaging products. Open to relocating to the Netherlands, Finland or Germany.",
   },
+  build: {
+    heading: 'How I build',
+    body: 'AI-assisted development with Claude Code, Codex and Antigravity, to cut the time from idea to finished product.',
+    tools: ['Claude Code', 'Codex', 'Antigravity'],
+    recently: 'Recently building with',
+    firstmate: { label: 'Firstmate', href: 'https://github.com/kunchenguid/firstmate' },
+  },
   profileCard: [
     { key: 'role', value: 'Full Stack Engineer' },
     { key: 'at', value: 'Apidel Technologies' },

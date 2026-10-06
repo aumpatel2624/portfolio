@@ -3,8 +3,6 @@ import { skills } from '../../data/skills';
 import common from '../common.module.css';
 import styles from './Skills.module.css';
 
-const DELAYS = ['0.05s', '0.15s', '0.25s', '0.35s'];
-
 export function Skills() {
   return (
     <div className={styles.body}>
@@ -12,7 +10,7 @@ export function Skills() {
         <section
           key={group.title}
           className={`${common.rise} ${styles.group}`}
-          style={{ animationDelay: DELAYS[i] }}
+          style={{ animationDelay: `${0.05 + i * 0.1}s` }}
         >
           <h3 className={styles.heading}>{group.title}</h3>
           <ul className={styles.chips}>
@@ -23,6 +21,7 @@ export function Skills() {
               </li>
             ))}
           </ul>
+          {group.note && <p className={styles.note}>{group.note}</p>}
         </section>
       ))}
     </div>
