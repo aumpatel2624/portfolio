@@ -95,8 +95,8 @@
   scrollbar-width: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: calc(60px + env(safe-area-inset-top, 0px)) 16px
+  justify-content: flex-start;
+  padding: calc(75px + env(safe-area-inset-top, 0px)) 16px
     calc(130px + env(safe-area-inset-bottom, 0px));
 }
 .home::-webkit-scrollbar {
@@ -106,7 +106,7 @@
 .apps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 16px;
+  row-gap: 22px;
   justify-items: center;
 }
 .app {
@@ -150,25 +150,6 @@
   text-shadow: 0 1px 6px #000a;
 }
 
-.dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(122px + env(safe-area-inset-bottom, 0px));
-}
-.dots span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--text);
-}
-.dots .dotOff {
-  opacity: 0.35;
-}
-
 .dock {
   position: absolute;
   left: 12px;
@@ -178,9 +159,10 @@
   z-index: 6;
   box-sizing: border-box;
   padding: 0 14px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
-  justify-content: space-around;
+  justify-items: center;
   border-radius: 30px;
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface) 72%, transparent);
@@ -346,21 +328,18 @@
   letter-spacing: 0.08em;
 }
 
-/* The page dots would sit under the dock on short screens. */
-@media (max-height: 799px) {
-  .dots {
-    display: none;
-  }
-}
-
 /* The wallpaper is light: scrims and pills keep the status bar, labels and indicators readable (AA). */
 .status {
+  color: var(--bg);
   background: linear-gradient(
     180deg,
-    color-mix(in srgb, var(--bg) 78%, transparent),
-    color-mix(in srgb, var(--bg) 40%, transparent) 65%,
+    color-mix(in srgb, var(--text) 32%, transparent),
     transparent
   );
+}
+.phone[data-sheet='true'] .status {
+  color: var(--text);
+  background: none;
 }
 .appLabel {
   padding: 2px 7px;
@@ -368,13 +347,19 @@
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   text-shadow: none;
 }
-.dots {
-  width: fit-content;
-  margin-inline: auto;
-  padding: 6px 10px;
-  border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-}
 .homeBar span {
   background: var(--bg);
+}
+.phone[data-sheet='true'] .homeBar span {
+  background: var(--text);
+}
+
+/* Short screens (landscape phones): one row of icons keeps the grid clear of the dock. */
+@media (max-height: 520px) {
+  .home {
+    padding-top: calc(56px + env(safe-area-inset-top, 0px));
+  }
+  .apps {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }

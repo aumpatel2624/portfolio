@@ -44,7 +44,7 @@ function StatusBar({ time }: { time: string }) {
     <div className={styles.status} aria-hidden="true">
       <span>{time}</span>
       <span className={styles.statusIcons}>
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="var(--text)">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor">
           <rect x="0" y="8" width="3" height="4" rx="1" />
           <rect x="5" y="5" width="3" height="7" rx="1" />
           <rect x="10" y="2" width="3" height="10" rx="1" />
@@ -55,7 +55,7 @@ function StatusBar({ time }: { time: string }) {
           height="12"
           viewBox="0 0 16 12"
           fill="none"
-          stroke="var(--text)"
+          stroke="currentColor"
           strokeWidth="1.8"
           strokeLinecap="round"
         >
@@ -64,9 +64,17 @@ function StatusBar({ time }: { time: string }) {
           <path d="M6.6 9.8a2.4 2.4 0 0 1 2.8 0" />
         </svg>
         <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
-          <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="var(--text)" opacity=".6" />
+          <rect
+            x="0.5"
+            y="0.5"
+            width="22"
+            height="11"
+            rx="3.5"
+            stroke="currentColor"
+            opacity=".6"
+          />
           <rect x="2" y="2" width="16" height="8" rx="2" fill="var(--acc)" />
-          <rect x="24" y="4" width="2" height="4" rx="1" fill="var(--text)" opacity=".6" />
+          <rect x="24" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".6" />
         </svg>
       </span>
     </div>
@@ -177,6 +185,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
       <div
         ref={phone}
         className={styles.phone}
+        data-sheet={state.app !== null}
         onKeyDown={(e) => {
           if (e.key === 'Escape' && state.app) close();
         }}
@@ -203,11 +212,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
                   <span className={styles.appLabel}>{app.label}</span>
                 </button>
               ))}
-            </div>
-
-            <div className={styles.dots} aria-hidden="true">
-              <span />
-              <span className={styles.dotOff} />
             </div>
           </main>
 
