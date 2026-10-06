@@ -30,7 +30,11 @@ export const phoneProjectTitles: Record<ProjectKey, string> = {
   phonedeck: 'PhoneDeck',
   recruit: 'recruiting platform',
   whatsapp: 'WhatsApp panel',
-  more: 'also built',
+  helpdesk: 'helpdesk',
+  taskmgmt: 'task management',
+  globalauth: 'global auth',
+  hrms: 'HRMS',
+  ai: 'AI integration',
 };
 
 export const phoneCopy = {
@@ -39,7 +43,11 @@ export const phoneCopy = {
     phonedeck: 'Remote launcher · case study',
     recruit: 'Gemini parsing · anonymised',
     whatsapp: 'LLM order parser · anonymised',
-    more: 'Helpdesk · SSO · workflow',
+    helpdesk: 'Support ticketing · Apidel',
+    taskmgmt: 'Graphics team · Apidel',
+    globalauth: 'Unified login · Apidel',
+    hrms: 'In progress · Apidel',
+    ai: 'Across several products · Apidel',
   } satisfies Record<ProjectKey, string>,
   caseStudy: 'Read the full case study →',
   allProjects: 'All projects',

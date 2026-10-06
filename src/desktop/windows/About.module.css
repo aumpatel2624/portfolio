@@ -134,3 +134,35 @@
   background: transparent;
   color: var(--text);
 }
+
+.build {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.buildHead {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tool {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: 13px;
+  --skill-icon: var(--muted);
+}

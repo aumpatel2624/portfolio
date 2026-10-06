@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
-import { emailHref, links, resumeLabel, profile, workCards } from '../data';
+import { emailHref, links, resumeLabel, profile, projects, skills, workCards } from '../data';
 import { PlaceholderLink } from '../lib/PlaceholderLink';
 import { usePageMeta } from '../lib/usePageMeta';
 import styles from './MobileHome.module.css';
@@ -101,6 +101,46 @@ export function MobileHome() {
                 )}
               </article>
             ))}
+            <div className={styles.label}>Apidel</div>
+            {projects
+              .filter((p) => p.group === 'Apidel')
+              .map((item) => (
+                <article key={item.key} className={styles.article}>
+                  <h3 className={styles.h3}>{item.title}</h3>
+                  <p className={styles.text}>{item.summary}</p>
+                </article>
+              ))}
+          </section>
+
+          <section className={styles.work} aria-labelledby="m-build">
+            <div className={styles.head}>
+              <div className={styles.label}>02 · Skills</div>
+              <h2 id="m-build" className={styles.h2}>
+                {profile.build.heading}
+              </h2>
+            </div>
+            <p className={styles.text}>{profile.build.body}</p>
+            <p className={styles.text}>{profile.build.tools.join(' · ')}</p>
+            <p className={styles.text}>
+              {profile.build.recently}{' '}
+              <a
+                href={profile.build.firstmate.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.more}
+              >
+                {profile.build.firstmate.label} ↗
+              </a>
+            </p>
+            {skills
+              .filter((g) => g.title === 'Environments')
+              .map((g) => (
+                <div key={g.title} className={styles.head}>
+                  <div className={styles.label}>{g.title}</div>
+                  <p className={styles.text}>{g.classic.join(' · ')}</p>
+                  {g.note && <p className={styles.text}>{g.note}</p>}
+                </div>
+              ))}
           </section>
 
           <section className={styles.contact} aria-labelledby="m-contact">

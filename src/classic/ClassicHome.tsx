@@ -5,12 +5,12 @@ import { AsciiPhoto } from '../ascii/AsciiPhoto';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
 import { aumWordmarkSmall, cardAscii } from '../ascii/art.generated';
 import {
-  alsoBuilt,
   emailHref,
   experience,
   links,
   resumeLabel,
   profile,
+  projects,
   skills,
   workCards,
 } from '../data';
@@ -140,8 +140,8 @@ function DesktopClassic() {
             <div className={styles.label}>01 · Selected work</div>
             <h2 className={styles.h2Work}>Systems I designed and built.</h2>
             <p className={styles.sub}>
-              One personal project I can show in full, and two client platforms written up without
-              client names.
+              One personal project I can show in full, two client platforms written up without
+              client names, and the software I build at Apidel.
             </p>
           </div>
           <div className={styles.cards}>
@@ -176,14 +176,16 @@ function DesktopClassic() {
             ))}
           </div>
           <div className={styles.also}>
-            <div className={styles.labelSm}>Also built</div>
+            <div className={styles.labelSm}>Apidel</div>
             <div className={styles.alsoRow}>
-              {alsoBuilt.map((item) => (
-                <div key={item.title} className={styles.alsoItem}>
-                  <h3 className={styles.h3Also}>{item.title}</h3>
-                  <p className={styles.alsoText}>{item.classic}</p>
-                </div>
-              ))}
+              {projects
+                .filter((p) => p.group === 'Apidel')
+                .map((item) => (
+                  <div key={item.key} className={styles.alsoItem}>
+                    <h3 className={styles.h3Also}>{item.title}</h3>
+                    <p className={styles.alsoText}>{item.summary}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </section>
@@ -228,8 +230,32 @@ function DesktopClassic() {
                     </li>
                   ))}
                 </ul>
+                {group.note && <p className={styles.groupNote}>{group.note}</p>}
               </div>
             ))}
+          </div>
+          <div className={styles.build}>
+            <h3 className={styles.groupTitle}>{profile.build.heading}</h3>
+            <p className={styles.buildText}>{profile.build.body}</p>
+            <ul className={styles.chips}>
+              {profile.build.tools.map((t) => (
+                <li key={t} className={styles.chip}>
+                  <SkillIcon name={t} />
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className={styles.buildText}>
+              {profile.build.recently}{' '}
+              <a
+                href={profile.build.firstmate.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.more}
+              >
+                {profile.build.firstmate.label} ↗
+              </a>
+            </p>
           </div>
         </section>
 

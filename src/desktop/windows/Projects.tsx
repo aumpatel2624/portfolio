@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { alsoBuilt, projects, type ProjectKey } from '../../data/projects';
+import { projectGroups, projects, type ProjectKey } from '../../data/projects';
+import { IoTArt } from '../illustrations/IoTArt';
 import { MoreArt } from '../illustrations/MoreArt';
 import { PhoneDeckArt } from '../illustrations/PhoneDeckArt';
 import { RecruitingArt } from '../illustrations/RecruitingArt';
@@ -12,10 +13,15 @@ interface Props {
   onSelect: (key: ProjectKey) => void;
 }
 
-const ART: Record<Exclude<ProjectKey, 'more'>, () => JSX.Element> = {
+const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
   recruit: RecruitingArt,
   whatsapp: WhatsAppArt,
+  helpdesk: MoreArt,
+  taskmgmt: MoreArt,
+  globalauth: MoreArt,
+  hrms: IoTArt,
+  ai: MoreArt,
 };
 
 export function Projects({ selected, onSelect }: Props) {
@@ -23,48 +29,38 @@ export function Projects({ selected, onSelect }: Props) {
   return (
     <div className={styles.body}>
       <div className={styles.list} role="group" aria-label="Projects">
-        {projects.map((p) => {
-          const sel = p.key === selected;
-          return (
-            <button
-              key={p.key}
-              type="button"
-              className={`${common.plist} ${styles.item}`}
-              aria-pressed={sel}
-              onClick={() => onSelect(p.key)}
-              style={{
-                background: sel ? 'var(--surface-2)' : 'transparent',
-                borderLeftColor: sel ? 'var(--acc)' : 'transparent',
-              }}
-            >
-              <span className={styles.label}>{p.label}</span>
-              <span className={styles.sub}>{p.sub}</span>
-            </button>
-          );
-        })}
+        {projectGroups.map((group) => (
+          <div key={group} role="group" aria-label={group} className={styles.group}>
+            <span className={styles.groupHead}>{group}</span>
+            {projects
+              .filter((p) => p.group === group)
+              .map((p) => {
+                const sel = p.key === selected;
+                return (
+                  <button
+                    key={p.key}
+                    type="button"
+                    className={`${common.plist} ${styles.item}`}
+                    aria-pressed={sel}
+                    onClick={() => onSelect(p.key)}
+                    style={{
+                      background: sel ? 'var(--surface-2)' : 'transparent',
+                      borderLeftColor: sel ? 'var(--acc)' : 'transparent',
+                    }}
+                  >
+                    <span className={styles.label}>{p.label}</span>
+                    <span className={styles.sub}>{p.sub}</span>
+                  </button>
+                );
+              })}
+          </div>
+        ))}
       </div>
       <div className={styles.pane}>
-        {current?.key === 'more' ? (
-          <div className={styles.moreDetail}>
-            <MoreArt />
-            <h2 className={`${common.rise} ${common.h2Sm}`} style={{ animationDelay: '0.08s' }}>
-              Also built
-            </h2>
-            {alsoBuilt.map((item, i) => (
-              <div
-                key={item.title}
-                className={`${common.rise} ${styles.also}`}
-                style={{ animationDelay: `${0.14 + i * 0.06}s` }}
-              >
-                <h3 className={styles.alsoTitle}>{item.title}</h3>
-                <p className={common.lede}>{item.desktop}</p>
-              </div>
-            ))}
-          </div>
-        ) : current ? (
+        {current ? (
           <div className={common.detail}>
             {(() => {
-              const Art = ART[current.key as Exclude<ProjectKey, 'more'>];
+              const Art = ART[current.key];
               return <Art />;
             })()}
             <h2
@@ -76,14 +72,18 @@ export function Projects({ selected, onSelect }: Props) {
             <p className={`${common.rise} ${common.lede}`} style={{ animationDelay: '0.14s' }}>
               {current.summary}
             </p>
-            <ul className={`${common.rise} ${common.bullets}`} style={{ animationDelay: '0.2s' }}>
-              {current.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
-            <div className={`${common.rise} ${common.stack}`} style={{ animationDelay: '0.26s' }}>
-              {current.stack}
-            </div>
+            {current.bullets.length > 0 && (
+              <ul className={`${common.rise} ${common.bullets}`} style={{ animationDelay: '0.2s' }}>
+                {current.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            )}
+            {current.stack && (
+              <div className={`${common.rise} ${common.stack}`} style={{ animationDelay: '0.26s' }}>
+                {current.stack}
+              </div>
+            )}
             {current.key === 'phonedeck' && (
               <Link
                 className={`${common.rise} ${common.link}`}

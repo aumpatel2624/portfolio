@@ -1,7 +1,14 @@
-export type ProjectKey = 'phonedeck' | 'recruit' | 'whatsapp' | 'more';
+export type ProjectKey =
+  'phonedeck' | 'recruit' | 'whatsapp' | 'helpdesk' | 'taskmgmt' | 'globalauth' | 'hrms' | 'ai';
+
+export type ProjectGroup = 'Personal' | 'Apidel' | 'Client work';
+
+/** Order the groups appear in the Projects window and app. */
+export const projectGroups: ProjectGroup[] = ['Personal', 'Apidel', 'Client work'];
 
 export interface Project {
   key: ProjectKey;
+  group: ProjectGroup;
   /** Left-hand list in the Projects window. */
   label: string;
   sub: string;
@@ -15,6 +22,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     key: 'phonedeck',
+    group: 'Personal',
     label: 'PhoneDeck',
     sub: 'Remote launcher',
     title: 'PhoneDeck',
@@ -29,6 +37,7 @@ export const projects: Project[] = [
   },
   {
     key: 'recruit',
+    group: 'Client work',
     label: 'Recruiting platform',
     sub: 'Anonymised',
     title: 'Recruiting platform with Gemini parsing',
@@ -43,6 +52,7 @@ export const projects: Project[] = [
   },
   {
     key: 'whatsapp',
+    group: 'Client work',
     label: 'WhatsApp panel',
     sub: 'Anonymised',
     title: 'WhatsApp panel with an LLM order parser',
@@ -55,51 +65,63 @@ export const projects: Project[] = [
     stack: 'Express 5 · MongoDB · RabbitMQ · React 19 · Groq',
   },
   {
-    key: 'more',
-    label: 'Also built',
-    sub: '3 systems',
-    title: 'Also built',
-    summary: '',
+    key: 'helpdesk',
+    group: 'Apidel',
+    label: 'Helpdesk',
+    sub: 'Support ticketing',
+    title: 'Helpdesk',
+    summary: 'A support ticketing software.',
+    bullets: [],
+    stack: '',
+  },
+  {
+    key: 'taskmgmt',
+    group: 'Apidel',
+    label: 'Task management',
+    sub: 'Graphics team',
+    title: 'Task management',
+    summary: 'A task management software for managing tasks for the graphics team.',
+    bullets: [],
+    stack: '',
+  },
+  {
+    key: 'globalauth',
+    group: 'Apidel',
+    label: 'Global auth',
+    sub: 'Unified login',
+    title: 'Global auth',
+    summary:
+      'A unified authentication software: users log in once and access the internal software, including Helpdesk and Task management.',
+    bullets: [],
+    stack: '',
+  },
+  {
+    key: 'hrms',
+    group: 'Apidel',
+    label: 'HRMS',
+    sub: 'In progress',
+    title: 'HRMS',
+    summary:
+      'Being built from scratch to replace a third-party HR software. A full HRMS with IoT integrations for access control and time attendance, by tapping an ID card.',
+    bullets: [],
+    stack: '',
+  },
+  {
+    key: 'ai',
+    group: 'Apidel',
+    label: 'AI integration',
+    sub: 'Across several products',
+    title: 'AI integration',
+    summary:
+      'Development and integration of AI into several software products, to reduce the number of people doing the same repetitive tasks.',
     bullets: [],
     stack: '',
   },
 ];
 
-export interface AlsoBuilt {
-  title: string;
-  /** Desktop window copy. */
-  desktop: string;
-  /** Classic page copy. */
-  classic: string;
-}
-
-export const alsoBuilt: AlsoBuilt[] = [
-  {
-    title: 'Helpdesk API',
-    desktop:
-      'SLA scheduling, department and shift routing, reporting-hierarchy RBAC and live updates. Express 5, MongoDB, Redis, Socket.IO.',
-    classic:
-      'SLA scheduling, department and shift routing, reporting-hierarchy RBAC and live updates. Express 5, MongoDB, Redis, Socket.IO, 17 test files.',
-  },
-  {
-    title: 'SSO hub',
-    desktop:
-      'One login across six internal systems: discovery, per-app token exchange and logout fan-out. Express, Redis, JWT.',
-    classic:
-      'One login across six internal systems: discovery, per-app token exchange and logout fan-out. Express, Redis, JWT.',
-  },
-  {
-    title: 'Content workflow platform',
-    desktop:
-      'Five roles, two-stage QC and automatic time tracking. React, Express on Bun, MongoDB.',
-    classic:
-      'A multi-company production line with five roles, two-stage QC and automatic time tracking. React, Express on Bun, MongoDB, 40 test files.',
-  },
-];
-
 /** Cards on the classic page and mobile layout. */
 export interface WorkCard {
-  key: Exclude<ProjectKey, 'more'>;
+  key: 'phonedeck' | 'recruit' | 'whatsapp';
   kind: string;
   badge: string;
   featured: boolean;

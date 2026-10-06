@@ -40,3 +40,9 @@
 .chip:focus-within {
   --skill-icon: var(--acc, #ffb020);
 }
+
+.note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}

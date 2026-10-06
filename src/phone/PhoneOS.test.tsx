@@ -53,6 +53,16 @@ describe('PhoneOS', () => {
     expect(screen.getByRole('dialog', { name: 'projects' })).toBeInTheDocument();
   });
 
+  it('groups projects and shows the Apidel entries', async () => {
+    const user = userEvent.setup();
+    renderPhone();
+    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
+    const apidel = screen.getByRole('region', { name: 'Apidel' });
+    expect(within(apidel).getByRole('button', { name: /HRMS/ })).toBeInTheDocument();
+    await user.click(within(apidel).getByRole('button', { name: /HRMS/ }));
+    expect(screen.getByText(/replace a third-party HR software/)).toBeInTheDocument();
+  });
+
   it('links PhoneDeck to its case study and the dock to the classic site', async () => {
     const user = userEvent.setup();
     renderPhone();

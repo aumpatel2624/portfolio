@@ -93,7 +93,7 @@ export function WhatsAppArt() {
 export function MoreArt() {
   return (
     <div className={`${styles.art} ${styles.more}`} aria-hidden="true">
-      {['helpdesk', 'sso hub', 'workflow'].map((name, i) => (
+      {['helpdesk', 'global auth', 'tasks'].map((name, i) => (
         <div
           key={name}
           className={`${styles.card} ${i === 0 ? styles.cardOn : ''}`}

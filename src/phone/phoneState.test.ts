@@ -43,7 +43,7 @@ describe('phone state', () => {
 
   it('goes back from a project to the list', () => {
     let s = phoneReducer(initialPhoneState, { type: 'open', app: 'projects', origin });
-    s = phoneReducer(s, { type: 'project', project: 'more' });
+    s = phoneReducer(s, { type: 'project', project: 'hrms' });
     s = phoneReducer(s, { type: 'project', project: null });
     expect(s.project).toBeNull();
   });

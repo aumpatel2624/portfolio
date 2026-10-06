@@ -42,20 +42,15 @@
   flex-direction: column;
   gap: 16px;
 }
-.moreDetail {
+.group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
 }
-.also {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-.alsoTitle {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 700;
+.groupHead {
+  padding: 12px 16px 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
 }

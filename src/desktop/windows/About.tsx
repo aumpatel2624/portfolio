@@ -1,5 +1,6 @@
 import { AsciiPhoto } from '../../ascii/AsciiPhoto';
 import { avatarAscii } from '../../ascii/art.generated';
+import { SkillIcon } from '../../components/SkillIcon';
 import { profile } from '../../data/profile';
 import type { WindowId } from '../../data/windows';
 import common from '../common.module.css';
@@ -43,7 +44,30 @@ export function About({ onOpen }: { onOpen: (id: WindowId) => void }) {
         <p className={`${common.rise} ${styles.work}`} style={{ animationDelay: '0.38s' }}>
           {profile.desktop.work}
         </p>
-        <div className={`${common.rise} ${styles.actions}`} style={{ animationDelay: '0.46s' }}>
+        <div className={`${common.rise} ${styles.build}`} style={{ animationDelay: '0.42s' }}>
+          <h2 className={styles.buildHead}>{profile.build.heading}</h2>
+          <p className={styles.work}>{profile.build.body}</p>
+          <ul className={styles.tools}>
+            {profile.build.tools.map((t) => (
+              <li key={t} className={`${common.chip} ${styles.tool}`}>
+                <SkillIcon name={t} />
+                {t}
+              </li>
+            ))}
+          </ul>
+          <p className={styles.work}>
+            {profile.build.recently}{' '}
+            <a
+              className={common.link}
+              href={profile.build.firstmate.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {profile.build.firstmate.label} ↗
+            </a>
+          </p>
+        </div>
+        <div className={`${common.rise} ${styles.actions}`} style={{ animationDelay: '0.5s' }}>
           <button
             type="button"
             className={`${common.btn} ${styles.primary}`}

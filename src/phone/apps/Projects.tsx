@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 import { phoneCopy } from '../../data/phone';
-import { alsoBuilt, projects, workCards, type ProjectKey } from '../../data/projects';
-import { MoreArt, PhoneDeckArt, RecruitArt, WhatsAppArt } from './Art';
+import { projectGroups, projects, workCards, type ProjectKey } from '../../data/projects';
+import { IotArt, MoreArt, PhoneDeckArt, RecruitArt, WhatsAppArt } from './Art';
 import styles from './Apps.module.css';
 
-const ART: Record<Exclude<ProjectKey, 'more'>, () => JSX.Element> = {
+const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
   recruit: RecruitArt,
   whatsapp: WhatsAppArt,
+  helpdesk: MoreArt,
+  taskmgmt: MoreArt,
+  globalauth: MoreArt,
+  hrms: IotArt,
+  ai: MoreArt,
 };
 
 const delay = (s: string) => ({ animationDelay: s });
@@ -37,46 +42,33 @@ function ProjectList({ onPick }: { onPick: (key: ProjectKey) => void }) {
       <p className={`${styles.rise} ${styles.lede}`} style={delay('0.06s')}>
         {phoneCopy.projectsIntro}
       </p>
-      {projects.map((p, i) => (
-        <button
-          key={p.key}
-          type="button"
-          className={`${styles.pcard} ${styles.rise}`}
-          style={delay(`${i * 0.05}s`)}
-          onClick={() => onPick(p.key)}
-        >
-          <span className={styles.pcardText}>
-            <span className={styles.pcardTitle}>{p.label}</span>
-            <span className={styles.pcardSub}>{phoneCopy.projectSubs[p.key]}</span>
-          </span>
-          <Chevron />
-        </button>
+      {projectGroups.map((group) => (
+        <section key={group} className={styles.group} aria-label={group}>
+          <h2 className={styles.groupTitle}>{group}</h2>
+          {projects
+            .filter((p) => p.group === group)
+            .map((p) => (
+              <button
+                key={p.key}
+                type="button"
+                className={`${styles.pcard} ${styles.rise}`}
+                style={delay(`${projects.indexOf(p) * 0.05}s`)}
+                onClick={() => onPick(p.key)}
+              >
+                <span className={styles.pcardText}>
+                  <span className={styles.pcardTitle}>{p.label}</span>
+                  <span className={styles.pcardSub}>{phoneCopy.projectSubs[p.key]}</span>
+                </span>
+                <Chevron />
+              </button>
+            ))}
+        </section>
       ))}
     </div>
   );
 }
 
 function ProjectDetail({ projectKey }: { projectKey: ProjectKey }) {
-  if (projectKey === 'more') {
-    return (
-      <div className={styles.detail} style={{ gap: 18 }}>
-        <MoreArt />
-        <h2 className={`${styles.rise} ${styles.h2}`} style={delay('0.08s')}>
-          Also built
-        </h2>
-        {alsoBuilt.map((item, i) => (
-          <div
-            key={item.title}
-            className={`${styles.rise} ${styles.also}`}
-            style={delay(`${0.14 + i * 0.06}s`)}
-          >
-            <h3 className={styles.h3}>{item.title}</h3>
-            <p className={styles.lede}>{item.desktop}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
   const project = projects.find((p) => p.key === projectKey);
   const href = workCards.find((c) => c.key === projectKey)?.href;
   const Art = ART[projectKey];
@@ -90,14 +82,18 @@ function ProjectDetail({ projectKey }: { projectKey: ProjectKey }) {
       <p className={`${styles.rise} ${styles.lede}`} style={delay('0.14s')}>
         {project.summary}
       </p>
-      <ul className={`${styles.rise} ${styles.bullets}`} style={delay('0.2s')}>
-        {project.bullets.map((b) => (
-          <li key={b}>{b}</li>
-        ))}
-      </ul>
-      <div className={`${styles.rise} ${styles.meta}`} style={delay('0.26s')}>
-        {project.stack}
-      </div>
+      {project.bullets.length > 0 && (
+        <ul className={`${styles.rise} ${styles.bullets}`} style={delay('0.2s')}>
+          {project.bullets.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
+        </ul>
+      )}
+      {project.stack && (
+        <div className={`${styles.rise} ${styles.meta}`} style={delay('0.26s')}>
+          {project.stack}
+        </div>
+      )}
       {href && (
         <Link className={`${styles.rise} ${styles.link}`} style={delay('0.32s')} to={href}>
           {phoneCopy.caseStudy}

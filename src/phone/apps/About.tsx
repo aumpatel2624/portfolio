@@ -1,3 +1,4 @@
+import { SkillIcon } from '../../components/SkillIcon';
 import { profile } from '../../data/profile';
 import { PhonePhoto } from './PhonePhoto';
 import styles from './Apps.module.css';
@@ -37,7 +38,32 @@ export function About({
       <p className={`${styles.rise} ${styles.lede}`} style={delay('0.32s')}>
         {profile.desktop.work}
       </p>
-      <div className={`${styles.rise} ${styles.actions}`} style={delay('0.4s')}>
+      <section className={`${styles.rise} ${styles.group}`} style={delay('0.36s')}>
+        <h2 className={styles.groupTitle}>{profile.build.heading}</h2>
+        <p className={styles.lede} style={{ margin: 0 }}>
+          {profile.build.body}
+        </p>
+        <ul className={styles.chips}>
+          {profile.build.tools.map((t) => (
+            <li key={t} className={styles.chip}>
+              <SkillIcon name={t} />
+              {t}
+            </li>
+          ))}
+        </ul>
+        <p className={styles.lede} style={{ margin: 0 }}>
+          {profile.build.recently}{' '}
+          <a
+            className={styles.acc}
+            href={profile.build.firstmate.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {profile.build.firstmate.label} ↗
+          </a>
+        </p>
+      </section>
+      <div className={`${styles.rise} ${styles.actions}`} style={delay('0.42s')}>
         <button type="button" className={`${styles.btn} ${styles.primary}`} onClick={onProjects}>
           Open projects
         </button>

@@ -2,8 +2,8 @@ import styles from './MoreArt.module.css';
 
 const CARDS = [
   { name: 'helpdesk', widths: [80, 50], delay: '0s', accent: true },
-  { name: 'sso hub', widths: [65, 85], delay: '0.7s', accent: false },
-  { name: 'workflow', widths: [90, 40], delay: '1.4s', accent: false },
+  { name: 'global auth', widths: [65, 85], delay: '0.7s', accent: false },
+  { name: 'tasks', widths: [90, 40], delay: '1.4s', accent: false },
 ];
 
 /** Three floating system cards. */
