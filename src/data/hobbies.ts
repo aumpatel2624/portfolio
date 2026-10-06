@@ -19,9 +19,9 @@ export const hobbies: Hobby[] = [
     title: 'Formula 1',
     intro: 'Formula 1 is one of my hobbies. [One line on how you got into it.]',
     bullets: [
-      'Favourite team: [team]',
-      'Favourite driver: [driver]',
-      "Best race I've watched: [race]",
+      'Favourite team: Red Bull',
+      'Favourite driver: Max Verstappen',
+      "Best race I've watched: 2016 Brazil Grand Prix",
     ],
   },
   {
@@ -44,8 +44,8 @@ export const hobbies: Hobby[] = [
     title: 'Books',
     intro: 'Reading books is one of my hobbies. [One line on what you read for.]',
     bullets: [
-      'Reading now: [title]',
-      'All-time favourite: [title]',
+      'Reading list: Read People Like a Book',
+      'Reading list: Psycho-Cybernetics',
       'Genre I keep coming back to: [genre]',
     ],
   },

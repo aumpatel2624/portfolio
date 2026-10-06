@@ -22,7 +22,7 @@ export const experience: Experience[] = [
     current: true,
   },
   {
-    when: '[YEAR] – Present',
+    when: 'Jan 2026 – Present',
     title: 'Co-founder, Vyaris',
     place: 'Software agency · six people · Vadodara',
     desktop:
