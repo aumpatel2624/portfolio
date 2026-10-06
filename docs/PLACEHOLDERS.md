@@ -6,9 +6,6 @@ lists what is left, warning only).
 
 | Placeholder                                | File                                  | Notes                                                   |
 | ------------------------------------------ | ------------------------------------- | ------------------------------------------------------- |
-| `[your email]`                             | `src/data/links.ts` (`email`)         | Becomes a `mailto:` link automatically                  |
-| `[GitHub URL]`                             | `src/data/links.ts` (`github`)        |                                                         |
-| `[LinkedIn URL]`                           | `src/data/links.ts` (`linkedin`)      |                                                         |
 | `[resume PDF link]`                        | `src/data/links.ts` (`resume`)        | Put the PDF in `public/` and use e.g. `/aum-resume.pdf` |
 | `[ATTACH RESUME PDF: ...]`                 | `src/data/links.ts` (`resumeNote`)    | Replace with a short line                               |
 | `[repository link, public soon]`           | `src/data/links.ts` (`phonedeckRepo`) | Only fill once the repo is public                       |

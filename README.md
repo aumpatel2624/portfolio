@@ -54,7 +54,6 @@ taskbar and start menu are sized to fit phones. The flag is baked in at build, s
 
 ## Decisions
 
-- GitHub and LinkedIn stay placeholders as the spec lists them, even though the SmartBin URL is known.
 - Anonymised work cards on the classic page have no "Read case study" link: no such case studies exist.
 - The classic header has a small "Desktop view" link at 768px and above. Phones no longer redirect from `/` to `/classic`; they get the phone OS, which links to the classic site from its dock.
 - Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. On screens shorter than 800px the page dots and the paddock traffic lights are hidden and the race-day cars sit on the dock, because they would otherwise run under the icon grid. Small secondary text uses `--muted` rather than `--faint` for AA contrast.
