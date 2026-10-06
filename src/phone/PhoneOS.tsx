@@ -152,7 +152,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
     }
   }, [state.app]);
 
-  /** Opens `app` growing from `from` (an icon or widget), or from mid-screen when opened from a sheet. */
+  /** Opens `app` growing from `from` (an icon), or from mid-screen when opened from a sheet. */
   const open = useCallback((app: PhoneAppId, from?: HTMLElement | null) => {
     const bounds = phone.current?.getBoundingClientRect();
     let origin = { x: (bounds?.width ?? 390) / 2, y: (bounds?.height ?? 844) / 2 };
@@ -187,27 +187,6 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
         <div className={styles.homeLayer} {...inertProps}>
           <main className={styles.home}>
             <h1 className="sr-only">Aum · Full-stack engineer</h1>
-            <div className={styles.widgets}>
-              <button
-                type="button"
-                className={`${styles.widget} ${styles.photoWidget}`}
-                aria-label="Open About"
-                onClick={(e) => open('about', e.currentTarget)}
-              >
-                <img
-                  src="/images/aum-portrait.jpg"
-                  alt=""
-                  width={358}
-                  height={164}
-                  className={styles.photoImg}
-                />
-                <span className={styles.photoCaption}>
-                  {phoneCopy.widgetHello}
-                  <span className={styles.acc}>.</span>
-                </span>
-              </button>
-            </div>
-
             <div className={styles.apps} role="group" aria-label="Apps">
               {phoneHomeApps.map((app, i) => (
                 <button

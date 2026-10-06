@@ -74,11 +74,12 @@ describe('PhoneOS', () => {
     expect(screen.getByRole('link', { name: /View SmartBin/ })).toBeInTheDocument();
   });
 
-  it('has no wallpaper switcher, race widget or quote on the home screen', () => {
+  it('has no wallpaper switcher, widgets or quote on the home screen', () => {
     renderPhone();
     expect(screen.queryByRole('button', { name: /wallpaper|quote/i })).not.toBeInTheDocument();
     expect(screen.queryByText(/RACE DAY/)).not.toBeInTheDocument();
-    expect(screen.getAllByRole('button', { name: 'Open About' })).toHaveLength(2);
+    expect(screen.getAllByRole('button', { name: 'Open About' })).toHaveLength(1);
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
   it('closes the open app with Escape', async () => {

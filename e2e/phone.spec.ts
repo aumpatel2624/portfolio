@@ -30,7 +30,7 @@ test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
   await page.getByRole('button', { name: 'Back to home' }).tap();
   await expect(page.getByRole('dialog')).toHaveCount(0);
 
-  // The photo widget opens About, whose photo toggles to ASCII art.
+  // The About icon opens About, whose photo toggles to ASCII art.
   await page.getByRole('button', { name: 'Open About' }).first().tap();
   const about = page.getByRole('dialog', { name: 'about.txt' });
   await expect(about.getByRole('heading', { level: 1 })).toContainText("Hi, I'm Aum.");
