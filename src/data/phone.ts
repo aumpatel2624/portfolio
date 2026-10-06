@@ -34,7 +34,6 @@ export const phoneProjectTitles: Record<ProjectKey, string> = {
 };
 
 export const phoneCopy = {
-  widgetHello: "hi, i'm aum",
   projectsIntro: 'Systems I designed and built. Client work is anonymised.',
   projectSubs: {
     phonedeck: 'Remote launcher · case study',

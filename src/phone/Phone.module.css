@@ -93,6 +93,9 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: calc(60px + env(safe-area-inset-top, 0px)) 16px
     calc(130px + env(safe-area-inset-bottom, 0px));
 }
@@ -100,55 +103,11 @@
   display: none;
 }
 
-.widgets {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  margin-top: 16px;
-}
-.widget {
-  position: relative;
-  height: 164px;
-  padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 22px;
-  overflow: hidden;
-  color: var(--text);
-  cursor: pointer;
-  box-shadow: 0 10px 30px #0008;
-  transition: transform 0.2s ease;
-}
-.widget:active {
-  transform: scale(0.97);
-}
-.photoWidget {
-  background: var(--surface-2);
-}
-.photoImg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 22%;
-}
-.photoCaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 22px 12px 10px;
-  text-align: left;
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg) 82%, transparent));
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 17px;
-}
-
 .apps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 16px;
   justify-items: center;
-  margin-top: 24px;
 }
 .app {
   display: flex;
@@ -195,7 +154,10 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 42px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(122px + env(safe-area-inset-bottom, 0px));
 }
 .dots span {
   width: 7px;
