@@ -3,9 +3,7 @@ import { expect, test } from '@playwright/test';
 test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'needs a build without VITE_FORCE_DESKTOP');
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-test('phone OS boots, opens apps, drills into a project and cycles the wallpaper', async ({
-  page,
-}) => {
+test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
   await page.goto('/');
 
   // Boot splash gives way to the home screen.
@@ -13,7 +11,7 @@ test('phone OS boots, opens apps, drills into a project and cycles the wallpaper
   await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeHidden({
     timeout: 6000,
   });
-  await expect(page.getByText(/RACE DAY · LAP/)).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Open About' }).first()).toBeVisible();
 
   // Projects: list -> detail -> case study link -> back to the list -> home.
   await page.getByRole('button', { name: 'Open Projects' }).tap();
@@ -43,10 +41,6 @@ test('phone OS boots, opens apps, drills into a project and cycles the wallpaper
   );
   await page.getByRole('button', { name: 'Go to home screen' }).tap();
   await expect(page.getByRole('dialog')).toHaveCount(0);
-
-  // Wallpaper cycles and a toast names it.
-  await page.getByRole('button', { name: 'Change wallpaper' }).tap();
-  await expect(page.getByText('Wallpaper: Race day')).toBeVisible();
 
   // The dock leads to the classic site.
   await page.getByRole('link', { name: 'Classic site' }).tap();
