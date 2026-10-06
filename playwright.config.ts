@@ -20,7 +20,7 @@ export default defineConfig({
     timeout: 120_000,
   },
   projects: [
-    { name: 'smoke', testMatch: /smoke\.spec\.ts/ },
+    { name: 'smoke', testMatch: /(smoke|phone)\.spec\.ts/ },
     { name: 'screenshots', testMatch: /screenshots\.spec\.ts/ },
   ],
 });

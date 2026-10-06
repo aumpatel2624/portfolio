@@ -1,0 +1,399 @@
+/* Illustration panels, values from Phone.dc.html. */
+.art {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 168px;
+  border: 1px solid #54413a;
+  border-radius: 16px;
+  background: #1a1310;
+  overflow: hidden;
+  animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* PhoneDeck */
+.deck {
+  justify-content: space-between;
+  padding: 0 20px;
+}
+.phone {
+  flex-shrink: 0;
+  width: 58px;
+  height: 106px;
+  box-sizing: border-box;
+  padding: 7px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  border: 2px solid var(--acc, #ffb020);
+  border-radius: 13px;
+  background: #241a17;
+}
+.tile {
+  border-radius: 5px;
+  background: #3a2c26;
+  animation: tilePulse 2.4s ease-in-out infinite;
+}
+.channel {
+  flex: 1;
+  position: relative;
+  height: 2px;
+  margin: 0 16px;
+  background: repeating-linear-gradient(90deg, #54413a 0 6px, transparent 6px 12px);
+}
+.channelLabel {
+  position: absolute;
+  left: 50%;
+  top: -24px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--acc, #ffb020);
+  white-space: nowrap;
+}
+.packet {
+  position: absolute;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--acc, #ffb020);
+  animation: packet 2.4s linear infinite;
+}
+.laptop {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.screen {
+  width: 96px;
+  height: 62px;
+  box-sizing: border-box;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  border: 2px solid #54413a;
+  border-radius: 7px 7px 0 0;
+  background: #241a17;
+}
+.line {
+  height: 5px;
+  border-radius: 3px;
+  background: #3a2c26;
+}
+.allow {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--acc, #ffb020);
+  color: #1a120f;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  animation: glow 2.4s ease-out infinite;
+}
+.base {
+  width: 116px;
+  height: 5px;
+  border-radius: 0 0 7px 7px;
+  background: #54413a;
+}
+@media (max-width: 379px) {
+  .deck {
+    padding: 0 12px;
+  }
+  .channel {
+    margin: 0 10px;
+  }
+}
+
+/* Recruiting platform */
+.recruit {
+  gap: 18px;
+}
+.doc {
+  position: relative;
+  flex-shrink: 0;
+  width: 84px;
+  height: 116px;
+  box-sizing: border-box;
+  padding: 11px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 6px;
+  background: #e9e6de;
+  overflow: hidden;
+}
+.docTitle {
+  height: 7px;
+  width: 55%;
+  border-radius: 4px;
+  background: #8e897c;
+}
+.docLine {
+  height: 4px;
+  border-radius: 3px;
+  background: #c2bdb0;
+}
+.scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: var(--acc, #ffb020);
+  box-shadow: 0 0 14px 2px var(--acc, #ffb020);
+  animation: scan 2.4s ease-in-out infinite alternate;
+}
+.gemini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.geminiLabel {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--acc, #ffb020);
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+.arrow {
+  font-size: 20px;
+  color: var(--acc, #ffb020);
+  animation: nudge 1.4s ease-in-out infinite;
+}
+.chips {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+.chip {
+  border: 1px solid var(--acc, #ffb020);
+  border-radius: 6px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+
+/* WhatsApp panel */
+.whatsapp {
+  gap: 14px;
+  padding: 0 14px;
+}
+.bubbles {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  width: 150px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+.bubble {
+  align-self: flex-start;
+  padding: 7px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: #2c201c;
+  font-size: 12px;
+}
+.arrowSolo {
+  flex-shrink: 0;
+}
+.tag {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: #9a8776;
+}
+
+/* Also built */
+.more {
+  height: 130px;
+  gap: 10px;
+}
+.card {
+  flex-shrink: 0;
+  width: 96px;
+  height: 70px;
+  box-sizing: border-box;
+  padding: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border: 1px solid #54413a;
+  border-radius: 10px;
+  background: #241a17;
+}
+.cardOn {
+  border-color: var(--acc, #ffb020);
+}
+.cardName {
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+.cardLine {
+  height: 4px;
+  border-radius: 3px;
+  background: #3a2c26;
+}
+
+/* Formula 1 */
+.oval {
+  position: relative;
+  width: 280px;
+  height: 110px;
+}
+.ovalSvg {
+  position: absolute;
+  inset: 0;
+}
+.lapCar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 16px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--acc, #ffb020);
+  box-shadow: 0 0 12px var(--acc, #ffb020);
+  offset-path: path('M 20 55 A 120 42 0 0 1 260 55 A 120 42 0 0 1 20 55 Z');
+  offset-rotate: auto;
+  animation: lap 3.6s linear infinite;
+}
+.corner {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #bfae9d;
+}
+.dots {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  display: flex;
+  gap: 6px;
+}
+.dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* IoT */
+.ping {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border: 2px solid var(--acc, #ffb020);
+  border-radius: 50%;
+}
+.board {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  box-sizing: border-box;
+  border: 2px solid var(--acc, #ffb020);
+  border-radius: 10px;
+  background: #241a17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pinsV,
+.pinsH {
+  position: absolute;
+}
+.pinsV {
+  top: 10px;
+  bottom: 10px;
+  width: 10px;
+  background: repeating-linear-gradient(180deg, #54413a 0 4px, transparent 4px 12px);
+}
+.pinsH {
+  left: 10px;
+  right: 10px;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, #54413a 0 4px, transparent 4px 12px);
+}
+.pinsLeft {
+  left: -12px;
+}
+.pinsRight {
+  right: -12px;
+}
+.pinsTop {
+  top: -12px;
+}
+.pinsBottom {
+  bottom: -12px;
+}
+.boardLabel {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--acc, #ffb020);
+}
+.leds {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  display: flex;
+  gap: 5px;
+}
+.leds span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Books */
+.lamp {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffb86b44, transparent 70%);
+  animation: lampFlicker 5s ease-in-out infinite;
+}
+.stack {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+.book {
+  position: relative;
+  border-radius: 3px;
+  box-shadow:
+    inset 6px 0 0 #0003,
+    inset 0 -3px 0 #0003;
+}
+.topBook {
+  animation: floaty 4s ease-in-out infinite;
+}
+.ribbon {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 9px;
+  height: 34px;
+  background: var(--acc, #ffb020);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+  transform-origin: top center;
+  animation: sway 3s ease-in-out infinite;
+}

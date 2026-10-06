@@ -11,10 +11,27 @@ for (const width of widths) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: `shots/desktop-${width}.png` });
       for (const name of ['projects', 'experience', 'skills', 'hobbies', 'contact', 'resume.pdf']) {
-        await page.getByRole('button', { name: `Open ${name}` }).first().dispatchEvent('click');
+        await page
+          .getByRole('button', { name: `Open ${name}` })
+          .first()
+          .dispatchEvent('click');
         await page.waitForTimeout(700);
         await page.screenshot({ path: `shots/desktop-${width}-${name.replace('.pdf', '')}.png` });
         await page.keyboard.press('Escape');
+      }
+    }
+    if (width === 390) {
+      await page.waitForTimeout(3600);
+      await page.screenshot({ path: 'shots/phone-390.png' });
+      for (const name of ['About', 'Projects', 'Experience', 'Skills', 'Hobbies', 'Photos']) {
+        await page
+          .getByRole('button', { name: `Open ${name}` })
+          .last()
+          .dispatchEvent('click');
+        await page.waitForTimeout(800);
+        await page.screenshot({ path: `shots/phone-390-${name.toLowerCase()}.png` });
+        await page.getByRole('button', { name: 'Back to home' }).dispatchEvent('click');
+        await page.waitForTimeout(400);
       }
     }
     await page.goto('/classic');
