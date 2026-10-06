@@ -1,3 +1,4 @@
+import { SkillIcon } from '../../components/SkillIcon';
 import { skills } from '../../data/skills';
 import common from '../common.module.css';
 import styles from './Skills.module.css';
@@ -17,6 +18,7 @@ export function Skills() {
           <ul className={styles.chips}>
             {group.desktop.map((s) => (
               <li key={s} className={`${common.chip} ${styles.chip}`}>
+                <SkillIcon name={s} />
                 {s}
               </li>
             ))}

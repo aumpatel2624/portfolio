@@ -1,3 +1,4 @@
+import { SkillIcon } from '../../components/SkillIcon';
 import { skills } from '../../data/skills';
 import styles from './Apps.module.css';
 
@@ -15,6 +16,7 @@ export function Skills() {
           <ul className={styles.chips}>
             {g.desktop.map((s) => (
               <li key={s} className={styles.chip}>
+                <SkillIcon name={s} />
                 {s}
               </li>
             ))}

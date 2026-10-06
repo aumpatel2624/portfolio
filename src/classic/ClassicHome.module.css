@@ -532,6 +532,13 @@
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  --skill-icon: var(--c-muted);
+}
+.chip:hover,
+.chip:focus-within {
+  --skill-icon: var(--c-accent);
 }
 
 .contact {
