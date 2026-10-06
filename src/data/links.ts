@@ -6,7 +6,7 @@ export const links = {
   email: 'aumpatelc36@gmail.com',
   github: 'https://github.com/aumpatel2624',
   linkedin: 'https://www.linkedin.com/in/aum-patel-945561222',
-  resume: '[resume PDF link]',
+  resume: '/aum-patel-resume.pdf',
   smartbin: 'https://github.com/aumpatel2624/SmartBin',
   phonedeckRepo: '[repository link, public soon]',
 } as const;
@@ -17,5 +17,8 @@ export const isPlaceholder = (value: string): boolean => /^\[.+\]$/.test(value.t
 export const emailHref = (email: string): string | undefined =>
   isPlaceholder(email) ? undefined : `mailto:${email}`;
 
-/** Shown in the Resume window until the PDF is linked. */
-export const resumeNote = "[ATTACH RESUME PDF: link it here once it's ready.]";
+/** Accessible name for every resume link. */
+export const resumeLabel = 'Download Aum Patel’s resume (PDF, opens in a new tab)';
+
+/** Shown in the Resume window and sheet. */
+export const resumeNote = 'My resume as a PDF: opens in a new tab and can be downloaded.';

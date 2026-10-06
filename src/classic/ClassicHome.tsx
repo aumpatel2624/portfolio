@@ -4,7 +4,16 @@ import { SkillIcon } from '../components/SkillIcon';
 import { AsciiPhoto } from '../ascii/AsciiPhoto';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
 import { aumWordmarkSmall, cardAscii } from '../ascii/art.generated';
-import { alsoBuilt, emailHref, experience, links, profile, skills, workCards } from '../data';
+import {
+  alsoBuilt,
+  emailHref,
+  experience,
+  links,
+  resumeLabel,
+  profile,
+  skills,
+  workCards,
+} from '../data';
 import { PlaceholderLink } from '../lib/PlaceholderLink';
 import { useMediaQuery } from '../lib/useMediaQuery';
 import { usePageMeta } from '../lib/usePageMeta';
@@ -38,7 +47,14 @@ function DesktopClassic() {
             <Link to="/" className={styles.desktopView}>
               Desktop view
             </Link>
-            <PlaceholderLink href={links.resume} className={styles.resumePill}>
+            <PlaceholderLink
+              href={links.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              aria-label={resumeLabel}
+              className={styles.resumePill}
+            >
               Resume (PDF)
             </PlaceholderLink>
           </nav>
@@ -60,7 +76,14 @@ function DesktopClassic() {
               <div className={styles.heroCopy}>
                 <p className={styles.lead}>{profile.classic.intro}</p>
                 <div className={styles.ctas}>
-                  <PlaceholderLink href={links.resume} className={styles.ctaPrimary}>
+                  <PlaceholderLink
+                    href={links.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download
+                    aria-label={resumeLabel}
+                    className={styles.ctaPrimary}
+                  >
                     Download resume
                   </PlaceholderLink>
                   <PlaceholderLink href={links.github} className={styles.ctaGhost}>

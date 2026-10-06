@@ -6,8 +6,6 @@ lists what is left, warning only).
 
 | Placeholder                        | File                                  | Notes                                                                  |
 | ---------------------------------- | ------------------------------------- | ---------------------------------------------------------------------- |
-| `[resume PDF link]`                | `src/data/links.ts` (`resume`)        | Put the PDF in `public/` and use e.g. `/aum-resume.pdf`                |
-| `[ATTACH RESUME PDF: ...]`         | `src/data/links.ts` (`resumeNote`)    | Replace with a short line                                              |
 | `[repository link, public soon]`   | `src/data/links.ts` (`phonedeckRepo`) | Only fill once the repo is public                                      |
 | `[CONFIRM]` (PhoneDeck next steps) | `src/data/caseStudy.ts` (`next`)      | Confirm the line, drop the tag                                         |
 | F1 intro                           | `src/data/hobbies.ts` (`f1`)          | Team, driver and best race are filled                                  |

@@ -1,5 +1,5 @@
 import { AsciiDivider } from '../../ascii/AsciiDivider';
-import { links, resumeNote } from '../../data/links';
+import { links, resumeLabel, resumeNote } from '../../data/links';
 import { PlaceholderLink } from '../../lib/PlaceholderLink';
 import common from '../common.module.css';
 import styles from './Resume.module.css';
@@ -34,6 +34,10 @@ export function Resume() {
         <AsciiDivider pattern="[=]" className={styles.rule} />
         <PlaceholderLink
           href={links.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          aria-label={resumeLabel}
           className={`${common.btn} ${common.rise} ${styles.download}`}
           style={{ animationDelay: '0.2s' }}
         >
