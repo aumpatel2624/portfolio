@@ -44,8 +44,8 @@ export const hobbies: Hobby[] = [
     title: 'Books',
     intro: 'Reading books is one of my hobbies. [One line on what you read for.]',
     bullets: [
-      'Reading list: Read People Like a Book',
-      'Reading list: Psycho-Cybernetics',
+      'Reading now: Read People Like a Book and Psycho-Cybernetics',
+      'All-time favourite: [title]',
       'Genre I keep coming back to: [genre]',
     ],
   },
