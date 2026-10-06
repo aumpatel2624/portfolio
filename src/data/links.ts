@@ -3,9 +3,9 @@
  * as a visible but inert link and fails `npm run build:prod` until filled in. See docs/PLACEHOLDERS.md.
  */
 export const links = {
-  email: '[your email]',
-  github: '[GitHub URL]',
-  linkedin: '[LinkedIn URL]',
+  email: 'aumpatelc36@gmail.com',
+  github: 'https://github.com/aumpatel2624',
+  linkedin: 'https://www.linkedin.com/in/aum-patel-945561222',
   resume: '[resume PDF link]',
   smartbin: 'https://github.com/aumpatel2624/SmartBin',
   phonedeckRepo: '[repository link, public soon]',
