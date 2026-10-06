@@ -48,7 +48,7 @@
 
 .primary {
   background: var(--acc);
-  color: #1a120f;
+  color: var(--on-accent);
 }
 
 .secondary {
@@ -58,5 +58,5 @@
 .shrug {
   margin: 0;
   font-family: var(--font-mono);
-  color: var(--d-faint);
+  color: var(--muted);
 }

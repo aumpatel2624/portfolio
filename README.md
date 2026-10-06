@@ -57,8 +57,9 @@ taskbar and start menu are sized to fit phones. The flag is baked in at build, s
 - GitHub and LinkedIn stay placeholders as the spec lists them, even though the SmartBin URL is known.
 - Anonymised work cards on the classic page have no "Read case study" link: no such case studies exist.
 - The classic header has a small "Desktop view" link at 768px and above. Phones no longer redirect from `/` to `/classic`; they get the phone OS, which links to the classic site from its dock.
-- Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. On screens shorter than 800px the page dots and the paddock traffic lights are hidden and the race-day cars sit on the dock, because they would otherwise run under the icon grid. Two small text colours (`#7A6657` on the photo placeholder and the "illustration" tag) are lightened to `#9A8776` for AA contrast.
+- Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. On screens shorter than 800px the page dots and the paddock traffic lights are hidden and the race-day cars sit on the dock, because they would otherwise run under the icon grid. Small secondary text uses `--muted` rather than `--faint` for AA contrast.
 - Minimised windows unmount, as in the design; project and hobby selections persist.
 - Window drag is not implemented (out of scope unless everything else is done).
 - `sitemap.xml` is empty until the production domain is known.
+- Desktop and phone use the Onyx palette (`src/styles/tokens.css`: `--bg`, `--surface`, `--text`, `--accent`, `--success`, `--danger` and friends). `--acc`/`--acc2` stay as aliases of accent and its soft glow, and the `--d-*` names alias the Onyx surfaces. The desktop accent switcher keeps its mechanism but its swatches are only the palette's own accents, `#3B82F6` and `#60A5FA`. `--faint` is decorative only. Naturalistic scene art (livery colours, books, lamp, TV screen, paper) keeps its own colours.
 - Mobile and case study colours were unified to the classic palette.

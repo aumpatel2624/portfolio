@@ -11,13 +11,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
-  border: 2px solid var(--acc, #ffb020);
+  border: 2px solid var(--acc);
   border-radius: 14px;
-  background: #241a17;
+  background: var(--surface);
 }
 .tile {
   border-radius: 6px;
-  background: #3a2c26;
+  background: var(--line);
   animation: tilePulse 2.4s ease-in-out infinite;
 }
 .channel {
@@ -25,7 +25,7 @@
   position: relative;
   height: 2px;
   margin: 0 24px;
-  background: repeating-linear-gradient(90deg, #54413a 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(90deg, var(--border) 0 6px, transparent 6px 12px);
 }
 .channelLabel {
   position: absolute;
@@ -34,7 +34,7 @@
   transform: translateX(-50%);
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
   white-space: nowrap;
 }
 .packet {
@@ -43,7 +43,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
   animation: packet 2.4s linear infinite;
 }
 .laptop {
@@ -60,21 +60,21 @@
   flex-direction: column;
   gap: 6px;
   justify-content: center;
-  border: 2px solid #54413a;
+  border: 2px solid var(--border);
   border-radius: 8px 8px 0 0;
-  background: #241a17;
+  background: var(--surface);
 }
 .line {
   height: 6px;
   border-radius: 3px;
-  background: #3a2c26;
+  background: var(--line);
 }
 .allow {
   align-self: flex-start;
   padding: 2px 10px;
   border-radius: 999px;
-  background: var(--acc, #ffb020);
-  color: #1a120f;
+  background: var(--acc);
+  color: var(--bg);
   font-family: var(--font-mono);
   font-size: 9px;
   font-weight: 500;
@@ -84,5 +84,5 @@
   width: 144px;
   height: 6px;
   border-radius: 0 0 8px 8px;
-  background: #54413a;
+  background: var(--border);
 }

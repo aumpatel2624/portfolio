@@ -4,20 +4,20 @@ const TRACK =
   'M60 190 C 40 140 60 90 120 70 S 220 60 260 40 S 360 30 370 90 S 330 150 290 160 S 250 220 190 225 S 80 235 60 190 Z';
 
 const CARS = [
-  { fill: '#E5604D', dur: '8.2s', begin: '-0.5s' },
-  { fill: '#FFB020', dur: '8.4s', begin: '-1.4s' },
+  { fill: 'var(--danger)', dur: '8.2s', begin: '-0.5s' },
+  { fill: 'var(--accent)', dur: '8.4s', begin: '-1.4s' },
   { fill: '#5CE1FF', dur: '8.6s', begin: '-2.6s' },
-  { fill: '#F6ECDC', dur: '8.8s', begin: '-3.7s' },
+  { fill: 'var(--text)', dur: '8.8s', begin: '-3.7s' },
   { fill: '#9B8CFF', dur: '9.0s', begin: '-4.9s' },
 ];
 
 const STANDINGS = [
-  { color: '#E5604D', gap: 'LEAD' },
-  { color: '#FFB020', gap: '+1.8' },
+  { color: 'var(--danger)', gap: 'LEAD' },
+  { color: 'var(--accent)', gap: '+1.8' },
   { color: '#5CE1FF', gap: '+3.4' },
-  { color: '#F6ECDC', gap: '+5.1' },
+  { color: 'var(--text)', gap: '+5.1' },
   { color: '#9B8CFF', gap: '+6.9' },
-  { color: '#4ADE80', gap: '+9.2' },
+  { color: 'var(--success)', gap: '+9.2' },
 ];
 
 /** Live race-day widget: a track map with five cars and the top six of the standings. */

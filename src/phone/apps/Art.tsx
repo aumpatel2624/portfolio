@@ -117,7 +117,7 @@ export function F1Art() {
           height="110"
           viewBox="0 0 280 110"
           fill="none"
-          stroke="#54413A"
+          stroke="var(--border)"
           strokeWidth="12"
           className={styles.ovalSvg}
         >
@@ -128,7 +128,7 @@ export function F1Art() {
           height="110"
           viewBox="0 0 280 110"
           fill="none"
-          stroke="var(--acc, #FFB020)"
+          stroke="var(--acc)"
           strokeWidth="1"
           strokeDasharray="4 6"
           className={styles.ovalSvg}
@@ -139,9 +139,9 @@ export function F1Art() {
       </div>
       <span className={styles.corner}>formula 1</span>
       <div className={styles.dots}>
-        <span style={{ background: '#E5604D' }} />
+        <span style={{ background: 'var(--danger)' }} />
         <span style={{ background: '#FFD27A' }} />
-        <span style={{ background: '#F6ECDC' }} />
+        <span style={{ background: 'var(--text)' }} />
       </div>
     </div>
   );
@@ -164,14 +164,18 @@ export function IotArt() {
         <span className={`${styles.pinsH} ${styles.pinsBottom}`} />
         <span className={styles.boardLabel}>IoT</span>
         <div className={styles.leds}>
-          <span style={{ background: '#E5604D', animation: 'ledBlink 1.2s steps(2) infinite' }} />
+          <span
+            style={{ background: 'var(--danger)', animation: 'ledBlink 1.2s steps(2) infinite' }}
+          />
           <span
             style={{
-              background: 'var(--acc, #FFB020)',
+              background: 'var(--acc)',
               animation: 'ledBlink 1.7s steps(2) infinite',
             }}
           />
-          <span style={{ background: '#F6ECDC', animation: 'ledBlink 0.9s steps(2) infinite' }} />
+          <span
+            style={{ background: 'var(--text)', animation: 'ledBlink 0.9s steps(2) infinite' }}
+          />
         </div>
       </div>
     </div>

@@ -17,8 +17,8 @@
   width: 16px;
   height: 8px;
   border-radius: 3px;
-  background: var(--acc, #ffb020);
-  box-shadow: 0 0 12px var(--acc, #ffb020);
+  background: var(--acc);
+  box-shadow: 0 0 12px var(--acc);
   offset-path: path('M 20 55 A 120 42 0 0 1 260 55 A 120 42 0 0 1 20 55 Z');
   offset-rotate: auto;
   animation: lap 3.6s linear infinite;
@@ -29,7 +29,7 @@
   top: 10px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .lights {
   position: absolute;

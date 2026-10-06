@@ -9,7 +9,11 @@
   height: 220px;
   margin: -110px 0 0 -110px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffb86b44, transparent 70%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 27%, transparent),
+    transparent 70%
+  );
   animation: lampFlicker 5s ease-in-out infinite;
 }
 .stack {
@@ -34,7 +38,7 @@
   top: 18px;
   width: 9px;
   height: 34px;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
   transform-origin: top center;
   animation: sway 3s ease-in-out infinite;

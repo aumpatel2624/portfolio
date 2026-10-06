@@ -26,7 +26,7 @@ const reducedMotion = () =>
   typeof window !== 'undefined' &&
   !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-function Glyph({ d, stroke = '#F6ECDC' }: { d: string; stroke?: string }) {
+function Glyph({ d, stroke = 'var(--text)' }: { d: string; stroke?: string }) {
   return (
     <svg
       width="28"
@@ -49,7 +49,7 @@ function StatusBar({ time }: { time: string }) {
     <div className={styles.status} aria-hidden="true">
       <span>{time}</span>
       <span className={styles.statusIcons}>
-        <svg width="18" height="12" viewBox="0 0 18 12" fill="#F6ECDC">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="var(--text)">
           <rect x="0" y="8" width="3" height="4" rx="1" />
           <rect x="5" y="5" width="3" height="7" rx="1" />
           <rect x="10" y="2" width="3" height="10" rx="1" />
@@ -60,7 +60,7 @@ function StatusBar({ time }: { time: string }) {
           height="12"
           viewBox="0 0 16 12"
           fill="none"
-          stroke="#F6ECDC"
+          stroke="var(--text)"
           strokeWidth="1.8"
           strokeLinecap="round"
         >
@@ -69,9 +69,9 @@ function StatusBar({ time }: { time: string }) {
           <path d="M6.6 9.8a2.4 2.4 0 0 1 2.8 0" />
         </svg>
         <svg width="26" height="12" viewBox="0 0 26 12" fill="none">
-          <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="#F6ECDC" opacity=".6" />
-          <rect x="2" y="2" width="16" height="8" rx="2" fill="var(--acc, #FFB020)" />
-          <rect x="24" y="4" width="2" height="4" rx="1" fill="#F6ECDC" opacity=".6" />
+          <rect x="0.5" y="0.5" width="22" height="11" rx="3.5" stroke="var(--text)" opacity=".6" />
+          <rect x="2" y="2" width="16" height="8" rx="2" fill="var(--acc)" />
+          <rect x="24" y="4" width="2" height="4" rx="1" fill="var(--text)" opacity=".6" />
         </svg>
       </span>
     </div>
@@ -100,12 +100,12 @@ function Boot() {
 }
 
 interface Props {
-  /** Accent colour, exposed to every descendant as `--acc`. */
-  accent?: string;
+  /** Accent colour (one of the palette's two accents), exposed to every descendant as `--acc`. */
+  accent?: '#3B82F6' | '#60A5FA';
 }
 
 /** The phone view: an iPhone-style home screen of apps over animated wallpapers. */
-export function PhoneOS({ accent = '#FFB020' }: Props) {
+export function PhoneOS({ accent = '#3B82F6' }: Props) {
   usePageMeta({
     title: 'Aum · Full-stack engineer',
     description:

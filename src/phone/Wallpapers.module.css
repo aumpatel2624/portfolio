@@ -27,7 +27,7 @@
 
 /* Race day */
 .race {
-  background: linear-gradient(180deg, #1d1216 0%, #2a1719 55%, #150c0d 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 55%, var(--bg) 100%);
 }
 .tvGlow {
   position: absolute;
@@ -36,7 +36,11 @@
   width: 700px;
   height: 420px;
   margin-left: -350px;
-  background: radial-gradient(ellipse at center, #e5604d44, transparent 68%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--danger) 27%, transparent),
+    transparent 68%
+  );
   animation: tvGlow 3s ease-in-out infinite;
 }
 .bunting {
@@ -55,7 +59,7 @@
   bottom: 132px;
   height: 12px;
   border-radius: 4px;
-  background: #3a2018;
+  background: var(--line);
   box-shadow: 0 10px 24px #0008;
 }
 .car {
@@ -96,7 +100,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #0c0808;
+  background: var(--bg);
 }
 .wheelA {
   left: 10px;
@@ -115,7 +119,7 @@
   position: absolute;
   inset: 0;
   border-radius: 15px 15px 7px 7px;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
 }
 .visor {
   position: absolute;
@@ -124,7 +128,7 @@
   width: 23px;
   height: 8px;
   border-radius: 5px 3px 3px 5px;
-  background: #0c0808;
+  background: var(--bg);
 }
 
 /* Paddock night */
@@ -138,13 +142,22 @@
   width: 560px;
   height: 260px;
   margin-left: -280px;
-  background: radial-gradient(ellipse at center, #e5604d55, transparent 70%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--danger) 33%, transparent),
+    transparent 70%
+  );
 }
 .streak {
   position: absolute;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ffb020aa, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 67%, transparent),
+    transparent
+  );
 }
 .lights {
   position: absolute;
@@ -154,15 +167,15 @@
   display: flex;
   gap: 12px;
   padding: 10px 16px;
-  background: #150d12;
-  border: 1px solid #54413a;
+  background: var(--sunken);
+  border: 1px solid var(--border);
   border-radius: 12px;
 }
 .light {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #2a1a1a;
+  background: var(--line);
 }
 .road {
   position: absolute;
@@ -170,8 +183,8 @@
   right: 0;
   bottom: 0;
   height: 120px;
-  background: linear-gradient(180deg, #1d1216, #0f0809);
-  border-top: 2px solid #54413a;
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+  border-top: 2px solid var(--border);
 }
 .roadDash {
   position: absolute;
@@ -180,13 +193,13 @@
   top: 44%;
   height: 6px;
   opacity: 0.5;
-  background: repeating-linear-gradient(90deg, #f6ecdc 0 60px, transparent 60px 120px);
+  background: repeating-linear-gradient(90deg, var(--text) 0 60px, transparent 60px 120px);
   animation: dash 1.2s linear infinite;
 }
 
 /* Reading nook */
 .nook {
-  background: linear-gradient(180deg, #1c1210 0%, #2e1c15 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
 }
 .lamp {
   position: absolute;
@@ -195,7 +208,12 @@
   width: 480px;
   height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffb86b66 0%, #ff9a5a22 45%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 27%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 13%, transparent) 45%,
+    transparent 70%
+  );
   animation: lampFlicker 5s ease-in-out infinite;
 }
 .nookGlow {
@@ -205,7 +223,7 @@
   width: 380px;
   height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, #c0663f33, transparent 70%);
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
 }
 .books {
   position: absolute;

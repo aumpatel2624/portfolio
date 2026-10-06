@@ -2,7 +2,7 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #1d1216 0%, #2a1719 60%, #150c0d 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 60%, var(--bg) 100%);
 }
 .tvGlow {
   position: absolute;
@@ -11,7 +11,11 @@
   width: 1200px;
   height: 680px;
   margin-left: -600px;
-  background: radial-gradient(ellipse at center, #e5604d44, transparent 68%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--danger) 27%, transparent),
+    transparent 68%
+  );
   animation: tvGlow 3s ease-in-out infinite;
 }
 .bunting {
@@ -30,7 +34,11 @@
   width: 900px;
   height: 170px;
   margin-left: -450px;
-  background: radial-gradient(ellipse at center, #7a3a2e55, transparent 70%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--accent) 33%, transparent),
+    transparent 70%
+  );
 }
 .checker {
   position: absolute;
@@ -39,7 +47,7 @@
   bottom: 48px;
   height: 14px;
   opacity: 0.45;
-  background: repeating-conic-gradient(#f6ecdc 0% 25%, #1a120f 0% 50%) 0 0 / 28px 28px;
+  background: repeating-conic-gradient(var(--text) 0% 25%, var(--bg) 0% 50%) 0 0 / 28px 28px;
 }
 .tv {
   position: absolute;
@@ -51,10 +59,10 @@
   box-sizing: border-box;
   padding: 10px;
   border-radius: 16px;
-  background: #0c0808;
-  border: 1px solid #54413a;
+  background: var(--bg);
+  border: 1px solid var(--border);
   box-shadow:
-    0 0 90px #e5604d33,
+    0 0 90px color-mix(in srgb, var(--danger) 20%, transparent),
     0 30px 60px #0008;
 }
 .screen {
@@ -90,9 +98,9 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #e5604d;
+  background: var(--danger);
   animation: pulseDot 1.4s ease-out infinite;
-  --acc2: #e5604d66;
+  --acc2: color-mix(in srgb, var(--danger) 40%, transparent);
 }
 .track {
   position: absolute;
@@ -146,7 +154,7 @@
   bottom: 0;
   height: 8%;
   overflow: hidden;
-  background: #e5604d;
+  background: var(--danger);
   display: flex;
   align-items: center;
 }
@@ -157,7 +165,7 @@
   font-family: var(--font-mono);
   font-size: clamp(8px, 0.9vw, 11px);
   font-weight: 500;
-  color: #1a120f;
+  color: var(--bg);
   animation: tick 18s linear infinite;
 }
 .tickerTrack span {
@@ -176,7 +184,7 @@
   width: 90px;
   height: 34px;
   margin-left: -45px;
-  background: #150d0d;
+  background: var(--sunken);
 }
 .shelf {
   position: absolute;
@@ -185,7 +193,7 @@
   top: calc(100% + 34px);
   height: 14px;
   border-radius: 4px;
-  background: #3a2018;
+  background: var(--line);
   box-shadow: 0 10px 30px #0008;
 }
 .car {
@@ -222,7 +230,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #0c0808;
+  background: var(--bg);
 }
 .helmet {
   position: absolute;
@@ -235,7 +243,7 @@
   position: absolute;
   inset: 0;
   border-radius: 17px 17px 8px 8px;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
 }
 .visor {
   position: absolute;
@@ -244,5 +252,5 @@
   width: 26px;
   height: 9px;
   border-radius: 6px 3px 3px 6px;
-  background: #0c0808;
+  background: var(--bg);
 }

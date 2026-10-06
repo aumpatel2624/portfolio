@@ -33,7 +33,7 @@ img {
   min-height: 100vh;
 }
 :focus-visible {
-  outline: 2px solid var(--acc, #ffb020);
+  outline: 2px solid var(--accent-2);
   outline-offset: 2px;
 }
 

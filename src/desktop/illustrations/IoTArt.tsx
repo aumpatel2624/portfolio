@@ -14,14 +14,18 @@ export function IoTArt() {
         <span className={`${styles.pins} ${styles.bottom}`} />
         <span className={styles.name}>IoT</span>
         <div className={styles.leds}>
-          <span style={{ background: '#E5604D', animation: 'ledBlink 1.2s steps(2) infinite' }} />
+          <span
+            style={{ background: 'var(--danger)', animation: 'ledBlink 1.2s steps(2) infinite' }}
+          />
           <span
             style={{
-              background: 'var(--acc, #ffb020)',
+              background: 'var(--acc)',
               animation: 'ledBlink 1.7s steps(2) infinite',
             }}
           />
-          <span style={{ background: '#F6ECDC', animation: 'ledBlink .9s steps(2) infinite' }} />
+          <span
+            style={{ background: 'var(--text)', animation: 'ledBlink .9s steps(2) infinite' }}
+          />
         </div>
       </div>
     </div>

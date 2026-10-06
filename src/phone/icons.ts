@@ -9,7 +9,7 @@ export const appIcons: Record<
   }
 > = {
   about: {
-    bg: 'linear-gradient(160deg, #E5604D, #B8432F)',
+    bg: 'linear-gradient(160deg, var(--danger), #C45454)',
     d: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7',
   },
   projects: {
@@ -44,22 +44,22 @@ export const dockIcons: Record<
 > = {
   contact: {
     bg: 'linear-gradient(160deg, #5E8F5A, #3F6A3C)',
-    fg: '#F6ECDC',
+    fg: 'var(--text)',
     d: 'M3 5h18v14H3z M3 6.5l9 7 9-7',
   },
   resume: {
     bg: 'linear-gradient(160deg, #D9BE94, #B8956A)',
-    fg: '#1A120F',
+    fg: 'var(--bg)',
     d: 'M6 3h9l4 4v14H6z M15 3v4h4 M9 12h7 M9 16h7',
   },
   classic: {
-    bg: 'linear-gradient(160deg, #54413A, #3A2C26)',
-    fg: '#F6ECDC',
+    bg: 'linear-gradient(160deg, var(--border), var(--line))',
+    fg: 'var(--text)',
     d: 'M3 4h18v16H3z M3 9h18 M6.5 6.5h.01 M9.5 6.5h.01',
   },
   wallpaper: {
-    bg: 'linear-gradient(160deg, #FFB020, #C0663F)',
-    fg: '#F6ECDC',
+    bg: 'linear-gradient(160deg, var(--accent), #1E40AF)',
+    fg: 'var(--text)',
     d: 'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M12 2v2 M12 20v2 M2 12h2 M20 12h2 M5 5l1.5 1.5 M17.5 17.5L19 19 M5 19l1.5-1.5 M17.5 6.5L19 5',
   },
 };

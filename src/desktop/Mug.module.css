@@ -11,7 +11,11 @@
   position: absolute;
   width: 8px;
   border-radius: 8px;
-  background: linear-gradient(180deg, transparent, #f6ecdc66);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--text) 40%, transparent)
+  );
   animation: steam 3.2s ease-in-out infinite;
 }
 .body {
@@ -53,5 +57,5 @@
   width: 92px;
   height: 10px;
   border-radius: 50%;
-  background: #54413a;
+  background: var(--border);
 }

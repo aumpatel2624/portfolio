@@ -9,8 +9,8 @@
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #54413a;
-  background: #1e1512;
+  border-right: 1px solid var(--border);
+  background: var(--sunken);
 }
 .item {
   display: flex;
@@ -22,7 +22,7 @@
   text-align: left;
   border: none;
   border-left: 3px solid transparent;
-  color: #f6ecdc;
+  color: var(--text);
   cursor: pointer;
 }
 .label {
@@ -32,7 +32,7 @@
 .sub {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .pane {
   flex: 1 1 400px;
@@ -52,7 +52,7 @@
   flex-direction: column;
   gap: 6px;
   padding-top: 16px;
-  border-top: 1px solid #54413a;
+  border-top: 1px solid var(--border);
 }
 .alsoTitle {
   margin: 0;
