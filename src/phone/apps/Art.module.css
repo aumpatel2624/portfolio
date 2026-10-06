@@ -112,6 +112,56 @@
   }
 }
 
+/* SEO Keyword Hunt */
+.keywords {
+  padding: 0 16px;
+}
+.kwPanel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.kwCaption {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--acc);
+}
+.kwRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+.kwWord {
+  flex: 0 0 122px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.kwTrack {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--line);
+  overflow: hidden;
+}
+.kwBar {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--border);
+}
+.kwTop {
+  background: var(--acc);
+}
+
 /* Recruiting platform */
 .recruit {
   gap: 18px;

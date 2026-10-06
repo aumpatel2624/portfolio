@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { projectGroups, projects, type ProjectKey } from '../../data/projects';
+import { KeywordArt } from '../illustrations/KeywordArt';
 import { IoTArt } from '../illustrations/IoTArt';
 import { MoreArt } from '../illustrations/MoreArt';
 import { PhoneDeckArt } from '../illustrations/PhoneDeckArt';
@@ -15,6 +16,7 @@ interface Props {
 
 const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
+  seokeywords: KeywordArt,
   recruit: RecruitingArt,
   whatsapp: WhatsAppArt,
   helpdesk: MoreArt,

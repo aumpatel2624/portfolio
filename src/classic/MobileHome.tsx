@@ -104,6 +104,11 @@ export function MobileHome() {
                     ))}
                   </div>
                 )}
+                {card.repo && (
+                  <PlaceholderLink href={card.repo} className={styles.more}>
+                    Code: {card.repo}
+                  </PlaceholderLink>
+                )}
                 {card.href && (
                   <Link to={card.href} className={styles.more}>
                     Read case study →

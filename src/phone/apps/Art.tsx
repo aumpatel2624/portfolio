@@ -31,6 +31,35 @@ export function PhoneDeckArt() {
   );
 }
 
+/** Generic sample words, not real output. */
+const KEYWORD_ROWS = [
+  { word: 'sample keyword one', score: 92 },
+  { word: 'sample keyword two', score: 74 },
+  { word: 'sample keyword three', score: 58 },
+  { word: 'sample keyword four', score: 41 },
+];
+
+export function KeywordArt() {
+  return (
+    <div className={`${styles.art} ${styles.keywords}`} aria-hidden="true">
+      <div className={styles.kwPanel}>
+        <span className={styles.kwCaption}>illustration · sample words</span>
+        {KEYWORD_ROWS.map((r, i) => (
+          <div key={r.word} className={styles.kwRow}>
+            <span className={styles.kwWord}>{r.word}</span>
+            <span className={styles.kwTrack}>
+              <span
+                className={`${styles.kwBar} ${i === 0 ? styles.kwTop : ''}`}
+                style={{ width: `${r.score}%` }}
+              />
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function RecruitArt() {
   return (
     <div className={`${styles.art} ${styles.recruit}`} aria-hidden="true">

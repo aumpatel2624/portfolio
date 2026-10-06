@@ -38,6 +38,7 @@ export const phoneAppTitles: Record<PhoneAppId, string> = {
 /** Header title while a project is open. */
 export const phoneProjectTitles: Record<ProjectKey, string> = {
   phonedeck: 'PhoneDeck',
+  seokeywords: 'SEO Keyword Hunt',
   recruit: 'recruiting platform',
   whatsapp: 'WhatsApp panel',
   helpdesk: 'helpdesk',
@@ -51,6 +52,7 @@ export const phoneCopy = {
   projectsIntro: 'Systems I designed and built. Client work is anonymised.',
   projectSubs: {
     phonedeck: 'Remote launcher · case study',
+    seokeywords: 'Keyword research CLI · Python',
     recruit: 'Gemini parsing · anonymised',
     whatsapp: 'LLM order parser · anonymised',
     helpdesk: 'Support ticketing · Apidel',

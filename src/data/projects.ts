@@ -1,5 +1,15 @@
+import { links } from './links';
+
 export type ProjectKey =
-  'phonedeck' | 'recruit' | 'whatsapp' | 'helpdesk' | 'taskmgmt' | 'globalauth' | 'hrms' | 'ai';
+  | 'phonedeck'
+  | 'seokeywords'
+  | 'recruit'
+  | 'whatsapp'
+  | 'helpdesk'
+  | 'taskmgmt'
+  | 'globalauth'
+  | 'hrms'
+  | 'ai';
 
 export type ProjectGroup = 'Personal' | 'Apidel' | 'Client work';
 
@@ -34,6 +44,21 @@ export const projects: Project[] = [
       'The laptop only acts on cards it stores, and pairing needs an explicit Allow.',
     ],
     stack: 'TypeScript · Electron · Expo · C# · ~15.6k lines · 31 PRs in 4 days',
+  },
+  {
+    key: 'seokeywords',
+    group: 'Personal',
+    label: 'SEO Keyword Hunt',
+    sub: 'Keyword research CLI',
+    title: 'SEO Keyword Hunt',
+    summary:
+      'Finds trending, long-tail SEO keyword candidates and ranks them, from free sources that need no API keys.',
+    bullets: [
+      'Pulls from Google Autocomplete (with modifier and alphabet expansion), Google Trends daily trending and Hacker News.',
+      'Scores with an offline heuristic by default. Optionally TypeSafe Jev judges intent and SEO value, and any Jev error falls back to the heuristic.',
+      'Includes seed lists for Vyaris. Python 3.9+, standard library only, tested with pytest.',
+    ],
+    stack: 'Python · CLI · Google Autocomplete · Google Trends · Hacker News · Jev',
   },
   {
     key: 'recruit',
@@ -121,7 +146,7 @@ export const projects: Project[] = [
 
 /** Cards on the classic page and mobile layout. */
 export interface WorkCard {
-  key: 'phonedeck' | 'recruit' | 'whatsapp';
+  key: 'phonedeck' | 'seokeywords' | 'recruit' | 'whatsapp';
   kind: string;
   badge: string;
   featured: boolean;
@@ -131,6 +156,8 @@ export interface WorkCard {
   stack: string;
   /** Route of the full write-up. Absent until a case study exists. */
   href?: string;
+  /** Repository link while public, otherwise the inert placeholder from links.ts. */
+  repo?: string;
 }
 
 export const workCards: WorkCard[] = [
@@ -145,6 +172,18 @@ export const workCards: WorkCard[] = [
     flow: ['Phone', 'Noise IK', 'Laptop', 'Windows'],
     stack: 'TypeScript · Electron · Expo · Noise protocol · C#',
     href: '/work/phonedeck',
+  },
+  {
+    key: 'seokeywords',
+    kind: 'Keyword research CLI',
+    badge: 'Personal',
+    featured: false,
+    title: 'SEO Keyword Hunt',
+    summary:
+      'Finds trending, long-tail SEO keyword candidates and ranks them, from free sources. Scoring is an offline heuristic, with optional Jev scoring that falls back to the heuristic on any error.',
+    flow: ['Autocomplete · Trends · HN', 'Score', 'Ranked CSV'],
+    stack: 'Python · CLI · Google Autocomplete · Google Trends · Hacker News · Jev',
+    repo: links.seoKeywordHuntRepo,
   },
   {
     key: 'recruit',

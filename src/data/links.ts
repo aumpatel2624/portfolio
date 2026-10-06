@@ -9,6 +9,7 @@ export const links = {
   resume: '/aum-patel-resume.pdf',
   smartbin: 'https://github.com/aumpatel2624/SmartBin',
   phonedeckRepo: '[repository link, public soon]',
+  seoKeywordHuntRepo: '[repository link, public soon]',
 } as const;
 
 export const isPlaceholder = (value: string): boolean => /^\[.+\]$/.test(value.trim());

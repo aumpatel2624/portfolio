@@ -80,6 +80,7 @@ export const setup: SetupSection[] = [
       { name: 'Gemini Pro' },
       { name: 'Antigravity CLI' },
       { name: 'Herdr' },
+      { name: 'Jev (TypeSafe)' },
     ],
   },
   {

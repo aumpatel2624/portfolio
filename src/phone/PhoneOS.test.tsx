@@ -49,7 +49,7 @@ describe('PhoneOS', () => {
     expect(within(sheet).getByRole('heading', { name: 'Homelab server' })).toBeInTheDocument();
     const wol = within(sheet).getByText('Wake-on-LAN').closest('li');
     expect(wol).toHaveTextContent('planned');
-    expect(sheet).not.toHaveTextContent(/cloudflare|tailscale|ssh|cuda|jev/i);
+    expect(sheet).not.toHaveTextContent(/cloudflare|tailscale|ssh|cuda/i);
   });
 
   it('drills into a project and back to the list', async () => {

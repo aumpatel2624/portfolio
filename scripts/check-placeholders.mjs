@@ -14,8 +14,8 @@ const literal = /'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\]|\\.)*)`
 const marker = /\[[^\]\n]*[A-Za-z][^\]\n]*\]/g;
 
 /**
- * Placeholders that are allowed to ship. The PhoneDeck repository link stays hidden on the site
- * until the repo is made public, so it must not fail the production build.
+ * Placeholders that are allowed to ship. The PhoneDeck and SEO Keyword Hunt repository links stay hidden on the site
+ * until the repos are made public, so it must not fail the production build.
  */
 const allowed = new Set(['src/data/links.ts:[repository link, public soon]']);
 

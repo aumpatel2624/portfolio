@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { phoneCopy } from '../../data/phone';
 import { projectGroups, projects, workCards, type ProjectKey } from '../../data/projects';
-import { IotArt, MoreArt, PhoneDeckArt, RecruitArt, WhatsAppArt } from './Art';
+import { IotArt, KeywordArt, MoreArt, PhoneDeckArt, RecruitArt, WhatsAppArt } from './Art';
 import styles from './Apps.module.css';
 
 const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
+  seokeywords: KeywordArt,
   recruit: RecruitArt,
   whatsapp: WhatsAppArt,
   helpdesk: MoreArt,
