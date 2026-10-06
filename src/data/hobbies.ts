@@ -32,8 +32,8 @@ export const hobbies: Hobby[] = [
     intro: 'I enjoy building with connected hardware, alongside my software work.',
     bullets: [
       'SmartBin: a waste-sorting prototype where a TensorFlow detection model tells an Arduino, over serial, how to sort.',
-      'Boards I use: [for example ESP32, Raspberry Pi]',
-      'Current build: [project]',
+      'Boards I use: Arduino with a camera module',
+      'College project: classification and detection, running an ML model on board.',
     ],
     link: { label: 'View SmartBin on GitHub →', href: 'https://github.com/aumpatel2624/SmartBin' },
   },
