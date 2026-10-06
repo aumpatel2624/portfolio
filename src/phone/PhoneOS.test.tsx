@@ -82,6 +82,16 @@ describe('PhoneOS', () => {
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
+  it('lays the six apps out in the grid and the three dock links, with no page dots', () => {
+    renderPhone();
+    const grid = screen.getByRole('group', { name: 'Apps' });
+    expect(within(grid).getAllByRole('button')).toHaveLength(6);
+    const dock = screen.getByRole('navigation', { name: 'Dock' });
+    expect(within(dock).getAllByRole('button')).toHaveLength(2);
+    expect(within(dock).getAllByRole('link')).toHaveLength(1);
+    expect(document.querySelector('[class*="dots"]')).toBeNull();
+  });
+
   it('closes the open app with Escape', async () => {
     const user = userEvent.setup();
     renderPhone();
