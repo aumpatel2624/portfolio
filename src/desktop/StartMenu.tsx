@@ -4,10 +4,9 @@ import styles from './StartMenu.module.css';
 
 interface Props {
   onOpen: (id: WindowId) => void;
-  onWallpaper: () => void;
 }
 
-export function StartMenu({ onOpen, onWallpaper }: Props) {
+export function StartMenu({ onOpen }: Props) {
   return (
     <nav className={styles.menu} aria-label="Start menu">
       <div className={styles.brand}>
@@ -18,9 +17,6 @@ export function StartMenu({ onOpen, onWallpaper }: Props) {
           {windowDefs[id].title}
         </button>
       ))}
-      <button type="button" className={`${styles.mi} ${styles.accent}`} onClick={onWallpaper}>
-        change wallpaper
-      </button>
       <div className={styles.rule} />
       <Link to="/classic" className={`${styles.mi} ${styles.accent}`}>
         Classic site →

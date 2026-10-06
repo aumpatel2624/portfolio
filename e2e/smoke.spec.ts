@@ -2,9 +2,7 @@ import { expect, test } from '@playwright/test';
 
 test.use({ viewport: { width: 1440, height: 900 } });
 
-test('desktop boots, opens windows, switches wallpaper and reaches the classic site', async ({
-  page,
-}) => {
+test('desktop boots, opens windows and reaches the classic site', async ({ page }) => {
   await page.goto('/');
 
   // Boot screen shows, then the About window opens by itself.
@@ -34,14 +32,9 @@ test('desktop boots, opens windows, switches wallpaper and reaches the classic s
   await expect(projects).toBeHidden();
   await expect(page.getByRole('button', { name: 'Open projects' }).first()).toBeFocused();
 
-  // Wallpaper cycles.
-  const wallpaper = page.getByRole('button', { name: 'Change wallpaper' });
-  await expect(wallpaper).toContainText('Ink blossom');
-  await wallpaper.click();
-  await expect(wallpaper).toContainText('Race day');
-
   // Start menu leads to the classic site.
   await page.getByRole('button', { name: 'Start menu' }).click();
+  await expect(page.getByRole('button', { name: /wallpaper/i })).toHaveCount(0);
   await page.getByRole('link', { name: /Classic site/ }).click();
   await expect(page).toHaveURL(/\/classic$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
