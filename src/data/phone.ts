@@ -64,8 +64,6 @@ export const phoneCopy = {
   home: 'Home',
   contactEyebrow: 'Contact',
   boot: 'starting portfolio.os',
-  /** Placeholder tile in the Photos app. */
-  morePhotos: '[add more photos]',
 } as const;
 
 export const phonePhotos = [
