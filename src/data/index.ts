@@ -4,7 +4,6 @@ export * from './projects';
 export * from './experience';
 export * from './skills';
 export * from './hobbies';
-export * from './wallpapers';
 export * from './windows';
 export * from './caseStudy';
 export * from './setup';

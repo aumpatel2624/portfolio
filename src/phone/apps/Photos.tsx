@@ -1,4 +1,4 @@
-import { phoneCopy, phonePhotos } from '../../data/phone';
+import { phonePhotos } from '../../data/phone';
 import styles from './Apps.module.css';
 
 export function Photos() {
@@ -25,9 +25,6 @@ export function Photos() {
             <figcaption className={styles.meta}>{p.label}</figcaption>
           </figure>
         ))}
-        <div className={`${styles.rise} ${styles.empty}`} style={{ animationDelay: '0.18s' }}>
-          {phoneCopy.morePhotos}
-        </div>
       </div>
     </div>
   );

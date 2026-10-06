@@ -13,6 +13,12 @@ const strict = process.argv.includes('--strict');
 const literal = /'((?:[^'\\\n]|\\.)*)'|"((?:[^"\\\n]|\\.)*)"|`((?:[^`\\]|\\.)*)`/g;
 const marker = /\[[^\]\n]*[A-Za-z][^\]\n]*\]/g;
 
+/**
+ * Placeholders that are allowed to ship. The PhoneDeck repository link stays hidden on the site
+ * until the repo is made public, so it must not fail the production build.
+ */
+const allowed = new Set(['src/data/links.ts:[repository link, public soon]']);
+
 const found = [];
 for (const file of (await readdir(dir)).filter((f) => f.endsWith('.ts'))) {
   const lines = (await readFile(join(dir, file), 'utf8')).split('\n');
@@ -20,7 +26,10 @@ for (const file of (await readdir(dir)).filter((f) => f.endsWith('.ts'))) {
     if (line.trim().startsWith('//') || line.trim().startsWith('*')) return;
     for (const m of line.matchAll(literal)) {
       const text = m[1] ?? m[2] ?? m[3] ?? '';
-      for (const p of text.match(marker) ?? []) found.push(`src/data/${file}:${i + 1}  ${p}`);
+      for (const p of text.match(marker) ?? []) {
+        if (allowed.has(`src/data/${file}:${p}`)) continue;
+        found.push(`src/data/${file}:${i + 1}  ${p}`);
+      }
     }
   });
 }
