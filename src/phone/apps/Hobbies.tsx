@@ -1,8 +1,17 @@
 import { hobbies, type HobbyKey } from '../../data/hobbies';
+import { AiArt, RunningArt, SportsArt } from '../../desktop/illustrations/HobbyArt';
 import { BooksArt, F1Art, IotArt } from './Art';
+import artStyles from './Art.module.css';
 import styles from './Apps.module.css';
 
-const ART: Record<HobbyKey, () => JSX.Element> = { f1: F1Art, iot: IotArt, books: BooksArt };
+const ART: Record<HobbyKey, () => JSX.Element> = {
+  f1: F1Art,
+  books: BooksArt,
+  running: () => <RunningArt className={artStyles.art} />,
+  ai: () => <AiArt className={artStyles.art} />,
+  sports: () => <SportsArt className={artStyles.art} />,
+  iot: IotArt,
+};
 const delay = (s: string) => ({ animationDelay: s });
 
 export function Hobbies({
@@ -41,14 +50,18 @@ export function Hobbies({
           <h2 className={`${styles.rise} ${styles.h2}`} style={delay('0.08s')}>
             {current.title}
           </h2>
-          <p className={`${styles.rise} ${styles.lede}`} style={delay('0.14s')}>
-            {current.intro}
-          </p>
-          <ul className={`${styles.rise} ${styles.bullets}`} style={delay('0.2s')}>
-            {current.bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
+          {current.intro && (
+            <p className={`${styles.rise} ${styles.lede}`} style={delay('0.14s')}>
+              {current.intro}
+            </p>
+          )}
+          {current.bullets.length > 0 && (
+            <ul className={`${styles.rise} ${styles.bullets}`} style={delay('0.2s')}>
+              {current.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          )}
           {current.link && (
             <a
               className={`${styles.rise} ${styles.link}`}
