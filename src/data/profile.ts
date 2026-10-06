@@ -1,3 +1,9 @@
+export interface Language {
+  name: string;
+  native?: string;
+  lang?: string;
+}
+
 export const profile = {
   name: 'Aum',
   location: 'Vadodara, India',
@@ -48,6 +54,16 @@ export const profile = {
     { key: 'based', value: 'Vadodara, India' },
     { key: 'open to', value: 'NL · FI · DE' },
   ],
+  languages: {
+    heading: 'Languages',
+    items: [
+      { name: 'English' },
+      { name: 'Hindi', native: 'हिन्दी', lang: 'hi' },
+      { name: 'Gujarati', native: 'ગુજરાતી', lang: 'gu' },
+      { name: 'German', native: 'Deutsch', lang: 'de' },
+      { name: 'Japanese', native: '日本語', lang: 'ja' },
+    ] as readonly Language[],
+  },
   marquee:
     'Node.js + TypeScript + MongoDB + PostgreSQL + Redis + RabbitMQ + React + Electron + LLMs +',
   contact: {

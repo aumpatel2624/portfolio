@@ -63,6 +63,21 @@ export function About({
           </a>
         </p>
       </section>
+      <section className={`${styles.rise} ${styles.group}`} style={delay('0.39s')}>
+        <h2 className={styles.groupTitle}>{profile.languages.heading}</h2>
+        <ul className={styles.chips}>
+          {profile.languages.items.map((l) => (
+            <li key={l.name} className={styles.chip}>
+              {l.name}
+              {l.native && (
+                <span lang={l.lang} className={styles.native}>
+                  {l.native}
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
       <div className={`${styles.rise} ${styles.actions}`} style={delay('0.42s')}>
         <button type="button" className={`${styles.btn} ${styles.primary}`} onClick={onProjects}>
           Open projects

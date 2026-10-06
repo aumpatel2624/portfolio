@@ -526,3 +526,11 @@
   font-size: 11px;
   color: var(--acc);
 }
+
+.native {
+  margin-left: 8px;
+  color: var(--d-muted, #bfae9d);
+  font-family:
+    var(--font-body), 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans JP', system-ui,
+    sans-serif;
+}

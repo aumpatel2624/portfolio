@@ -67,6 +67,21 @@ export function About({ onOpen }: { onOpen: (id: WindowId) => void }) {
             </a>
           </p>
         </div>
+        <div className={`${common.rise} ${styles.build}`} style={{ animationDelay: '0.46s' }}>
+          <h2 className={styles.buildHead}>{profile.languages.heading}</h2>
+          <ul className={styles.tools}>
+            {profile.languages.items.map((l) => (
+              <li key={l.name} className={`${common.chip} ${styles.tool}`}>
+                {l.name}
+                {l.native && (
+                  <span lang={l.lang} className={styles.native}>
+                    {l.native}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className={`${common.rise} ${styles.actions}`} style={{ animationDelay: '0.5s' }}>
           <button
             type="button"
