@@ -62,3 +62,4 @@ taskbar and start menu are sized to fit phones. The flag is baked in at build, s
 - Window drag is not implemented (out of scope unless everything else is done).
 - `sitemap.xml` is empty until the production domain is known.
 - Mobile and case study colours were unified to the classic palette.
+- Skill icons come from the CC0 `simple-icons` package (individual icons imported, mapped in `src/components/skillIcons.ts`). No icon is shown for skills without a brand icon: BullMQ, Groq and AWS (not in simple-icons v16, which dropped the AWS mark), and the generic concepts Structured outputs and Prompt design.

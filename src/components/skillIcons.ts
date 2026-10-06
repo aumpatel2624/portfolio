@@ -1,0 +1,38 @@
+import {
+  siBun,
+  siDocker,
+  siElectron,
+  siExpress,
+  siGooglegemini,
+  siMongodb,
+  siNextdotjs,
+  siNginx,
+  siNodedotjs,
+  siPostgresql,
+  siRabbitmq,
+  siReact,
+  siRedis,
+  siSocketdotio,
+  siSpringboot,
+  siTypescript,
+} from 'simple-icons';
+
+/** Skill name (as in src/data/skills.ts) -> simple-icons brand icon. Skills without one are left out on purpose. */
+export const skillIcons: Record<string, { title: string; path: string }> = {
+  'Node.js': siNodedotjs,
+  TypeScript: siTypescript,
+  Express: siExpress,
+  'Spring Boot': siSpringboot,
+  Bun: siBun,
+  'Socket.IO': siSocketdotio,
+  PostgreSQL: siPostgresql,
+  MongoDB: siMongodb,
+  Redis: siRedis,
+  RabbitMQ: siRabbitmq,
+  'Gemini API': siGooglegemini,
+  React: siReact,
+  'Next.js': siNextdotjs,
+  Electron: siElectron,
+  Docker: siDocker,
+  nginx: siNginx,
+};

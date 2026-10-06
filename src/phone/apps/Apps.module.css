@@ -295,11 +295,18 @@
   border-radius: 999px;
   padding: 8px 14px;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  --skill-icon: var(--d-muted, #bfae9d);
   animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     color 0.2s ease;
+}
+.chip:hover,
+.chip:focus-within {
+  --skill-icon: var(--acc, #ffb020);
 }
 .chip:hover {
   transform: translateY(-3px);

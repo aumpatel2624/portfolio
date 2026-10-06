@@ -1,0 +1,9 @@
+/* Colour comes from the parent chip: muted by default, text/accent on hover or focus. */
+.icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  color: var(--skill-icon, currentColor);
+  transition: color 0.2s ease;
+}

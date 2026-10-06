@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
+import { SkillIcon } from '../components/SkillIcon';
 import { AsciiPhoto } from '../ascii/AsciiPhoto';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
 import { aumWordmarkSmall, cardAscii } from '../ascii/art.generated';
@@ -199,6 +200,7 @@ function DesktopClassic() {
                 <ul className={styles.chips}>
                   {group.classic.map((s) => (
                     <li key={s} className={styles.chip}>
+                      <SkillIcon name={s} />
                       {s}
                     </li>
                   ))}
