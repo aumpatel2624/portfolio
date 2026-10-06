@@ -92,3 +92,14 @@
   font-size: 13px;
   color: #bfae9d;
 }
+
+/* Touch targets on narrow screens. */
+@media (max-width: 767px) {
+  .start,
+  .tb {
+    min-height: 44px;
+  }
+  .tb {
+    padding: 0 10px;
+  }
+}

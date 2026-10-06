@@ -50,12 +50,26 @@ test('desktop boots, opens windows, switches wallpaper and reaches the classic s
 });
 
 test('narrow screens are redirected from the desktop to the classic layout', async ({ page }) => {
+  test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'flag disables the redirect');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
   await expect(page).toHaveURL(/\/classic$/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Full-stack engineer building',
   );
+});
+
+// Only meaningful for a build with VITE_FORCE_DESKTOP=true, e.g. `VITE_FORCE_DESKTOP=true npm run build`.
+test('forced desktop build keeps narrow screens on the desktop', async ({ page }) => {
+  test.skip(process.env.VITE_FORCE_DESKTOP !== 'true', 'needs a VITE_FORCE_DESKTOP=true build');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  const about = page.getByRole('dialog', { name: '~/aum/about.txt' });
+  await expect(about).toBeVisible({ timeout: 6000 });
+  await expect(page).not.toHaveURL(/\/classic$/);
+  const box = await about.boundingBox();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(390);
 });
 
 test('case study page links back to the classic site', async ({ page }) => {

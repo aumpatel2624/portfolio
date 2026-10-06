@@ -2,7 +2,8 @@
 
 A desktop-OS themed home (`/`), a classic one-page site (`/classic`) and a PhoneDeck case study
 (`/work/phonedeck`). Vite, React 18, strict TypeScript, plain CSS Modules, react-router-dom.
-Below 768px the desktop redirects to the classic layout.
+Below 768px the desktop redirects to the classic layout, unless the build sets `VITE_FORCE_DESKTOP=true`
+(see [Desktop-only deploys](#desktop-only-deploys)).
 
 ## Run
 
@@ -36,6 +37,13 @@ the 404 page and the console. The real photos remain available everywhere.
 
 `vercel.json` holds a static SPA rewrite. Import the repo in Vercel; build command `npm run build:prod`
 once placeholders are filled (the config uses `npm run build` so previews work now).
+
+## Desktop-only deploys
+
+Set `VITE_FORCE_DESKTOP=true` at build time (see `.env.example`; copy to `.env.local`, never commit a
+`.env`) and `/` always renders the desktop, with no redirect to `/classic` on narrow screens. Windows,
+taskbar and start menu are sized to fit phones. The flag is baked in at build, so rebuild after changing it:
+`VITE_FORCE_DESKTOP=true npm run build`.
 
 ## Decisions
 

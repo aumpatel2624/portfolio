@@ -70,3 +70,13 @@
 .loading {
   min-height: 160px;
 }
+
+/* Narrow screens: drop the staggered offset so the window stays inside the viewport. */
+@media (max-width: 767px) {
+  .win {
+    transform: translate(-50%, -50%);
+  }
+  .wbtn {
+    height: 44px;
+  }
+}

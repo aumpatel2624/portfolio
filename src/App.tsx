@@ -9,10 +9,14 @@ const ClassicHome = lazy(() =>
 );
 const CaseStudy = lazy(() => import('./classic/CaseStudy').then((m) => ({ default: m.CaseStudy })));
 
-/** The OS-style desktop is unusable on phones, so narrow screens get the classic layout. */
-function DesktopRoute() {
+/**
+ * The OS-style desktop is unusable on phones, so narrow screens get the classic layout, unless the
+ * build sets VITE_FORCE_DESKTOP=true (desktop-only deployments).
+ */
+export function DesktopRoute() {
   const narrow = useMediaQuery('(max-width: 767px)');
-  return narrow ? <Navigate to="/classic" replace /> : <Desktop />;
+  const forceDesktop = import.meta.env.VITE_FORCE_DESKTOP === 'true';
+  return narrow && !forceDesktop ? <Navigate to="/classic" replace /> : <Desktop />;
 }
 
 export function App() {
