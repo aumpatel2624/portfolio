@@ -142,6 +142,23 @@ export function MobileHome() {
                 {profile.build.firstmate.label} ↗
               </a>
             </p>
+            <div className={styles.head}>
+              <div className={styles.label}>{profile.languages.heading}</div>
+              <p className={styles.text}>
+                {profile.languages.items.map((l, i) => (
+                  <span key={l.name}>
+                    {i > 0 && ' · '}
+                    {l.name}
+                    {l.native && (
+                      <>
+                        {' '}
+                        <span lang={l.lang}>{l.native}</span>
+                      </>
+                    )}
+                  </span>
+                ))}
+              </p>
+            </div>
             {skills
               .filter((g) => g.title === 'Environments')
               .map((g) => (

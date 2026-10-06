@@ -715,3 +715,11 @@
   margin: 0;
   color: var(--c-muted);
 }
+
+.native {
+  margin-left: 8px;
+  color: var(--c-muted);
+  font-family:
+    var(--font-body), 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans JP', system-ui,
+    sans-serif;
+}

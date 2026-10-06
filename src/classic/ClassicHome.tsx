@@ -259,6 +259,21 @@ function DesktopClassic() {
               </a>
             </p>
           </div>
+          <div className={styles.build}>
+            <h3 className={styles.groupTitle}>{profile.languages.heading}</h3>
+            <ul className={styles.chips}>
+              {profile.languages.items.map((l) => (
+                <li key={l.name} className={styles.chip}>
+                  {l.name}
+                  {l.native && (
+                    <span lang={l.lang} className={styles.native}>
+                      {l.native}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         <section id="setup" className={styles.setup} aria-labelledby="setup-title">

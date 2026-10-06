@@ -166,3 +166,11 @@
   font-size: 13px;
   --skill-icon: var(--muted);
 }
+
+.native {
+  margin-left: 8px;
+  color: var(--muted);
+  font-family:
+    var(--font-body), 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans JP', system-ui,
+    sans-serif;
+}
