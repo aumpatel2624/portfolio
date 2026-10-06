@@ -52,11 +52,11 @@ const formatTime = (d: Date) =>
   `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 
 interface Props {
-  /** Accent colour, exposed to every descendant as `--acc`. */
-  accent?: string;
+  /** Accent colour (one of the palette's two accents), exposed to every descendant as `--acc`. */
+  accent?: '#3B82F6' | '#60A5FA';
 }
 
-export function Desktop({ accent = '#FFB020' }: Props) {
+export function Desktop({ accent = '#3B82F6' }: Props) {
   usePageMeta({
     title: 'Aum · Full-stack engineer',
     description:

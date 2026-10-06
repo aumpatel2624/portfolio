@@ -11,7 +11,11 @@
   width: 760px;
   height: 300px;
   margin-left: -380px;
-  background: radial-gradient(ellipse at center, #e5604d55, transparent 70%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--danger) 33%, transparent),
+    transparent 70%
+  );
 }
 .lights {
   position: absolute;
@@ -21,21 +25,26 @@
   display: flex;
   gap: 18px;
   padding: 14px 22px;
-  background: #150d12;
-  border: 1px solid #54413a;
+  background: var(--sunken);
+  border: 1px solid var(--border);
   border-radius: 14px;
 }
 .light {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #2a1a1a;
+  background: var(--line);
 }
 .streak {
   position: absolute;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ffb020aa, transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 67%, transparent),
+    transparent
+  );
 }
 .road {
   position: absolute;
@@ -43,8 +52,8 @@
   right: 0;
   bottom: 0;
   height: 24%;
-  background: linear-gradient(180deg, #1d1216, #0f0809);
-  border-top: 2px solid #54413a;
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+  border-top: 2px solid var(--border);
 }
 .dashes {
   position: absolute;
@@ -53,6 +62,6 @@
   top: 44%;
   height: 6px;
   opacity: 0.5;
-  background: repeating-linear-gradient(90deg, #f6ecdc 0 60px, transparent 60px 120px);
+  background: repeating-linear-gradient(90deg, var(--text) 0 60px, transparent 60px 120px);
   animation: dash 1.2s linear infinite;
 }

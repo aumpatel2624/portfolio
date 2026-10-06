@@ -14,5 +14,5 @@
 }
 
 .accent {
-  color: var(--acc, #ffb020);
+  color: var(--acc);
 }

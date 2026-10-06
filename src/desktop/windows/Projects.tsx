@@ -33,8 +33,8 @@ export function Projects({ selected, onSelect }: Props) {
               aria-pressed={sel}
               onClick={() => onSelect(p.key)}
               style={{
-                background: sel ? '#2C201C' : 'transparent',
-                borderLeftColor: sel ? 'var(--acc, #FFB020)' : 'transparent',
+                background: sel ? 'var(--surface-2)' : 'transparent',
+                borderLeftColor: sel ? 'var(--acc)' : 'transparent',
               }}
             >
               <span className={styles.label}>{p.label}</span>

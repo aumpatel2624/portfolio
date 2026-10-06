@@ -7,13 +7,13 @@
   align-items: center;
   justify-content: center;
   gap: 28px;
-  background: #1a120f;
+  background: var(--bg);
   overflow: hidden;
   animation: bootOut 0.55s ease 1.95s both;
 }
 
 .backdrop {
-  --ascii-color: #54413a;
+  --ascii-color: var(--border);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,7 +28,7 @@
 }
 
 .logo {
-  --ascii-base: #f6ecdc;
+  --ascii-base: var(--text);
   position: relative;
   width: min(clamp(260px, 52vw, 560px), 86%);
   animation: bootLogo 0.9s cubic-bezier(0.2, 0.9, 0.25, 1) both;
@@ -39,7 +39,7 @@
   width: min(240px, 60%);
   height: 4px;
   border-radius: 4px;
-  background: #2c201c;
+  background: var(--surface-2);
   overflow: hidden;
 }
 
@@ -54,7 +54,7 @@
   position: relative;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: #bfae9d;
+  color: var(--muted);
   letter-spacing: 0.08em;
 }
 

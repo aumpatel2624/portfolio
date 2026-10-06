@@ -1,19 +1,26 @@
 import type { CSSProperties, ReactNode } from 'react';
 import styles from './Wallpapers.module.css';
 
-const FLAG_COLORS = ['#E5604D', '#FFB020', '#F6ECDC', '#5CE1FF', '#FF8A5C', '#F4D58D'];
+const FLAG_COLORS = [
+  'var(--danger)',
+  'var(--accent)',
+  'var(--text)',
+  '#5CE1FF',
+  'var(--accent-2)',
+  'var(--muted)',
+];
 const FLAG_Y = [7, 9, 11, 13, 14, 15, 16, 15, 14, 13, 11, 9, 7];
 const FLAGS = FLAG_Y.map((y, i) => {
   const x = 5 + i * 30;
   return {
     points: `${x},${y} ${x + 20},${y} ${x + 10},${y + 22}`,
-    fill: FLAG_COLORS[i % FLAG_COLORS.length] ?? '#E5604D',
+    fill: FLAG_COLORS[i % FLAG_COLORS.length] ?? 'var(--danger)',
   };
 });
 
 const CARS = [
-  { left: '4%', color: '#E5604D' },
-  { left: '25%', color: '#FFB020' },
+  { left: '4%', color: 'var(--danger)' },
+  { left: '25%', color: 'var(--accent)' },
   { left: '46%', color: '#5CE1FF' },
 ];
 
@@ -106,7 +113,7 @@ function RaceDay() {
         <path
           d="M0 6 L15 7 L45 9 L75 11 L105 13 L135 14 L165 15 L195 16 L225 15 L255 14 L285 13 L315 11 L345 9 L375 7 L390 6"
           fill="none"
-          stroke="#54413A"
+          stroke="var(--border)"
           strokeWidth="1.5"
         />
         {FLAGS.map((f) => (

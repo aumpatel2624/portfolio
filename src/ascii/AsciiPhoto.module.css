@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #120c0a;
+  background: var(--sunken);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -29,7 +29,7 @@
 }
 
 .art {
-  --ascii-color: var(--acc, #ffb020);
+  --ascii-color: var(--acc);
   width: 100%;
 }
 
@@ -46,10 +46,10 @@
   z-index: 2;
   min-height: 24px;
   padding: 0 10px;
-  border: 1px solid var(--d-border, #54413a);
+  border: 1px solid var(--d-border);
   border-radius: 999px;
-  background: #1a120fcc;
-  color: var(--d-text, #f6ecdc);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  color: var(--d-text);
   font-family: var(--font-mono);
   font-size: 11px;
   cursor: pointer;
@@ -59,6 +59,6 @@
 }
 
 .toggle:hover {
-  border-color: var(--acc, #ffb020);
-  color: var(--acc, #ffb020);
+  border-color: var(--acc);
+  color: var(--acc);
 }

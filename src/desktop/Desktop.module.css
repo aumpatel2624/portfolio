@@ -4,8 +4,8 @@
   height: 100vh;
   min-height: 640px;
   overflow: hidden;
-  background: #1a120f;
-  color: #f6ecdc;
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.55;
@@ -45,7 +45,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 45%, #1a120f 115%);
+  background: radial-gradient(ellipse at center, transparent 45%, var(--bg) 115%);
 }
 
 .dismiss {

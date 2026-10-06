@@ -37,7 +37,7 @@
   gap: 14px;
 }
 .rule {
-  --ascii-divider: #54413a;
+  --ascii-divider: var(--border);
   font-size: 12px;
 }
 .download {
@@ -47,7 +47,7 @@
   min-height: 48px;
   padding: 0 24px;
   border-radius: 999px;
-  background: var(--acc, #ffb020);
-  color: #1a120f;
+  background: var(--acc);
+  color: var(--bg);
   font-weight: 600;
 }

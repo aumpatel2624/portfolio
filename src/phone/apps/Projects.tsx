@@ -19,7 +19,7 @@ function Chevron() {
       height="16"
       viewBox="0 0 10 16"
       fill="none"
-      stroke="var(--acc, #FFB020)"
+      stroke="var(--acc)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"

@@ -64,7 +64,7 @@ export function AppSheet({ state, dispatch, onOpen, onClose }: Props) {
   if (!app) return null;
   const inDetail = app === 'projects' && project !== null;
   const title = inDetail ? phoneProjectTitles[project] : phoneAppTitles[app];
-  const chevronColor = 'var(--acc, #FFB020)';
+  const chevronColor = 'var(--acc)';
 
   return (
     <div

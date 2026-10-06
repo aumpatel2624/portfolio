@@ -7,8 +7,8 @@
   max-height: calc(100% - 16px);
   display: flex;
   flex-direction: column;
-  background: #241a17;
-  border: 1px solid #54413a;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 8px 8px 0 #000;
   overflow: hidden;
@@ -31,14 +31,14 @@
   gap: 12px;
   padding: 0 8px 0 16px;
   min-height: 44px;
-  background: #2c201c;
-  border-bottom: 1px solid #54413a;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
 }
 
 .title {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 
 .buttons {
@@ -60,11 +60,11 @@
 }
 
 .wbtn:hover {
-  background: #43332c;
+  background: var(--hover);
 }
 
 .wbtnX:hover {
-  background: #e5604d;
+  background: var(--danger);
 }
 
 .loading {

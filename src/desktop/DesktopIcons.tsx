@@ -36,7 +36,7 @@ export function DesktopIcons({ onOpen, registerRef }: Props) {
               >
                 <path
                   d="M4 10a4 4 0 0 1 4-4h12l5 6h23a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"
-                  fill="#241A17"
+                  fill="var(--surface)"
                 />
               </svg>
             ) : (
@@ -46,14 +46,14 @@ export function DesktopIcons({ onOpen, registerRef }: Props) {
                 height="48"
                 viewBox="0 0 56 48"
                 fill="none"
-                stroke="#F6ECDC"
+                stroke="var(--text)"
                 strokeWidth="2"
                 strokeLinejoin="round"
                 aria-hidden="true"
               >
                 <path
                   d="M14 4h20l10 10v28a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
-                  fill="#241A17"
+                  fill="var(--surface)"
                 />
                 <path d="M34 4v10h10" />
                 <path d="M19 26h18M19 33h18" />

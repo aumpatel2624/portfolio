@@ -13,13 +13,13 @@
   align-self: flex-start;
   padding: 8px 14px;
   border-radius: 14px 14px 14px 4px;
-  background: #2c201c;
+  background: var(--surface-2);
   font-size: 13px;
   animation: bubble 6s ease-in-out infinite;
 }
 .arrow {
   font-size: 22px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
   animation: nudge 1.4s ease-in-out infinite;
 }
 .chips {
@@ -30,7 +30,7 @@
   font-size: 12px;
 }
 .chip {
-  border: 1px solid var(--acc, #ffb020);
+  border: 1px solid var(--acc);
   border-radius: 6px;
   padding: 5px 10px;
   animation: bubble 6s ease-in-out infinite;
@@ -41,5 +41,5 @@
   bottom: 8px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #7a6657;
+  color: var(--muted);
 }

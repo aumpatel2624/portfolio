@@ -17,7 +17,7 @@
   font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
 }
 .chips {
   display: flex;
@@ -28,7 +28,7 @@
   list-style: none;
 }
 .chip {
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 14px;

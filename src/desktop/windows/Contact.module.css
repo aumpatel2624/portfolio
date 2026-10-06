@@ -13,7 +13,7 @@
   letter-spacing: -0.035em;
 }
 .rule {
-  --ascii-divider: #54413a;
+  --ascii-divider: var(--border);
   font-size: 12px;
 }
 .actions {
@@ -31,10 +31,10 @@
   border-radius: 999px;
 }
 .primary {
-  background: var(--acc, #ffb020);
-  color: #1a120f;
+  background: var(--acc);
+  color: var(--bg);
   font-weight: 600;
 }
 .secondary {
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
 }

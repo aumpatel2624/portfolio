@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #120c0a;
+  background: var(--sunken);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -19,7 +19,7 @@
   opacity: 1;
 }
 .art {
-  --ascii-color: var(--acc, #ffb020);
+  --ascii-color: var(--acc);
   width: auto;
   height: 100%;
 }
@@ -44,14 +44,14 @@
   align-items: center;
   min-height: 24px;
   padding: 0 10px;
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 999px;
-  background: #1a120fcc;
-  color: #f6ecdc;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  color: var(--text);
   font-family: var(--font-mono);
   font-size: 11px;
 }
 .toggle:hover .pill {
-  border-color: var(--acc, #ffb020);
-  color: var(--acc, #ffb020);
+  border-color: var(--acc);
+  color: var(--acc);
 }

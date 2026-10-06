@@ -6,9 +6,9 @@
   align-items: center;
   justify-content: center;
   height: 168px;
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 16px;
-  background: #1a1310;
+  background: var(--sunken);
   overflow: hidden;
   animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -27,13 +27,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5px;
-  border: 2px solid var(--acc, #ffb020);
+  border: 2px solid var(--acc);
   border-radius: 13px;
-  background: #241a17;
+  background: var(--surface);
 }
 .tile {
   border-radius: 5px;
-  background: #3a2c26;
+  background: var(--line);
   animation: tilePulse 2.4s ease-in-out infinite;
 }
 .channel {
@@ -41,7 +41,7 @@
   position: relative;
   height: 2px;
   margin: 0 16px;
-  background: repeating-linear-gradient(90deg, #54413a 0 6px, transparent 6px 12px);
+  background: repeating-linear-gradient(90deg, var(--border) 0 6px, transparent 6px 12px);
 }
 .channelLabel {
   position: absolute;
@@ -50,7 +50,7 @@
   transform: translateX(-50%);
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
   white-space: nowrap;
 }
 .packet {
@@ -59,7 +59,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
   animation: packet 2.4s linear infinite;
 }
 .laptop {
@@ -77,21 +77,21 @@
   flex-direction: column;
   gap: 5px;
   justify-content: center;
-  border: 2px solid #54413a;
+  border: 2px solid var(--border);
   border-radius: 7px 7px 0 0;
-  background: #241a17;
+  background: var(--surface);
 }
 .line {
   height: 5px;
   border-radius: 3px;
-  background: #3a2c26;
+  background: var(--line);
 }
 .allow {
   align-self: flex-start;
   padding: 2px 8px;
   border-radius: 999px;
-  background: var(--acc, #ffb020);
-  color: #1a120f;
+  background: var(--acc);
+  color: var(--bg);
   font-family: var(--font-mono);
   font-size: 8px;
   font-weight: 500;
@@ -101,7 +101,7 @@
   width: 116px;
   height: 5px;
   border-radius: 0 0 7px 7px;
-  background: #54413a;
+  background: var(--border);
 }
 @media (max-width: 379px) {
   .deck {
@@ -147,8 +147,8 @@
   right: 0;
   top: 0;
   height: 2px;
-  background: var(--acc, #ffb020);
-  box-shadow: 0 0 14px 2px var(--acc, #ffb020);
+  background: var(--acc);
+  box-shadow: 0 0 14px 2px var(--acc);
   animation: scan 2.4s ease-in-out infinite alternate;
 }
 .gemini {
@@ -160,12 +160,12 @@
 .geminiLabel {
   font-family: var(--font-mono);
   font-size: 9px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
   animation: shimmer 1.8s ease-in-out infinite;
 }
 .arrow {
   font-size: 20px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
   animation: nudge 1.4s ease-in-out infinite;
 }
 .chips {
@@ -176,7 +176,7 @@
   font-size: 11px;
 }
 .chip {
-  border: 1px solid var(--acc, #ffb020);
+  border: 1px solid var(--acc);
   border-radius: 6px;
   padding: 4px 8px;
   white-space: nowrap;
@@ -199,7 +199,7 @@
   align-self: flex-start;
   padding: 7px 12px;
   border-radius: 14px 14px 14px 4px;
-  background: #2c201c;
+  background: var(--surface-2);
   font-size: 12px;
 }
 .arrowSolo {
@@ -211,7 +211,7 @@
   bottom: 6px;
   font-family: var(--font-mono);
   font-size: 9px;
-  color: #9a8776;
+  color: var(--muted);
 }
 
 /* Also built */
@@ -228,12 +228,12 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  background: #241a17;
+  background: var(--surface);
 }
 .cardOn {
-  border-color: var(--acc, #ffb020);
+  border-color: var(--acc);
 }
 .cardName {
   font-family: var(--font-mono);
@@ -242,7 +242,7 @@
 .cardLine {
   height: 4px;
   border-radius: 3px;
-  background: #3a2c26;
+  background: var(--line);
 }
 
 /* Formula 1 */
@@ -262,8 +262,8 @@
   width: 16px;
   height: 8px;
   border-radius: 3px;
-  background: var(--acc, #ffb020);
-  box-shadow: 0 0 12px var(--acc, #ffb020);
+  background: var(--acc);
+  box-shadow: 0 0 12px var(--acc);
   offset-path: path('M 20 55 A 120 42 0 0 1 260 55 A 120 42 0 0 1 20 55 Z');
   offset-rotate: auto;
   animation: lap 3.6s linear infinite;
@@ -274,7 +274,7 @@
   top: 10px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .dots {
   position: absolute;
@@ -297,7 +297,7 @@
   width: 84px;
   height: 84px;
   margin: -42px 0 0 -42px;
-  border: 2px solid var(--acc, #ffb020);
+  border: 2px solid var(--acc);
   border-radius: 50%;
 }
 .board {
@@ -305,9 +305,9 @@
   width: 84px;
   height: 84px;
   box-sizing: border-box;
-  border: 2px solid var(--acc, #ffb020);
+  border: 2px solid var(--acc);
   border-radius: 10px;
-  background: #241a17;
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -320,13 +320,13 @@
   top: 10px;
   bottom: 10px;
   width: 10px;
-  background: repeating-linear-gradient(180deg, #54413a 0 4px, transparent 4px 12px);
+  background: repeating-linear-gradient(180deg, var(--border) 0 4px, transparent 4px 12px);
 }
 .pinsH {
   left: 10px;
   right: 10px;
   height: 10px;
-  background: repeating-linear-gradient(90deg, #54413a 0 4px, transparent 4px 12px);
+  background: repeating-linear-gradient(90deg, var(--border) 0 4px, transparent 4px 12px);
 }
 .pinsLeft {
   left: -12px;
@@ -343,7 +343,7 @@
 .boardLabel {
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--acc, #ffb020);
+  color: var(--acc);
 }
 .leds {
   position: absolute;
@@ -367,7 +367,11 @@
   height: 220px;
   margin: -110px 0 0 -110px;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffb86b44, transparent 70%);
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 27%, transparent),
+    transparent 70%
+  );
   animation: lampFlicker 5s ease-in-out infinite;
 }
 .stack {
@@ -392,7 +396,7 @@
   top: 18px;
   width: 9px;
   height: 34px;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
   transform-origin: top center;
   animation: sway 3s ease-in-out infinite;

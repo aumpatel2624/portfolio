@@ -1,23 +1,48 @@
-/* Design tokens. Desktop is the warm theme, classic is the cool one. */
+/* Design tokens. Desktop and phone use the Onyx palette, classic is the cool one. */
 :root {
-  /* Desktop (warm) */
-  --d-bg: #1a120f;
-  --d-surface: #241a17;
-  --d-surface-2: #2c201c;
-  --d-sunken: #1a1310;
-  --d-sunken-2: #1e1512;
-  --d-chip: #3a2c26;
-  --d-hover: #43332c;
-  --d-border: #54413a;
-  --d-text: #f6ecdc;
-  --d-muted: #bfae9d;
-  --d-faint: #7a6657;
-  --d-danger: #e5604d;
-  --d-shadow: 8px 8px 0 #000;
+  /* Onyx surfaces */
+  --bg: #050506;
+  --sunken: #08090b;
+  --surface: #0e0f12;
+  --surface-2: #16181c;
+  --line: #1f2228;
+  --hover: #262a31;
+  --border: #2e323b;
 
-  /* Accent: switchable on the desktop, --acc2 is the ~18% alpha glow colour */
-  --acc: #ffb020;
-  --acc2: #ffb0202e;
+  /* Onyx text (faint is decorative only, never essential text) */
+  --text: #f2f4f8;
+  --muted: #9ca3b0;
+  --faint: #646b78;
+
+  /* Onyx accents */
+  --accent: #3b82f6;
+  --accent-2: #60a5fa;
+  --accent-soft: #3b82f62e;
+  --on-accent: #050506;
+
+  /* Status */
+  --danger: #f87171;
+  --success: #4ade80;
+
+  --shadow-hard: 8px 8px 0 #000;
+
+  /* Aliases kept so existing rules keep working */
+  --d-bg: var(--bg);
+  --d-surface: var(--surface);
+  --d-surface-2: var(--surface-2);
+  --d-sunken: var(--sunken);
+  --d-chip: var(--line);
+  --d-hover: var(--hover);
+  --d-border: var(--border);
+  --d-text: var(--text);
+  --d-muted: var(--muted);
+  --d-faint: var(--faint);
+  --d-danger: var(--danger);
+  --d-shadow: var(--shadow-hard);
+
+  /* Accent: switchable on the desktop (accent or accent-2), --acc2 is the soft glow */
+  --acc: var(--accent);
+  --acc2: var(--accent-soft);
 
   /* TV screen (race wallpaper) */
   --tv-top: #11161f;

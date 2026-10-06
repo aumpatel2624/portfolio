@@ -9,8 +9,8 @@
   flex-direction: column;
   gap: 8px;
   border: none;
-  background: #f6ecdc;
-  color: #1a120f;
+  background: var(--text);
+  color: var(--bg);
   box-shadow: 6px 6px 0 #000;
   rotate: 5deg;
   cursor: pointer;
@@ -24,7 +24,7 @@
   scale: 1.06;
 }
 .polaroid:focus-visible {
-  outline: 2px solid var(--acc, #ffb020);
+  outline: 2px solid var(--acc);
   outline-offset: 3px;
 }
 .photo {

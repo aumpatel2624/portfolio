@@ -21,7 +21,7 @@
   background: transparent;
   border: 1px solid transparent;
   border-radius: 10px;
-  color: #f6ecdc;
+  color: var(--text);
   cursor: pointer;
   transition:
     transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
@@ -32,8 +32,8 @@
 
 .ic:hover {
   transform: translateY(-5px);
-  background: #241a17cc;
-  border-color: #54413a;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  border-color: var(--border);
 }
 
 .ic:active {

@@ -17,12 +17,12 @@
   position: relative;
   width: 148px;
   height: 190px;
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 6px 6px 0 var(--acc, #ffb020);
+  box-shadow: 6px 6px 0 var(--acc);
   rotate: -2deg;
-  background: #2c201c;
+  background: var(--surface-2);
   transition:
     rotate 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
     scale 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -38,14 +38,14 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--acc, #ffb020);
+  background: var(--acc);
   animation: pulseDot 1.6s ease-out infinite;
   pointer-events: none;
 }
 .caption {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .main {
   flex: 1 1 320px;
@@ -60,17 +60,18 @@
   align-items: center;
   gap: 10px;
   padding: 6px 14px;
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   border-radius: 999px;
   font-family: var(--font-mono);
   font-size: 12px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .pillDot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--acc, #ffb020);
+  background: var(--success);
+  --acc2: color-mix(in srgb, var(--success) 18%, transparent);
   animation: pulseDot 1.6s ease-out infinite;
 }
 .h1 {
@@ -81,12 +82,12 @@
   letter-spacing: -0.035em;
 }
 .acc {
-  color: var(--acc, #ffb020);
+  color: var(--acc);
 }
 .prompt {
   font-family: var(--font-mono);
   font-size: 14px;
-  color: #f6ecdc;
+  color: var(--text);
 }
 .type {
   display: inline-block;
@@ -94,7 +95,7 @@
   white-space: nowrap;
   vertical-align: bottom;
   width: 31ch;
-  border-right: 2px solid var(--acc, #ffb020);
+  border-right: 2px solid var(--acc);
   animation:
     typing 2s steps(31) 0.5s both,
     blink 0.8s step-end infinite;
@@ -102,11 +103,11 @@
 .intro {
   margin: 0;
   font-size: 17px;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .work {
   margin: 0;
-  color: #bfae9d;
+  color: var(--muted);
 }
 .actions {
   display: flex;
@@ -124,12 +125,12 @@
 }
 .primary {
   border: none;
-  background: var(--acc, #ffb020);
-  color: #1a120f;
+  background: var(--acc);
+  color: var(--bg);
   font-weight: 600;
 }
 .secondary {
-  border: 1px solid #54413a;
+  border: 1px solid var(--border);
   background: transparent;
-  color: #f6ecdc;
+  color: var(--text);
 }

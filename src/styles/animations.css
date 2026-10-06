@@ -33,7 +33,7 @@
 }
 @keyframes pulseDot {
   0% {
-    box-shadow: 0 0 0 0 var(--acc2, #ffb02055);
+    box-shadow: 0 0 0 0 var(--acc2, color-mix(in srgb, var(--accent) 33%, transparent));
   }
   100% {
     box-shadow: 0 0 0 10px transparent;
@@ -153,10 +153,10 @@
 @keyframes tilePulse {
   0%,
   100% {
-    background: #3a2c26;
+    background: var(--line);
   }
   50% {
-    background: var(--acc, #ffb020);
+    background: var(--acc);
     opacity: 0.85;
   }
 }
@@ -229,7 +229,7 @@
 }
 @keyframes glow {
   0% {
-    box-shadow: 0 0 0 0 var(--acc2, #ffb02055);
+    box-shadow: 0 0 0 0 var(--acc2, color-mix(in srgb, var(--accent) 33%, transparent));
   }
   70%,
   100% {
@@ -400,7 +400,7 @@
 @keyframes lightOn1 {
   0%,
   6% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
   8%,
@@ -410,14 +410,14 @@
   }
   76%,
   100% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
 }
 @keyframes lightOn2 {
   0%,
   14% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
   16%,
@@ -427,14 +427,14 @@
   }
   76%,
   100% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
 }
 @keyframes lightOn3 {
   0%,
   22% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
   24%,
@@ -444,14 +444,14 @@
   }
   76%,
   100% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
 }
 @keyframes lightOn4 {
   0%,
   30% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
   32%,
@@ -461,14 +461,14 @@
   }
   76%,
   100% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
 }
 @keyframes lightOn5 {
   0%,
   38% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
   40%,
@@ -478,7 +478,7 @@
   }
   76%,
   100% {
-    background: #2a1a1a;
+    background: var(--line);
     box-shadow: none;
   }
 }
