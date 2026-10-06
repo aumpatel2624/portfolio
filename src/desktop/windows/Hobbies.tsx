@@ -1,6 +1,7 @@
 import { hobbies, type HobbyKey } from '../../data/hobbies';
 import { BooksArt } from '../illustrations/BooksArt';
 import { F1Art } from '../illustrations/F1Art';
+import { AiArt, RunningArt, SportsArt } from '../illustrations/HobbyArt';
 import { IoTArt } from '../illustrations/IoTArt';
 import common from '../common.module.css';
 import styles from './Hobbies.module.css';
@@ -10,7 +11,14 @@ interface Props {
   onSelect: (key: HobbyKey) => void;
 }
 
-const ART: Record<HobbyKey, () => JSX.Element> = { f1: F1Art, iot: IoTArt, books: BooksArt };
+const ART: Record<HobbyKey, () => JSX.Element> = {
+  f1: F1Art,
+  books: BooksArt,
+  running: () => <RunningArt className={common.art} />,
+  ai: () => <AiArt className={common.art} />,
+  sports: () => <SportsArt className={common.art} />,
+  iot: IoTArt,
+};
 
 export function Hobbies({ selected, onSelect }: Props) {
   const current = hobbies.find((h) => h.key === selected) ?? hobbies[0];
@@ -45,14 +53,18 @@ export function Hobbies({ selected, onSelect }: Props) {
             <h2 className={`${common.rise} ${common.h2}`} style={{ animationDelay: '0.08s' }}>
               {current.title}
             </h2>
-            <p className={`${common.rise} ${common.lede}`} style={{ animationDelay: '0.14s' }}>
-              {current.intro}
-            </p>
-            <ul className={`${common.rise} ${common.bullets}`} style={{ animationDelay: '0.2s' }}>
-              {current.bullets.map((b) => (
-                <li key={b}>{b}</li>
-              ))}
-            </ul>
+            {current.intro && (
+              <p className={`${common.rise} ${common.lede}`} style={{ animationDelay: '0.14s' }}>
+                {current.intro}
+              </p>
+            )}
+            {current.bullets.length > 0 && (
+              <ul className={`${common.rise} ${common.bullets}`} style={{ animationDelay: '0.2s' }}>
+                {current.bullets.map((b) => (
+                  <li key={b}>{b}</li>
+                ))}
+              </ul>
+            )}
             {current.link && (
               <a
                 className={`${common.rise} ${common.link}`}
