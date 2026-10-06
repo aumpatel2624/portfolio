@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
-import { emailHref, links, profile, workCards } from '../data';
+import { emailHref, links, resumeLabel, profile, workCards } from '../data';
 import { PlaceholderLink } from '../lib/PlaceholderLink';
 import { usePageMeta } from '../lib/usePageMeta';
 import styles from './MobileHome.module.css';
@@ -20,7 +20,14 @@ export function MobileHome() {
           <a href="#top" className={styles.logo}>
             aum<span className={styles.acc}>_</span>
           </a>
-          <PlaceholderLink href={links.resume} className={styles.resume}>
+          <PlaceholderLink
+            href={links.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            aria-label={resumeLabel}
+            className={styles.resume}
+          >
             Resume (PDF)
           </PlaceholderLink>
         </header>
@@ -43,7 +50,14 @@ export function MobileHome() {
             </h1>
             <p className={styles.lead}>{profile.classic.mobileIntro}</p>
             <div className={styles.ctas}>
-              <PlaceholderLink href={links.resume} className={styles.primary}>
+              <PlaceholderLink
+                href={links.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+                aria-label={resumeLabel}
+                className={styles.primary}
+              >
                 Download resume
               </PlaceholderLink>
               <PlaceholderLink href={links.github} className={styles.ghost}>

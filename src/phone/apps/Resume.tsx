@@ -1,4 +1,4 @@
-import { links, resumeNote } from '../../data/links';
+import { links, resumeLabel, resumeNote } from '../../data/links';
 import { PlaceholderLink } from '../../lib/PlaceholderLink';
 import styles from './Apps.module.css';
 
@@ -33,6 +33,10 @@ export function Resume() {
       </p>
       <PlaceholderLink
         href={links.resume}
+        target="_blank"
+        rel="noopener noreferrer"
+        download
+        aria-label={resumeLabel}
         className={`${styles.btn} ${styles.rise} ${styles.download}`}
         style={{ animationDelay: '0.2s' }}
       >
