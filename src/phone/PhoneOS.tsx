@@ -182,6 +182,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
   return (
     <div
       className={styles.root}
+      data-wp-light={current.light ? 'true' : undefined}
       style={{ '--acc': accent, '--acc2': `${accent}2E` } as CSSProperties}
     >
       <div
@@ -222,24 +223,28 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
                 type="button"
                 className={`${styles.widget} ${styles.quoteWidget}`}
                 aria-label="Next quote and wallpaper"
-                aria-describedby="phone-quote phone-quote-by"
+                aria-describedby={current.quote ? 'phone-quote phone-quote-by' : undefined}
                 onClick={wp.cycle}
               >
                 <span className={styles.wpName}>{current.name}</span>
-                <span
-                  id="phone-quote"
-                  className={styles.quote}
-                  style={{ opacity: wp.quoteVisible ? 1 : 0 }}
-                >
-                  “{current.quote}”
-                </span>
-                <span
-                  id="phone-quote-by"
-                  className={styles.quoteBy}
-                  style={{ opacity: wp.quoteVisible ? 1 : 0 }}
-                >
-                  {current.by}
-                </span>
+                {current.quote ? (
+                  <>
+                    <span
+                      id="phone-quote"
+                      className={styles.quote}
+                      style={{ opacity: wp.quoteVisible ? 1 : 0 }}
+                    >
+                      “{current.quote}”
+                    </span>
+                    <span
+                      id="phone-quote-by"
+                      className={styles.quoteBy}
+                      style={{ opacity: wp.quoteVisible ? 1 : 0 }}
+                    >
+                      {current.by}
+                    </span>
+                  </>
+                ) : null}
               </button>
             </div>
 

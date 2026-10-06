@@ -64,3 +64,12 @@
   pointer-events: none;
   z-index: 10;
 }
+
+/* A light wallpaper keeps the vignette gentle so the artwork is not muddied. */
+.desktop[data-wp-light='true'] .vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    color-mix(in srgb, var(--bg) 28%, transparent) 130%
+  );
+}

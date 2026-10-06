@@ -36,9 +36,9 @@ test('desktop boots, opens windows, switches wallpaper and reaches the classic s
 
   // Wallpaper cycles.
   const wallpaper = page.getByRole('button', { name: 'Change wallpaper' });
-  await expect(wallpaper).toContainText('Race day');
+  await expect(wallpaper).toContainText('Ink blossom');
   await wallpaper.click();
-  await expect(wallpaper).toContainText('Paddock night');
+  await expect(wallpaper).toContainText('Race day');
 
   // Start menu leads to the classic site.
   await page.getByRole('button', { name: 'Start menu' }).click();

@@ -46,7 +46,7 @@ test('phone OS boots, opens apps, drills into a project and cycles the wallpaper
 
   // Wallpaper cycles and a toast names it.
   await page.getByRole('button', { name: 'Change wallpaper' }).tap();
-  await expect(page.getByText('Wallpaper: Paddock night')).toBeVisible();
+  await expect(page.getByText('Wallpaper: Race day')).toBeVisible();
 
   // The dock leads to the classic site.
   await page.getByRole('link', { name: 'Classic site' }).tap();

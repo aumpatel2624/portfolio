@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import { WallpaperPhoto } from '../components/WallpaperPhoto';
 import styles from './Wallpapers.module.css';
 
 const FLAG_COLORS = [
@@ -184,9 +185,10 @@ function ReadingNook() {
   );
 }
 
-/** The three wallpapers crossfade through opacity (1.1s); only the current one is "on". */
+/** The four wallpapers crossfade through opacity (1.1s); only the current one is "on". */
 export function Wallpapers({ index }: { index: number }) {
   const layers: ReactNode[] = [
+    <WallpaperPhoto key="b" variant="phone" />,
     <RaceDay key="r" />,
     <PaddockNight key="p" />,
     <ReadingNook key="n" />,
