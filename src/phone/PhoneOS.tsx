@@ -99,7 +99,7 @@ interface Props {
   accent?: '#3B82F6' | '#60A5FA';
 }
 
-/** The phone view: an iPhone-style home screen of apps over animated wallpapers. */
+/** The phone view: an iPhone-style home screen of apps over the ink-blossom wallpaper. */
 export function PhoneOS({ accent = '#3B82F6' }: Props) {
   usePageMeta({
     title: 'Aum · Full-stack engineer',
