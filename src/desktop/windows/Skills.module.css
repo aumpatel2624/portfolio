@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 10px;
 }
+.title,
 .heading {
   margin: 0;
   font-family: var(--font-mono);
@@ -40,9 +41,16 @@
 .chip:focus-within {
   --skill-icon: var(--acc, #ffb020);
 }
-
 .note {
   margin: 0;
   font-size: 14px;
   color: var(--muted);
+}
+.title {
+  color: var(--muted);
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }

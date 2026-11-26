@@ -5,7 +5,7 @@ export function Sticker() {
   return (
     <div className={styles.sticker}>
       <span className={styles.dot} />
-      {profile.sticker}
+      {profile.relocation}
     </div>
   );
 }

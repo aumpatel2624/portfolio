@@ -1,28 +1,19 @@
 import {
-  siApple,
   siBun,
   siClaudecode,
   siDocker,
   siExpress,
   siClaude,
-  siGithub,
-  siGooglegemini,
-  siHono,
-  siLenovo,
-  siLinux,
   siMongodb,
   siNginx,
   siNodedotjs,
   siPostgresql,
-  siQemu,
-  siRaspberrypi,
   siRabbitmq,
   siReact,
   siRedis,
   siSocketdotio,
   siSpringboot,
   siTypescript,
-  siUbuntu,
   siGit,
   siGithubactions,
   siGitlab,
@@ -37,7 +28,7 @@ import {
   siZod,
 } from 'simple-icons';
 
-/** Skill or tool name (as in src/data/skills.ts and profile.build.tools) -> simple-icons brand icon. Skills without one are left out on purpose. */
+/** Skill or tool name (as in src/data/skills.ts) -> simple-icons brand icon. Skills without one are left out on purpose. */
 export const skillIcons: Record<string, { title: string; path: string }> = {
   'Node.js': siNodedotjs,
   TypeScript: siTypescript,
@@ -52,7 +43,6 @@ export const skillIcons: Record<string, { title: string; path: string }> = {
   React: siReact,
   Docker: siDocker,
   Nginx: siNginx,
-  Linux: siLinux,
   'Claude Code': siClaudecode,
   'Claude Agent SDK': siClaude,
   JavaScript: siJavascript,
@@ -67,16 +57,4 @@ export const skillIcons: Record<string, { title: string; path: string }> = {
   'GitHub Actions': siGithubactions,
   PM2: siPm2,
   'JWT authentication': siJsonwebtokens,
-  // Setup page
-  Hono: siHono,
-  'GitHub CLI': siGithub,
-  'Lenovo LOQ': siLenovo,
-  'Ubuntu WSL': siUbuntu,
-  'Ubuntu Server': siUbuntu,
-  'KVM/QEMU': siQemu,
-  'nvm / Node.js': siNodedotjs,
-  'Raspberry Pi 2': siRaspberrypi,
-  'iPhone 12': siApple,
-  'Claude Pro': siClaude,
-  'Gemini Pro': siGooglegemini,
 };

@@ -52,7 +52,7 @@
   animation-delay: 0.25s;
 }
 
-/* left-hand list buttons (projects, hobbies) */
+/* left-hand list buttons (project windows) */
 .plist {
   transition:
     background 0.2s ease,

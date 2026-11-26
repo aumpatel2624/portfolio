@@ -8,8 +8,6 @@ import '@fontsource/ibm-plex-mono/latin-500.css';
 import '@fontsource/ibm-plex-sans/latin-400.css';
 import '@fontsource/ibm-plex-sans/latin-500.css';
 import '@fontsource/ibm-plex-sans/latin-600.css';
-import '@fontsource/fraunces/latin-400-italic.css';
-import '@fontsource/fraunces/latin-500-italic.css';
 import './styles/tokens.css';
 import './styles/animations.css';
 import './styles/global.css';

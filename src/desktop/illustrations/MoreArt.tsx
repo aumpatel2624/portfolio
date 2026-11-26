@@ -5,7 +5,7 @@ import styles from './MoreArt.module.css';
 export function MoreArt() {
   return (
     <div className={styles.art}>
-      <ArtImage name="more" alt="Laptop showing internal business tools and dashboards" />
+      <ArtImage name="more" />
     </div>
   );
 }

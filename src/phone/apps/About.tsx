@@ -1,6 +1,9 @@
 import { asset } from '../../lib/asset';
-import { SkillIcon } from '../../components/SkillIcon';
-import { profile } from '../../data/profile';
+import { emailHref, links, linkText } from '../../data/links';
+import { profile, statusLine } from '../../data/profile';
+import { sections } from '../../data/sections';
+import { Typewriter } from '../../components/Typewriter';
+import { PlaceholderLink } from '../../lib/PlaceholderLink';
 import { PhonePhoto } from './PhonePhoto';
 import styles from './Apps.module.css';
 
@@ -18,74 +21,50 @@ export function About({
       <div className={`${styles.rise} ${styles.photo}`}>
         <PhonePhoto
           src={asset('images/aum-portrait.jpg')}
-          alt={profile.images.portraitAlt}
+          alt={profile.photoAlt}
           objectPosition="50% 12%"
         />
       </div>
       <div className={`${styles.rise} ${styles.pill}`} style={delay('0.1s')}>
         <span className={styles.pillDot} aria-hidden="true" />
-        {profile.availability}
+        {statusLine}
       </div>
       <h1 className={`${styles.rise} ${styles.hello}`} style={delay('0.15s')}>
-        {profile.desktop.greeting} <span className={styles.acc}>{profile.name}.</span>
+        {profile.name}
+        <span className={styles.acc}>.</span>
       </h1>
       <div className={styles.prompt}>
         <span className={styles.acc}>$ </span>
-        <span className={styles.type}>{profile.typewriter}</span>
+        <Typewriter text={profile.role} />
       </div>
-      <p className={`${styles.rise} ${styles.intro}`} style={delay('0.25s')}>
-        {profile.desktop.intro}
-      </p>
-      <p className={`${styles.rise} ${styles.lede}`} style={delay('0.32s')}>
-        {profile.desktop.work}
-      </p>
-      <section className={`${styles.rise} ${styles.group}`} style={delay('0.36s')}>
-        <h2 className={styles.groupTitle}>{profile.build.heading}</h2>
-        <p className={styles.lede} style={{ margin: 0 }}>
-          {profile.build.body}
-        </p>
-        <ul className={styles.chips}>
-          {profile.build.tools.map((t) => (
-            <li key={t} className={styles.chip}>
-              <SkillIcon name={t} />
-              {t}
-            </li>
-          ))}
-        </ul>
-        <p className={styles.lede} style={{ margin: 0 }}>
-          {profile.build.recently}{' '}
-          <a
-            className={styles.acc}
-            href={profile.build.firstmate.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {profile.build.firstmate.label} ↗
-          </a>
-        </p>
+      <ul className={`${styles.rise} ${styles.header}`} style={delay('0.2s')}>
+        <li>{profile.location}</li>
+        <li>
+          <PlaceholderLink href={emailHref(links.email)} className={styles.headerLink}>
+            {links.email}
+          </PlaceholderLink>
+        </li>
+        <li>
+          <PlaceholderLink href={links.linkedin} className={styles.headerLink}>
+            {linkText.linkedin}
+          </PlaceholderLink>
+        </li>
+        <li>
+          <PlaceholderLink href={links.github} className={styles.headerLink}>
+            {linkText.github}
+          </PlaceholderLink>
+        </li>
+      </ul>
+      <section className={`${styles.rise} ${styles.group}`} style={delay('0.28s')}>
+        <h2 className={styles.groupTitle}>{sections.profile}</h2>
+        <p className={styles.intro}>{profile.summary}</p>
       </section>
-      <section className={`${styles.rise} ${styles.group}`} style={delay('0.39s')}>
-        <h2 className={styles.groupTitle}>{profile.languages.heading}</h2>
-        <ul className={styles.chips}>
-          {profile.languages.items.map((l) => (
-            <li key={l.name} className={styles.chip}>
-              {l.name}
-              {l.native && (
-                <span lang={l.lang} className={styles.native}>
-                  {l.native}
-                </span>
-              )}
-              <span className={styles.native}>· {l.level}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-      <div className={`${styles.rise} ${styles.actions}`} style={delay('0.42s')}>
+      <div className={`${styles.rise} ${styles.actions}`} style={delay('0.36s')}>
         <button type="button" className={`${styles.btn} ${styles.primary}`} onClick={onProjects}>
-          Open projects
+          Open {sections.ai}
         </button>
         <button type="button" className={`${styles.btn} ${styles.secondary}`} onClick={onContact}>
-          Contact me
+          Contact
         </button>
       </div>
     </div>

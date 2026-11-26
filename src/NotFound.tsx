@@ -5,7 +5,7 @@ import { usePageMeta } from './lib/usePageMeta';
 import styles from './NotFound.module.css';
 
 export function NotFound() {
-  usePageMeta({ title: 'Page not found · Aum' });
+  usePageMeta({ title: 'Page not found · Aum Patel' });
   return (
     <main className={styles.page}>
       <AsciiWordmark mark={notFound} label="404" className={styles.art} />

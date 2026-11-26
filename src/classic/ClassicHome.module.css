@@ -31,6 +31,10 @@
 .root h3 {
   font-family: var(--font-display);
 }
+.root h2.label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
 .wrap {
   max-width: 1280px;
   margin: 0 auto;
@@ -124,6 +128,7 @@
   animation: fadeUpLg 0.9s var(--ease-out) 0.1s both;
 }
 .outline {
+  display: block;
   color: transparent;
   -webkit-text-stroke: 2px var(--c-accent);
 }
@@ -205,36 +210,18 @@
 .photo:hover img {
   transform: scale(1.06);
 }
-.pill {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--c-accent);
-  color: var(--c-bg);
-  font-size: 12px;
-  line-height: 1.6;
-  font-weight: 500;
-}
-.cardLabel {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-accent);
-  padding-bottom: 8px;
-}
 .row {
   display: flex;
   gap: 16px;
 }
 .rowKey {
-  width: 84px;
+  width: 72px;
   flex-shrink: 0;
   color: var(--c-muted);
+}
+.rowValue {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .band {
@@ -265,14 +252,12 @@
 }
 
 .label {
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--c-accent);
-}
-.labelSm {
-  composes: label;
 }
 .head {
   display: flex;
@@ -284,9 +269,6 @@
   flex-direction: column;
   gap: 48px;
   padding: 96px 0;
-}
-.work .head {
-  max-width: 900px;
 }
 .h2Work {
   margin: 0;
@@ -301,12 +283,6 @@
   line-height: 0.98;
   font-weight: 800;
   letter-spacing: -0.03em;
-}
-.sub {
-  margin: 0;
-  color: var(--c-muted);
-  font-size: 18px;
-  max-width: 560px;
 }
 .cards {
   display: flex;
@@ -332,9 +308,6 @@
   transform: translateY(-8px);
   border-color: var(--c-accent);
 }
-.featured {
-  box-shadow: 8px 8px 0 var(--c-accent);
-}
 .cardTop {
   display: flex;
   align-items: center;
@@ -351,13 +324,6 @@
   border-radius: 999px;
   padding: 3px 12px;
 }
-.badgeOn {
-  background: var(--c-accent);
-  color: var(--c-bg);
-  border-radius: 999px;
-  padding: 3px 12px;
-  font-weight: 500;
-}
 .cardTitle {
   margin: 0;
   font-size: 40px;
@@ -368,25 +334,6 @@
 .cardText {
   margin: 0;
   color: var(--c-muted);
-}
-.flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-}
-.flowItem {
-  display: contents;
-}
-.step {
-  border: 1px solid var(--c-border);
-  border-radius: 999px;
-  padding: 4px 12px;
-}
-.arrow {
-  color: var(--c-accent);
 }
 .stack {
   font-family: var(--font-mono);
@@ -399,12 +346,6 @@
   color: var(--c-accent);
   font-weight: 600;
   font-size: 17px;
-}
-.also {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 24px;
 }
 .alsoRow {
   display: flex;
@@ -425,10 +366,6 @@
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.02em;
-}
-.alsoText {
-  margin: 0;
-  color: var(--c-muted);
 }
 .divider {
   margin: 0;
@@ -545,59 +482,6 @@
   --skill-icon: var(--c-accent);
 }
 
-.setup {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 96px 0;
-  border-top: 1px solid var(--c-track);
-}
-.setupGroup {
-  flex: 1 1 320px;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.setupText {
-  margin: 0;
-  color: var(--c-muted);
-}
-.specs {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin: 0;
-  padding: 14px 16px;
-  border: 1px solid var(--c-border);
-  border-radius: 12px;
-  background: var(--c-surface);
-  font-size: 14px;
-}
-.spec {
-  display: flex;
-  gap: 14px;
-}
-.spec dt {
-  flex: 0 0 72px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--c-muted);
-}
-.spec dd {
-  margin: 0;
-  min-width: 0;
-}
-.planned {
-  margin-left: 8px;
-  padding: 1px 8px;
-  border: 1px dashed var(--c-accent);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--c-accent);
-}
-
 .contact {
   margin: 0 0 64px;
   display: flex;
@@ -652,6 +536,7 @@
   border-radius: 999px;
   color: var(--c-bg);
   font-size: 17px;
+  overflow-wrap: anywhere;
 }
 .root a.cGhost:hover {
   color: var(--c-bg);
@@ -708,22 +593,38 @@
   font-size: 14px;
   color: var(--c-muted);
 }
-.build {
+.skillRow {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 24px;
-  border-top: 1px solid var(--c-border);
+  gap: 6px;
 }
-.buildText {
+.scope {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.4em;
+  letter-spacing: -0.01em;
+  color: var(--c-muted);
+}
+.context {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--c-accent);
+}
+.compact {
+  composes: exp;
+  padding: 56px 0;
+}
+.awards {
   margin: 0;
+  padding-left: 20px;
   color: var(--c-muted);
 }
-
-.native {
-  margin-left: 8px;
-  color: var(--c-muted);
-  font-family:
-    var(--font-body), 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans JP', system-ui,
-    sans-serif;
+.resume {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 0 96px;
 }

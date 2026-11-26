@@ -7,7 +7,6 @@ import { useMediaQuery } from './lib/useMediaQuery';
 const ClassicHome = lazy(() =>
   import('./classic/ClassicHome').then((m) => ({ default: m.ClassicHome })),
 );
-const CaseStudy = lazy(() => import('./classic/CaseStudy').then((m) => ({ default: m.CaseStudy })));
 // Only phones download the phone view.
 const PhoneOS = lazy(() => import('./phone/PhoneOS').then((m) => ({ default: m.PhoneOS })));
 
@@ -28,7 +27,6 @@ export function App() {
       <Routes>
         <Route path="/" element={<HomeRoute />} />
         <Route path="/classic" element={<ClassicHome />} />
-        <Route path="/work/phonedeck" element={<CaseStudy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

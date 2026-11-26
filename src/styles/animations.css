@@ -93,19 +93,6 @@
     rotate: 360deg;
   }
 }
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 31ch;
-  }
-}
 @keyframes bootFill {
   from {
     width: 0;

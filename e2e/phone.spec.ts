@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'needs a build without VITE_FORCE_DESKTOP');
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
-test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
+test('phone OS boots, opens apps, drills into an entry', async ({ page }) => {
   await page.goto('./');
 
   // Boot splash gives way to the home screen.
@@ -13,25 +13,22 @@ test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
   });
   await expect(page.getByRole('button', { name: 'Open About' }).first()).toBeVisible();
 
-  // Projects: list -> detail -> case study link -> back to the list -> home.
-  await page.getByRole('button', { name: 'Open Projects' }).tap();
-  const projects = page.getByRole('dialog', { name: 'projects' });
-  await expect(projects).toBeVisible();
-  await projects.getByRole('button', { name: /Podcast pipeline/ }).tap();
+  // AI engineering: list -> detail -> back to the list -> home.
+  await page.getByRole('button', { name: 'Open AI engineering' }).tap();
+  const ai = page.getByRole('dialog', { name: 'ai-engineering' });
+  await expect(ai).toBeVisible();
+  await ai.getByRole('button', { name: /Podcast knowledge pipeline/ }).tap();
   await expect(page.getByRole('heading', { name: 'Podcast knowledge pipeline' })).toBeVisible();
   await page.getByRole('button', { name: 'All projects' }).tap();
-  await projects.getByRole('button', { name: /PhoneDeck/ }).tap();
-  await expect(page.getByRole('link', { name: /Read the full case study/ })).toHaveAttribute(
-    'href',
-    /\/work\/phonedeck$/,
-  );
+  await ai.getByRole('button', { name: /SEO keyword research tool/ }).tap();
+  await expect(page.getByRole('heading', { name: 'SEO keyword research tool' })).toBeVisible();
   await page.getByRole('button', { name: 'Back to home' }).tap();
   await expect(page.getByRole('dialog')).toHaveCount(0);
 
   // The About icon opens About, whose photo toggles to ASCII art.
   await page.getByRole('button', { name: 'Open About' }).first().tap();
   const about = page.getByRole('dialog', { name: 'about.txt' });
-  await expect(about.getByRole('heading', { level: 1 })).toContainText("Hi, I'm Aum.");
+  await expect(about.getByRole('heading', { level: 1 })).toContainText('Aum Patel.');
   await about.getByRole('button', { name: /ASCII art version/ }).tap();
   await expect(about.getByRole('button', { name: 'Show the photo' })).toHaveAttribute(
     'aria-pressed',
@@ -49,6 +46,8 @@ for (const width of [360, 390, 430, 767]) {
   test(`no horizontal overflow @${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
     await page.goto('./');
+    // The phone view loads lazily: wait for it, or a not yet mounted splash counts as hidden.
+    await expect(page.locator('main')).toBeAttached();
     await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeHidden({
       timeout: 6000,
     });
@@ -72,7 +71,14 @@ for (const width of [360, 390, 430, 767]) {
       });
     expect(await overflows()).toEqual({ page: false, elements: [] });
 
-    for (const app of ['About', 'Projects', 'Experience', 'Skills', 'Setup', 'Hobbies', 'Photos']) {
+    for (const app of [
+      'About',
+      'AI engineering',
+      'Experience',
+      'Skills',
+      'Work projects',
+      'Education',
+    ]) {
       await page
         .getByRole('button', { name: `Open ${app}` })
         .last()

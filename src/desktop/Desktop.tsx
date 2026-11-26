@@ -9,8 +9,9 @@ import {
 } from 'react';
 import { windowDefs, type WindowId } from '../data/windows';
 import type { ProjectKey } from '../data/projects';
-import type { HobbyKey } from '../data/hobbies';
 import { profile } from '../data/profile';
+import { aiProjects, workProjects } from '../data/projects';
+import { sections } from '../data/sections';
 import { usePageMeta } from '../lib/usePageMeta';
 import { WallpaperPhoto } from '../components/WallpaperPhoto';
 import { BootScreen } from './BootScreen';
@@ -29,8 +30,7 @@ const Experience = lazy(() =>
   import('./windows/Experience').then((m) => ({ default: m.Experience })),
 );
 const Skills = lazy(() => import('./windows/Skills').then((m) => ({ default: m.Skills })));
-const Setup = lazy(() => import('./windows/Setup').then((m) => ({ default: m.Setup })));
-const Hobbies = lazy(() => import('./windows/Hobbies').then((m) => ({ default: m.Hobbies })));
+const Education = lazy(() => import('./windows/Education').then((m) => ({ default: m.Education })));
 const Contact = lazy(() => import('./windows/Contact').then((m) => ({ default: m.Contact })));
 const Resume = lazy(() => import('./windows/Resume').then((m) => ({ default: m.Resume })));
 
@@ -51,8 +51,8 @@ export function Desktop({ accent = '#3B82F6' }: Props) {
   const wm = useWindowManager();
   const [booting, setBooting] = useState(true);
   const [time, setTime] = useState(() => formatTime(new Date()));
-  const [project, setProject] = useState<ProjectKey>('phonedeck');
-  const [hobby, setHobby] = useState<HobbyKey>('f1');
+  const [aiProject, setAiProject] = useState<ProjectKey>('content');
+  const [workProject, setWorkProject] = useState<ProjectKey>('hrms');
   const icons = useRef<Partial<Record<WindowId, HTMLButtonElement | null>>>({});
 
   const { open, close, minimize, taskbar, closeStart, toggleStart } = wm;
@@ -86,11 +86,25 @@ export function Desktop({ accent = '#3B82F6' }: Props) {
 
   const bodies: Record<WindowId, ReactNode> = {
     about: <About onOpen={open} />,
-    projects: <Projects selected={project} onSelect={setProject} />,
+    ai: (
+      <Projects
+        heading={sections.ai}
+        projects={aiProjects}
+        selected={aiProject}
+        onSelect={setAiProject}
+      />
+    ),
     experience: <Experience />,
     skills: <Skills />,
-    setup: <Setup />,
-    hobbies: <Hobbies selected={hobby} onSelect={setHobby} />,
+    work: (
+      <Projects
+        heading={`${sections.work} · ${sections.workScope}`}
+        projects={workProjects}
+        selected={workProject}
+        onSelect={setWorkProject}
+      />
+    ),
+    education: <Education />,
     contact: <Contact />,
     resume: <Resume />,
   };

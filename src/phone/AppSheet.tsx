@@ -1,13 +1,13 @@
 import { useEffect, useRef, type Dispatch } from 'react';
 import { phoneAppTitles, phoneCopy, phoneProjectTitles } from '../data/phone';
+import { aiProjects, workProjects, type ProjectKey } from '../data/projects';
+import { sections } from '../data/sections';
 import { About } from './apps/About';
 import { Contact } from './apps/Contact';
+import { Education } from './apps/Education';
 import { Experience } from './apps/Experience';
-import { Hobbies } from './apps/Hobbies';
-import { Photos } from './apps/Photos';
 import { Projects } from './apps/Projects';
 import { Resume } from './apps/Resume';
-import { Setup } from './apps/Setup';
 import { Skills } from './apps/Skills';
 import type { PhoneAction, PhoneState } from './phoneState';
 import styles from './Phone.module.css';
@@ -16,33 +16,40 @@ interface Props {
   state: PhoneState;
   dispatch: Dispatch<PhoneAction>;
   /** Opens another app from inside a sheet, growing from the middle of the screen. */
-  onOpen: (app: 'projects' | 'contact') => void;
+  onOpen: (app: 'ai' | 'contact') => void;
   onClose: () => void;
 }
 
 function Body({ state, dispatch, onOpen }: Omit<Props, 'onClose'>) {
+  const onPick = (project: ProjectKey) => dispatch({ type: 'project', project });
   switch (state.app) {
     case 'about':
-      return <About onProjects={() => onOpen('projects')} onContact={() => onOpen('contact')} />;
-    case 'projects':
+      return <About onProjects={() => onOpen('ai')} onContact={() => onOpen('contact')} />;
+    case 'ai':
       return (
         <Projects
-          project={state.project}
-          onPick={(project) => dispatch({ type: 'project', project })}
+          heading={sections.ai}
+          projects={aiProjects}
+          selected={state.project}
+          onPick={onPick}
         />
       );
     case 'experience':
       return <Experience />;
     case 'skills':
       return <Skills />;
-    case 'setup':
-      return <Setup />;
-    case 'hobbies':
+    case 'work':
       return (
-        <Hobbies selected={state.hobby} onSelect={(hobby) => dispatch({ type: 'hobby', hobby })} />
+        <Projects
+          heading={sections.work}
+          scope={sections.workScope}
+          projects={workProjects}
+          selected={state.project}
+          onPick={onPick}
+        />
       );
-    case 'photos':
-      return <Photos />;
+    case 'education':
+      return <Education />;
     case 'contact':
       return <Contact />;
     case 'resume':
@@ -65,7 +72,7 @@ export function AppSheet({ state, dispatch, onOpen, onClose }: Props) {
   }, [app, project]);
 
   if (!app) return null;
-  const inDetail = app === 'projects' && project !== null;
+  const inDetail = project !== null;
   const title = inDetail ? phoneProjectTitles[project] : phoneAppTitles[app];
   const chevronColor = 'var(--acc)';
 

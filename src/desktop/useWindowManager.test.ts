@@ -22,10 +22,10 @@ describe('window manager', () => {
   });
 
   it('does not duplicate an open window and focuses it on top', () => {
-    const s = openWindow(open('about', 'projects'), 'about');
-    expect(s.open).toEqual(['about', 'projects']);
+    const s = openWindow(open('about', 'ai'), 'about');
+    expect(s.open).toEqual(['about', 'ai']);
     expect(topWindow(s)).toBe('about');
-    expect(s.z.about).toBeGreaterThan(s.z.projects ?? 0);
+    expect(s.z.about).toBeGreaterThan(s.z.ai ?? 0);
   });
 
   it('opening a minimised window restores it', () => {
@@ -35,30 +35,32 @@ describe('window manager', () => {
   });
 
   it('minimise hides a window from top and keeps it open', () => {
-    const s = minimizeWindow(open('about', 'projects'), 'projects');
-    expect(s.open).toEqual(['about', 'projects']);
+    const s = minimizeWindow(open('about', 'ai'), 'ai');
+    expect(s.open).toEqual(['about', 'ai']);
     expect(topWindow(s)).toBe('about');
   });
 
   it('close removes the window and top falls back to the next one', () => {
-    const s = closeWindow(open('about', 'projects'), 'projects');
+    const s = closeWindow(open('about', 'ai'), 'ai');
     expect(s.open).toEqual(['about']);
     expect(topWindow(s)).toBe('about');
     expect(topWindow(closeWindow(s, 'about'))).toBeNull();
   });
 
-  it('registers the setup window right after skills', () => {
-    expect(WINDOW_IDS.indexOf('setup')).toBe(WINDOW_IDS.indexOf('skills') + 1);
-    expect(windowDefs.setup).toMatchObject({ id: 'setup', title: 'setup', path: '~/aum/setup/' });
-    expect(new Set(WINDOW_IDS).size).toBe(WINDOW_IDS.length);
+  it('lists one window per CV section, in CV order', () => {
+    expect(WINDOW_IDS).toEqual([
+      'about',
+      'ai',
+      'experience',
+      'skills',
+      'work',
+      'education',
+      'contact',
+      'resume',
+    ]);
     expect(WINDOW_IDS.every((id) => windowDefs[id].id === id)).toBe(true);
-  });
-
-  it('opens and focuses the setup window above another', () => {
-    const s = open('about', 'setup');
-    expect(s.open).toEqual(['about', 'setup']);
-    expect(topWindow(s)).toBe('setup');
-    expect(topWindow(closeWindow(s, 'setup'))).toBe('about');
+    expect(windowDefs.ai).toMatchObject({ title: 'ai-engineering', path: '~/aum/ai-engineering/' });
+    expect(windowDefs.about.path).toBe('~/aum/about.txt');
   });
 
   describe('taskbar toggle', () => {
@@ -69,13 +71,13 @@ describe('window manager', () => {
     });
 
     it('minimises the window that is on top', () => {
-      const s = taskbarClick(open('about', 'projects'), 'projects');
-      expect(s.min.projects).toBe(true);
+      const s = taskbarClick(open('about', 'ai'), 'ai');
+      expect(s.min.ai).toBe(true);
       expect(topWindow(s)).toBe('about');
     });
 
     it('focuses a window that is open but not on top', () => {
-      const s = taskbarClick(open('about', 'projects'), 'about');
+      const s = taskbarClick(open('about', 'ai'), 'about');
       expect(s.min.about).toBe(false);
       expect(topWindow(s)).toBe('about');
     });
