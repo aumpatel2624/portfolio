@@ -56,11 +56,9 @@ describe('PhoneOS', () => {
     const user = userEvent.setup();
     renderPhone();
     await user.click(screen.getByRole('button', { name: 'Open Projects' }));
-    await user.click(screen.getByRole('button', { name: /Recruiting platform/ }));
-    expect(screen.getByRole('dialog', { name: 'recruiting platform' })).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', { name: /Recruiting platform with Gemini parsing/ }),
-    ).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: /AI content generator/ }));
+    expect(screen.getByRole('dialog', { name: 'content generator' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'AI content generator' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'All projects' }));
     expect(screen.getByRole('dialog', { name: 'projects' })).toBeInTheDocument();
   });
@@ -70,9 +68,20 @@ describe('PhoneOS', () => {
     renderPhone();
     await user.click(screen.getByRole('button', { name: 'Open Projects' }));
     const apidel = screen.getByRole('region', { name: 'Apidel' });
-    expect(within(apidel).getByRole('button', { name: /HRMS/ })).toBeInTheDocument();
-    await user.click(within(apidel).getByRole('button', { name: /HRMS/ }));
-    expect(screen.getByText(/replace a third-party HR software/)).toBeInTheDocument();
+    expect(within(apidel).getAllByRole('button')).toHaveLength(4);
+    await user.click(within(apidel).getByRole('button', { name: /HR management/ }));
+    expect(screen.getByText(/Delivered 11 modules/)).toBeInTheDocument();
+  });
+
+  it('links the agent pipeline to its public repository', async () => {
+    const user = userEvent.setup();
+    renderPhone();
+    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
+    await user.click(screen.getByRole('button', { name: /Claude Code agents/ }));
+    expect(screen.getByRole('link', { name: /View on GitHub/ })).toHaveAttribute(
+      'href',
+      'https://github.com/aumpatel2624/claude-code-agents',
+    );
   });
 
   it('links PhoneDeck to its case study and the dock to the classic site', async () => {

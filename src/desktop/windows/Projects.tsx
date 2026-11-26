@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { projectGroups, projects, type ProjectKey } from '../../data/projects';
-import { IoTArt } from '../illustrations/IoTArt';
+import { DocumentsArt } from '../illustrations/DocumentsArt';
+import { AiArt } from '../illustrations/HobbyArt';
 import { MoreArt } from '../illustrations/MoreArt';
 import { PhoneDeckArt } from '../illustrations/PhoneDeckArt';
-import { RecruitingArt } from '../illustrations/RecruitingArt';
-import { WhatsAppArt } from '../illustrations/WhatsAppArt';
 import common from '../common.module.css';
 import styles from './Projects.module.css';
 
@@ -13,15 +12,17 @@ interface Props {
   onSelect: (key: ProjectKey) => void;
 }
 
+const AgentArt = () => <AiArt className={common.art} />;
+
 const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
-  recruit: RecruitingArt,
-  whatsapp: WhatsAppArt,
-  helpdesk: MoreArt,
+  content: AgentArt,
+  podcast: AgentArt,
+  agents: AgentArt,
+  hrms: DocumentsArt,
   taskmgmt: MoreArt,
-  globalauth: MoreArt,
-  hrms: IoTArt,
-  ai: MoreArt,
+  helpdesk: MoreArt,
+  sso: MoreArt,
 };
 
 export function Projects({ selected, onSelect }: Props) {
@@ -83,6 +84,17 @@ export function Projects({ selected, onSelect }: Props) {
               <div className={`${common.rise} ${common.stack}`} style={{ animationDelay: '0.26s' }}>
                 {current.stack}
               </div>
+            )}
+            {current.link && (
+              <a
+                className={`${common.rise} ${common.link}`}
+                href={current.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ animationDelay: '0.32s' }}
+              >
+                {current.link.label}
+              </a>
             )}
             {current.key === 'phonedeck' && (
               <Link

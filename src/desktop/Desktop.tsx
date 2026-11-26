@@ -10,6 +10,7 @@ import {
 import { windowDefs, type WindowId } from '../data/windows';
 import type { ProjectKey } from '../data/projects';
 import type { HobbyKey } from '../data/hobbies';
+import { profile } from '../data/profile';
 import { usePageMeta } from '../lib/usePageMeta';
 import { WallpaperPhoto } from '../components/WallpaperPhoto';
 import { BootScreen } from './BootScreen';
@@ -45,11 +46,7 @@ interface Props {
 }
 
 export function Desktop({ accent = '#3B82F6' }: Props) {
-  usePageMeta({
-    title: 'Aum · Full-stack engineer',
-    description:
-      'Aum, a full-stack engineer in Vadodara, India, building backends and LLM-powered products in Node.js and TypeScript. Open to roles in the Netherlands, Finland and Germany.',
-  });
+  usePageMeta(profile.meta);
 
   const wm = useWindowManager();
   const [booting, setBooting] = useState(true);

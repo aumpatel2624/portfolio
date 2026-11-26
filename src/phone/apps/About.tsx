@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { SkillIcon } from '../../components/SkillIcon';
 import { profile } from '../../data/profile';
 import { PhonePhoto } from './PhonePhoto';
@@ -16,7 +17,7 @@ export function About({
     <div className={styles.col}>
       <div className={`${styles.rise} ${styles.photo}`}>
         <PhonePhoto
-          src="/images/aum-portrait.jpg"
+          src={asset('images/aum-portrait.jpg')}
           alt={profile.images.portraitAlt}
           objectPosition="50% 12%"
         />
@@ -74,6 +75,7 @@ export function About({
                   {l.native}
                 </span>
               )}
+              <span className={styles.native}>· {l.level}</span>
             </li>
           ))}
         </ul>

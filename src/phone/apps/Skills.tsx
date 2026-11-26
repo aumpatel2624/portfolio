@@ -14,7 +14,7 @@ export function Skills() {
         >
           <h2 className={styles.groupTitle}>{g.title}</h2>
           <ul className={styles.chips}>
-            {g.desktop.map((s) => (
+            {g.items.map((s) => (
               <li key={s} className={styles.chip}>
                 <SkillIcon name={s} />
                 {s}

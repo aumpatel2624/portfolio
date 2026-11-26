@@ -6,7 +6,7 @@ import { skillIcons } from './skillIcons';
 
 describe('skillIcons', () => {
   const names = new Set([
-    ...skills.flatMap((g) => [...g.desktop, ...g.classic]),
+    ...skills.flatMap((g) => g.items),
     ...profile.build.tools,
     ...setup.flatMap((s) => s.items.map((i) => i.name)),
   ]);

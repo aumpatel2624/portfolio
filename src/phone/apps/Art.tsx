@@ -14,11 +14,8 @@ function Panel({ name, alt, className = '' }: { name: string; alt: string; class
 export const PhoneDeckArt = () => (
   <Panel name="phone-deck" alt="A phone paired with a laptop over an encrypted channel" />
 );
-export const RecruitArt = () => (
-  <Panel name="recruiting" alt="A resume being parsed into structured candidate data" />
-);
-export const WhatsAppArt = () => (
-  <Panel name="whatsapp" alt="A WhatsApp order message turned into a matched order" />
+export const DocumentsArt = () => (
+  <Panel name="documents" alt="A stack of documents on a desk beside glasses and coffee" />
 );
 export const MoreArt = () => (
   <Panel

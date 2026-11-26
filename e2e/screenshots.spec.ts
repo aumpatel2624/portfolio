@@ -6,7 +6,7 @@ const heights: Record<number, number> = { 390: 844, 768: 1024, 1024: 768, 1440: 
 for (const width of widths) {
   test(`screenshots @${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: heights[width] ?? 900 });
-    await page.goto('/');
+    await page.goto('./');
     if (width >= 768) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: `shots/desktop-${width}.png` });
@@ -50,10 +50,10 @@ for (const width of widths) {
         await page.waitForTimeout(400);
       }
     }
-    await page.goto('/classic');
+    await page.goto('classic');
     await page.waitForTimeout(800);
     await page.screenshot({ path: `shots/classic-${width}.png`, fullPage: true });
-    await page.goto('/work/phonedeck');
+    await page.goto('work/phonedeck');
     await page.waitForTimeout(800);
     await page.screenshot({ path: `shots/case-${width}.png`, fullPage: true });
   });

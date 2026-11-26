@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
 import {
@@ -17,11 +18,7 @@ import styles from './MobileHome.module.css';
 
 /** Mobile.dc.html: single column, 390px reference, fluid up to 767px. */
 export function MobileHome() {
-  usePageMeta({
-    title: 'Aum · Full-stack engineer',
-    description:
-      'Full-stack engineer in Vadodara, India building LLM-powered products and the systems behind them. Open to NL, FI and DE.',
-  });
+  usePageMeta(profile.meta);
   const [lead, accent] = profile.classic.mobileHeadline;
   return (
     <div className={styles.root}>
@@ -46,7 +43,7 @@ export function MobileHome() {
           <section className={styles.hero}>
             <img
               className={styles.avatar}
-              src="/images/aum-portrait.jpg"
+              src={asset('images/aum-portrait.jpg')}
               alt={profile.images.portraitAlt}
               width={96}
               height={96}
@@ -83,7 +80,7 @@ export function MobileHome() {
             <div className={styles.head}>
               <div className={styles.label}>01 · Selected work</div>
               <h2 id="m-work" className={styles.h2}>
-                Systems I designed and built
+                Projects I&apos;ve built
               </h2>
             </div>
             {workCards.map((card) => (
@@ -94,20 +91,28 @@ export function MobileHome() {
                 </div>
                 <h3 className={styles.h3}>{card.title}</h3>
                 <p className={styles.text}>{card.summary}</p>
-                {card.key !== 'whatsapp' && (
-                  <div className={styles.flow}>
-                    {card.flow.map((step, i) => (
-                      <span key={step} className={styles.flowItem}>
-                        <span className={styles.step}>{step}</span>
-                        {i < card.flow.length - 1 && <span className={styles.muted}>→</span>}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div className={styles.flow}>
+                  {card.flow.map((step, i) => (
+                    <span key={step} className={styles.flowItem}>
+                      <span className={styles.step}>{step}</span>
+                      {i < card.flow.length - 1 && <span className={styles.muted}>→</span>}
+                    </span>
+                  ))}
+                </div>
                 {card.href && (
                   <Link to={card.href} className={styles.more}>
                     Read case study →
                   </Link>
+                )}
+                {card.link && (
+                  <a
+                    href={card.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.more}
+                  >
+                    {card.link.label}
+                  </a>
                 )}
               </article>
             ))}
@@ -154,7 +159,8 @@ export function MobileHome() {
                         {' '}
                         <span lang={l.lang}>{l.native}</span>
                       </>
-                    )}
+                    )}{' '}
+                    ({l.level})
                   </span>
                 ))}
               </p>
@@ -164,7 +170,7 @@ export function MobileHome() {
               .map((g) => (
                 <div key={g.title} className={styles.head}>
                   <div className={styles.label}>{g.title}</div>
-                  <p className={styles.text}>{g.classic.join(' · ')}</p>
+                  <p className={styles.text}>{g.items.join(' · ')}</p>
                   {g.note && <p className={styles.text}>{g.note}</p>}
                 </div>
               ))}

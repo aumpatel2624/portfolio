@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import type { ProjectKey } from './projects';
 
 export type PhoneAppId =
@@ -38,26 +39,26 @@ export const phoneAppTitles: Record<PhoneAppId, string> = {
 /** Header title while a project is open. */
 export const phoneProjectTitles: Record<ProjectKey, string> = {
   phonedeck: 'PhoneDeck',
-  recruit: 'recruiting platform',
-  whatsapp: 'WhatsApp panel',
-  helpdesk: 'helpdesk',
+  content: 'content generator',
+  podcast: 'podcast pipeline',
+  agents: 'Claude Code agents',
+  hrms: 'HR management',
   taskmgmt: 'task management',
-  globalauth: 'global auth',
-  hrms: 'HRMS',
-  ai: 'AI integration',
+  helpdesk: 'support ticketing',
+  sso: 'single sign-on',
 };
 
 export const phoneCopy = {
-  projectsIntro: 'Systems I designed and built. Client work is anonymised.',
+  projectsIntro: "Projects I've built and worked on.",
   projectSubs: {
     phonedeck: 'Remote launcher · case study',
-    recruit: 'Gemini parsing · anonymised',
-    whatsapp: 'LLM order parser · anonymised',
-    helpdesk: 'Support ticketing · Apidel',
-    taskmgmt: 'Graphics team · Apidel',
-    globalauth: 'Unified login · Apidel',
-    hrms: 'In progress · Apidel',
-    ai: 'Across several products · Apidel',
+    content: 'Claude Agent SDK · Vyaris',
+    podcast: 'Personal project',
+    agents: 'Public on GitHub',
+    hrms: '11 modules · Apidel',
+    taskmgmt: 'Main developer · Apidel',
+    helpdesk: 'Main backend developer · Apidel',
+    sso: '6 internal apps · Apidel',
   } satisfies Record<ProjectKey, string>,
   caseStudy: 'Read the full case study →',
   allProjects: 'All projects',
@@ -68,13 +69,13 @@ export const phoneCopy = {
 
 export const phonePhotos = [
   {
-    src: '/images/aum-portrait.jpg',
+    src: asset('images/aum-portrait.jpg'),
     alt: 'Aum smiling at a railing in front of a waterfall',
     label: 'portrait',
     objectPosition: '50% 14%',
   },
   {
-    src: '/images/aum-full.jpg',
+    src: asset('images/aum-full.jpg'),
     alt: 'Aum standing by a waterfall under a cloudy sky',
     label: 'monsoon',
     objectPosition: '50% 40%',

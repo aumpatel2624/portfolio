@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import styles from './ArtImage.module.css';
 
 interface Props {
@@ -10,7 +11,7 @@ export function ArtImage({ name, alt }: Props) {
   return (
     <img
       className={styles.img}
-      src={`/images/${name}.webp`}
+      src={asset(`images/${name}.webp`)}
       alt={alt}
       width={1200}
       height={800}

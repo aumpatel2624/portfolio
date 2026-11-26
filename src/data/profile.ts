@@ -1,5 +1,6 @@
 export interface Language {
   name: string;
+  level: string;
   native?: string;
   lang?: string;
 }
@@ -7,35 +8,29 @@ export interface Language {
 export const profile = {
   name: 'Aum',
   location: 'Vadodara, India',
-  role: 'Full Stack Engineer',
-  employer: 'Apidel Technologies',
-  since: 'Jan 2026',
-  openTo: 'NL · FI · DE',
-  sticker: 'Open to NL · FI · DE ✱',
-  availability: 'Available for new roles',
-  kicker: 'Full-stack engineer · Vadodara, India',
-  typewriter: 'backend + queues + LLM products',
+  role: 'AI Engineer',
+  sticker: 'Open to UK · Europe ✱',
+  availability: 'Available immediately',
+  kicker: 'AI Engineer · Vadodara, India',
+  typewriter: 'AI agents + pipelines + backend',
+  meta: {
+    title: 'Aum · AI Engineer',
+    description:
+      'Aum, an AI engineer in Vadodara, India, building AI agent pipelines with the Claude Agent SDK and Claude Code, and full-stack products in TypeScript and Node.js. Open to relocation (UK and Europe).',
+  },
   desktop: {
     greeting: "Hi, I'm",
     intro:
-      'Full-stack engineer in Vadodara, India. I build backends and LLM-powered products in Node.js and TypeScript: queues, role-based access, real-time updates and AI parsing.',
-    work: "I work at Apidel Technologies and co-founded Vyaris. I'm looking for my next role and open to relocating to the Netherlands, Finland or Germany.",
+      'AI engineer in Vadodara, India. I build full-stack products and AI agent tooling: pipelines on the Claude Agent SDK and Claude Code with research, fact-check and human review stages.',
+    work: "I'm a Software Developer at Apidel Technologies and co-founder of Vyaris. I'm open to relocation (UK and Europe), require visa sponsorship and am available immediately.",
   },
   classic: {
-    headline: [
-      'Full-stack engineer building ',
-      'LLM-powered products',
-      ' and ',
-      'the systems behind them.',
-    ],
+    headline: ['AI engineer building ', 'agent pipelines', ' and ', 'full-stack products.'],
     intro:
-      "Node.js and TypeScript in production, with MongoDB, PostgreSQL, Redis and RabbitMQ behind it. I've integrated Gemini and Groq models into recruiting and messaging products, and I'm looking for my next role.",
-    mobileHeadline: [
-      'Full-stack engineer building ',
-      'LLM-powered products and the systems behind them.',
-    ],
+      'I build AI pipelines using the Claude Agent SDK and Claude Code, with research, fact-check and human review stages, and internal business platforms in TypeScript and Node.js at Apidel Technologies.',
+    mobileHeadline: ['AI engineer building ', 'agent pipelines and full-stack products.'],
     mobileIntro:
-      "Node.js and TypeScript in production, with MongoDB, PostgreSQL, Redis and RabbitMQ behind it. I've integrated Gemini and Groq models into recruiting and messaging products. Open to relocating to the Netherlands, Finland or Germany.",
+      'I build AI pipelines with the Claude Agent SDK and Claude Code, and internal business platforms in TypeScript and Node.js. Open to relocation (UK and Europe). Requires visa sponsorship. Available immediately.',
   },
   build: {
     heading: 'How I build',
@@ -45,30 +40,32 @@ export const profile = {
     firstmate: { label: 'Firstmate', href: 'https://github.com/kunchenguid/firstmate' },
   },
   profileCard: [
-    { key: 'role', value: 'Full Stack Engineer' },
-    { key: 'at', value: 'Apidel Technologies' },
+    { key: 'role', value: 'AI Engineer' },
+    { key: 'now', value: 'Software Developer, Apidel' },
     { key: 'since', value: 'Jan 2026' },
-    { key: 'stack', value: 'Node.js · TypeScript · React' },
-    { key: 'data', value: 'MongoDB · PostgreSQL · Redis · RabbitMQ' },
-    { key: 'focus', value: 'LLM integration · queues', accent: true },
+    { key: 'stack', value: 'TypeScript · Node.js · React' },
+    { key: 'data', value: 'MongoDB · PostgreSQL · SQLite' },
+    { key: 'focus', value: 'Claude agent pipelines', accent: true },
     { key: 'based', value: 'Vadodara, India' },
-    { key: 'open to', value: 'NL · FI · DE' },
+    { key: 'open to', value: 'Relocation: UK · Europe' },
+    { key: 'visa', value: 'Sponsorship required' },
+    { key: 'start', value: 'Immediately' },
   ],
   languages: {
     heading: 'Languages',
     items: [
-      { name: 'English' },
-      { name: 'Hindi', native: 'हिन्दी', lang: 'hi' },
-      { name: 'Gujarati', native: 'ગુજરાતી', lang: 'gu' },
-      { name: 'German', native: 'Deutsch', lang: 'de' },
-      { name: 'Japanese', native: '日本語', lang: 'ja' },
+      { name: 'English', level: 'Fluent' },
+      { name: 'Hindi', native: 'हिन्दी', lang: 'hi', level: 'Fluent' },
+      { name: 'Gujarati', native: 'ગુજરાતી', lang: 'gu', level: 'Native' },
+      { name: 'German', native: 'Deutsch', lang: 'de', level: 'Intermediate' },
+      { name: 'Japanese', native: '日本語', lang: 'ja', level: 'Basic' },
     ] as readonly Language[],
   },
   marquee:
-    'Node.js + TypeScript + MongoDB + PostgreSQL + Redis + RabbitMQ + React + Electron + LLMs +',
+    'TypeScript + Node.js + Claude Agent SDK + Claude Code + React + MongoDB + PostgreSQL + Redis + RabbitMQ +',
   contact: {
     heading: "Let's talk about your next hire.",
-    body: 'Open to AI engineer and full-stack roles. Relocating to the Netherlands, Finland or Germany.',
+    body: 'Looking for AI Engineer roles. Open to relocation (UK and Europe), requires visa sponsorship, available immediately.',
   },
   copyright: '© 2026 Aum',
   images: {
