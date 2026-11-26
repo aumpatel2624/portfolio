@@ -1,18 +1,22 @@
 import { Link } from 'react-router-dom';
 import { phoneCopy } from '../../data/phone';
 import { projectGroups, projects, workCards, type ProjectKey } from '../../data/projects';
-import { IotArt, MoreArt, PhoneDeckArt, RecruitArt, WhatsAppArt } from './Art';
+import { AiArt } from '../../desktop/illustrations/HobbyArt';
+import { DocumentsArt, MoreArt, PhoneDeckArt } from './Art';
+import artStyles from './Art.module.css';
 import styles from './Apps.module.css';
+
+const AgentArt = () => <AiArt className={artStyles.art} />;
 
 const ART: Record<ProjectKey, () => JSX.Element> = {
   phonedeck: PhoneDeckArt,
-  recruit: RecruitArt,
-  whatsapp: WhatsAppArt,
-  helpdesk: MoreArt,
+  content: AgentArt,
+  podcast: AgentArt,
+  agents: AgentArt,
+  hrms: DocumentsArt,
   taskmgmt: MoreArt,
-  globalauth: MoreArt,
-  hrms: IotArt,
-  ai: MoreArt,
+  helpdesk: MoreArt,
+  sso: MoreArt,
 };
 
 const delay = (s: string) => ({ animationDelay: s });
@@ -93,6 +97,17 @@ function ProjectDetail({ projectKey }: { projectKey: ProjectKey }) {
         <div className={`${styles.rise} ${styles.meta}`} style={delay('0.26s')}>
           {project.stack}
         </div>
+      )}
+      {project.link && (
+        <a
+          className={`${styles.rise} ${styles.link}`}
+          style={delay('0.32s')}
+          href={project.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {project.link.label}
+        </a>
       )}
       {href && (
         <Link className={`${styles.rise} ${styles.link}`} style={delay('0.32s')} to={href}>

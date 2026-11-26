@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import styles from './WallpaperPhoto.module.css';
 
 interface Props {
@@ -9,7 +10,7 @@ export function WallpaperPhoto({ variant }: Props) {
   return variant === 'desktop' ? (
     <img
       className={`${styles.photo} ${styles.desktop}`}
-      src="/images/wallpaper-desktop.webp"
+      src={asset('images/wallpaper-desktop.webp')}
       alt=""
       width={1920}
       height={1081}
@@ -19,8 +20,8 @@ export function WallpaperPhoto({ variant }: Props) {
   ) : (
     <img
       className={`${styles.photo} ${styles.phone}`}
-      src="/images/wallpaper-phone.webp"
-      srcSet="/images/wallpaper-phone-sm.webp 780w, /images/wallpaper-phone.webp 1170w"
+      src={asset('images/wallpaper-phone.webp')}
+      srcSet={`${asset('images/wallpaper-phone-sm.webp')} 780w, ${asset('images/wallpaper-phone.webp')} 1170w`}
       sizes="(max-width: 430px) 100vw, 430px"
       alt=""
       width={1170}

@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 test.use({ viewport: { width: 1440, height: 900 } });
 
 test('desktop boots, opens windows and reaches the classic site', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
 
   // Boot screen shows, then the About window opens by itself.
   await expect(page.getByRole('status', { name: /starting portfolio\.exe/i })).toBeVisible();
@@ -15,10 +15,8 @@ test('desktop boots, opens windows and reaches the classic site', async ({ page 
   await page.getByRole('button', { name: 'Open projects' }).first().click();
   const projects = page.getByRole('dialog', { name: '~/aum/projects/' });
   await expect(projects).toBeVisible();
-  await projects.getByRole('button', { name: /Recruiting platform/ }).click();
-  await expect(
-    projects.getByRole('heading', { name: /Recruiting platform with Gemini parsing/ }),
-  ).toBeVisible();
+  await projects.getByRole('button', { name: /AI content generator/ }).click();
+  await expect(projects.getByRole('heading', { name: 'AI content generator' })).toBeVisible();
 
   // Taskbar: the top window minimises, then restores.
   const task = page.getByRole('button', { name: 'projects', exact: true });
@@ -37,15 +35,13 @@ test('desktop boots, opens windows and reaches the classic site', async ({ page 
   await expect(page.getByRole('button', { name: /wallpaper/i })).toHaveCount(0);
   await page.getByRole('link', { name: /Classic site/ }).click();
   await expect(page).toHaveURL(/\/classic$/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Full-stack engineer building',
-  );
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('AI engineer building');
 });
 
 test('narrow screens get the phone OS instead of the desktop', async ({ page }) => {
   test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'flag keeps the desktop on every width');
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto('./');
   await expect(page).not.toHaveURL(/\/classic$/);
   await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Open Projects' })).toBeVisible();
@@ -56,7 +52,7 @@ test('narrow screens get the phone OS instead of the desktop', async ({ page }) 
 test('forced desktop build keeps narrow screens on the desktop', async ({ page }) => {
   test.skip(process.env.VITE_FORCE_DESKTOP !== 'true', 'needs a VITE_FORCE_DESKTOP=true build');
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto('./');
   const about = page.getByRole('dialog', { name: '~/aum/about.txt' });
   await expect(about).toBeVisible({ timeout: 6000 });
   await expect(page).not.toHaveURL(/\/classic$/);
@@ -66,8 +62,33 @@ test('forced desktop build keeps narrow screens on the desktop', async ({ page }
 });
 
 test('case study page links back to the classic site', async ({ page }) => {
-  await page.goto('/work/phonedeck');
+  await page.goto('work/phonedeck');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('PhoneDeck');
   await page.getByRole('link', { name: /Back to work/ }).click();
   await expect(page).toHaveURL(/\/classic$/);
 });
+
+for (const route of ['./', 'classic', 'work/phonedeck']) {
+  test(`direct load of ${route} fetches every file under the base path`, async ({
+    page,
+    baseURL,
+  }) => {
+    const failed: string[] = [];
+    page.on('response', (r) => {
+      if (r.status() >= 400) failed.push(`${r.status()} ${r.url()}`);
+      const url = new URL(r.url());
+      if (!url.pathname.startsWith(new URL(baseURL!).pathname)) failed.push(`outside ${r.url()}`);
+    });
+    const response = await page.goto(route);
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible({ timeout: 6000 });
+    await page.waitForLoadState('networkidle');
+    expect(failed).toEqual([]);
+
+    // Files the page links to but does not fetch on load.
+    const manifest = await page.locator('link[rel="manifest"]').getAttribute('href');
+    for (const file of [manifest!, `${new URL(baseURL!).pathname}aum-patel-resume.pdf`]) {
+      expect((await page.request.get(file)).status(), file).toBe(200);
+    }
+  });
+}

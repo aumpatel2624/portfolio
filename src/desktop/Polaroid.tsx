@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import { useState } from 'react';
 import { AsciiPhoto } from '../ascii/AsciiPhoto';
 import { polaroidAscii } from '../ascii/art.generated';
@@ -20,7 +21,7 @@ export function Polaroid({ onOpen }: { onOpen: () => void }) {
     >
       <span className={styles.photo}>
         <AsciiPhoto
-          src="/images/aum-full.jpg"
+          src={asset('images/aum-full.jpg')}
           alt={profile.images.fullAlt}
           width={116}
           height={116}

@@ -5,6 +5,7 @@ import { AsciiArt } from '../ascii/AsciiArt';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
 import { aumWordmark, fullAscii } from '../ascii/art.generated';
 import { phoneCopy, phoneHomeApps, type PhoneAppId } from '../data/phone';
+import { profile } from '../data/profile';
 import { usePageMeta } from '../lib/usePageMeta';
 import { AppSheet } from './AppSheet';
 import { appIcons } from './icons';
@@ -109,11 +110,7 @@ interface Props {
 
 /** The phone view: an iPhone-style home screen of apps over the ink-blossom wallpaper. */
 export function PhoneOS({ accent = '#3B82F6' }: Props) {
-  usePageMeta({
-    title: 'Aum · Full-stack engineer',
-    description:
-      'Aum, a full-stack engineer in Vadodara, India, building backends and LLM-powered products in Node.js and TypeScript. Open to roles in the Netherlands, Finland and Germany.',
-  });
+  usePageMeta(profile.meta);
 
   const [state, dispatch] = useReducer(phoneReducer, initialPhoneState);
   const [time, setTime] = useState(() => formatTime(new Date()));
@@ -195,7 +192,7 @@ export function PhoneOS({ accent = '#3B82F6' }: Props) {
 
         <div className={styles.homeLayer} {...inertProps}>
           <main className={styles.home}>
-            <h1 className="sr-only">Aum · Full-stack engineer</h1>
+            <h1 className="sr-only">{profile.meta.title}</h1>
             <div className={styles.apps} role="group" aria-label="Apps">
               {phoneHomeApps.map((app, i) => (
                 <button

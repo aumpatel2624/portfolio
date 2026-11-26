@@ -4,7 +4,7 @@ test.skip(process.env.VITE_FORCE_DESKTOP === 'true', 'needs a build without VITE
 test.use({ viewport: { width: 390, height: 844 }, hasTouch: true });
 
 test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
 
   // Boot splash gives way to the home screen.
   await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeVisible();
@@ -17,15 +17,13 @@ test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
   await page.getByRole('button', { name: 'Open Projects' }).tap();
   const projects = page.getByRole('dialog', { name: 'projects' });
   await expect(projects).toBeVisible();
-  await projects.getByRole('button', { name: /WhatsApp panel/ }).tap();
-  await expect(
-    page.getByRole('heading', { name: /WhatsApp panel with an LLM order parser/ }),
-  ).toBeVisible();
+  await projects.getByRole('button', { name: /Podcast pipeline/ }).tap();
+  await expect(page.getByRole('heading', { name: 'Podcast knowledge pipeline' })).toBeVisible();
   await page.getByRole('button', { name: 'All projects' }).tap();
   await projects.getByRole('button', { name: /PhoneDeck/ }).tap();
   await expect(page.getByRole('link', { name: /Read the full case study/ })).toHaveAttribute(
     'href',
-    '/work/phonedeck',
+    /\/work\/phonedeck$/,
   );
   await page.getByRole('button', { name: 'Back to home' }).tap();
   await expect(page.getByRole('dialog')).toHaveCount(0);
@@ -50,7 +48,7 @@ test('phone OS boots, opens apps, drills into a project', async ({ page }) => {
 for (const width of [360, 390, 430, 767]) {
   test(`no horizontal overflow @${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
-    await page.goto('/');
+    await page.goto('./');
     await expect(page.getByRole('status', { name: /starting portfolio\.os/i })).toBeHidden({
       timeout: 6000,
     });

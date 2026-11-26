@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset';
 import { Link } from 'react-router-dom';
 import { AsciiDivider } from '../ascii/AsciiDivider';
 import { SkillIcon } from '../components/SkillIcon';
@@ -21,12 +22,9 @@ import { usePageMeta } from '../lib/usePageMeta';
 import { MobileHome } from './MobileHome';
 import styles from './ClassicHome.module.css';
 
-const DESCRIPTION =
-  'Full-stack engineer in Vadodara, India building LLM-powered products and the systems behind them. Open to NL, FI and DE.';
-
 export function ClassicHome() {
   const isMobile = useMediaQuery('(max-width: 767px)');
-  usePageMeta({ title: 'Aum · Full-stack engineer', description: DESCRIPTION });
+  usePageMeta(profile.meta);
   if (isMobile) return <MobileHome />;
   return <DesktopClassic />;
 }
@@ -102,7 +100,7 @@ function DesktopClassic() {
               <div className={styles.card}>
                 <div className={styles.photo}>
                   <AsciiPhoto
-                    src="/images/aum-portrait.jpg"
+                    src={asset('images/aum-portrait.jpg')}
                     alt={profile.images.portraitAlt}
                     width={660}
                     height={528}
@@ -140,10 +138,10 @@ function DesktopClassic() {
         <section id="work" className={styles.work}>
           <div className={styles.head}>
             <div className={styles.label}>01 · Selected work</div>
-            <h2 className={styles.h2Work}>Systems I designed and built.</h2>
+            <h2 className={styles.h2Work}>Projects I've built.</h2>
             <p className={styles.sub}>
-              One personal project I can show in full, two client platforms written up without
-              client names, and the software I build at Apidel.
+              A remote launcher written up as a case study, AI pipelines and agent tooling, and the
+              software I build at Apidel.
             </p>
           </div>
           <div className={styles.cards}>
@@ -173,6 +171,16 @@ function DesktopClassic() {
                   <Link to={card.href} className={styles.more}>
                     Read case study →
                   </Link>
+                )}
+                {card.link && (
+                  <a
+                    href={card.link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.more}
+                  >
+                    {card.link.label}
+                  </a>
                 )}
               </article>
             ))}
@@ -206,7 +214,11 @@ function DesktopClassic() {
                 <div className={styles.jobBody}>
                   <h3 className={styles.jobTitle}>{job.title}</h3>
                   <div className={styles.muted}>{job.place}</div>
-                  <p className={styles.jobText}>{job.classic}</p>
+                  <ul className={styles.jobText}>
+                    {job.points.map((p) => (
+                      <li key={p}>{p}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
@@ -225,7 +237,7 @@ function DesktopClassic() {
               <div key={group.title} className={styles.group}>
                 <h3 className={styles.groupTitle}>{group.title}</h3>
                 <ul className={styles.chips}>
-                  {group.classic.map((s) => (
+                  {group.items.map((s) => (
                     <li key={s} className={styles.chip}>
                       <SkillIcon name={s} />
                       {s}
@@ -270,6 +282,7 @@ function DesktopClassic() {
                       {l.native}
                     </span>
                   )}
+                  <span className={styles.native}>· {l.level}</span>
                 </li>
               ))}
             </ul>

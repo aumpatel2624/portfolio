@@ -1,37 +1,52 @@
 export interface SkillGroup {
   title: string;
-  /** Desktop and classic pages list the same skills in a slightly different order. */
-  desktop: string[];
-  classic: string[];
+  items: string[];
   /** Optional line under the chips. */
   note?: string;
 }
 
 export const skills: SkillGroup[] = [
   {
+    title: 'Programming',
+    items: ['TypeScript', 'JavaScript', 'Java', 'Python', 'SQL'],
+    note: 'Strong: TypeScript, JavaScript. Working knowledge: Java, Python, SQL.',
+  },
+  {
+    title: 'AI and agents',
+    items: ['Claude Agent SDK', 'Claude Code'],
+    note: 'Multi-stage content pipelines with fact-check and human review.',
+  },
+  {
     title: 'Backend',
-    desktop: ['Node.js', 'TypeScript', 'Express', 'Spring Boot', 'Bun', 'Socket.IO'],
-    classic: ['Node.js', 'TypeScript', 'Express', 'Spring Boot', 'Bun', 'Socket.IO'],
+    items: ['Node.js', 'Bun', 'Express', 'Spring Boot', 'Socket.IO', 'REST APIs', 'Swagger', 'Zod'],
   },
   {
-    title: 'Data and queues',
-    desktop: ['PostgreSQL', 'MongoDB', 'Redis', 'BullMQ', 'RabbitMQ'],
-    classic: ['PostgreSQL', 'MongoDB', 'Redis', 'BullMQ', 'RabbitMQ'],
+    title: 'Frontend',
+    items: ['React', 'Vite', 'Tailwind CSS'],
   },
   {
-    title: 'AI',
-    desktop: ['Gemini API', 'Groq', 'Structured outputs', 'Prompt design'],
-    classic: ['Gemini API', 'Groq', 'Structured outputs', 'Prompt design'],
+    title: 'Databases',
+    items: ['MongoDB', 'PostgreSQL', 'SQLite'],
   },
   {
-    title: 'Frontend and infra',
-    desktop: ['React', 'Next.js', 'Electron', 'Docker', 'nginx', 'AWS'],
-    classic: ['React', 'Docker', 'AWS', 'Next.js', 'Electron', 'nginx'],
+    title: 'Queues and cache',
+    items: ['Redis', 'RabbitMQ', 'BullMQ'],
+  },
+  {
+    title: 'Cloud and storage',
+    items: ['AWS (S3)', 'Garage'],
+  },
+  {
+    title: 'DevOps',
+    items: ['Git', 'GitLab CI/CD', 'GitHub Actions', 'Docker', 'PM2', 'Nginx'],
+  },
+  {
+    title: 'Security',
+    items: ['JWT authentication', 'Role-based access control', 'Helmet'],
   },
   {
     title: 'Environments',
-    desktop: ['Linux', 'Windows'],
-    classic: ['Linux', 'Windows'],
+    items: ['Linux', 'Windows'],
     note: 'Deep understanding of Linux, my preferred environment and one I rely on heavily.',
   },
 ];

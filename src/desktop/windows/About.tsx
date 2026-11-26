@@ -1,3 +1,4 @@
+import { asset } from '../../lib/asset';
 import { AsciiPhoto } from '../../ascii/AsciiPhoto';
 import { avatarAscii } from '../../ascii/art.generated';
 import { SkillIcon } from '../../components/SkillIcon';
@@ -12,7 +13,7 @@ export function About({ onOpen }: { onOpen: (id: WindowId) => void }) {
       <div className={`${common.rise} ${styles.side}`} style={{ animationDelay: '0.1s' }}>
         <div className={styles.photo}>
           <AsciiPhoto
-            src="/images/aum-portrait.jpg"
+            src={asset('images/aum-portrait.jpg')}
             alt={profile.images.portraitAlt}
             width={148}
             height={190}
@@ -78,6 +79,7 @@ export function About({ onOpen }: { onOpen: (id: WindowId) => void }) {
                     {l.native}
                   </span>
                 )}
+                <span className={styles.native}>· {l.level}</span>
               </li>
             ))}
           </ul>

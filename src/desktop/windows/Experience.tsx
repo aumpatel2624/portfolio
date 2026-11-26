@@ -25,7 +25,12 @@ export function Experience() {
             />
             <div className={styles.when}>{e.when}</div>
             <h3 className={styles.title}>{e.title}</h3>
-            <p className={common.lede}>{e.desktop}</p>
+            <p className={common.lede}>{e.place}</p>
+            <ul className={common.bullets}>
+              {e.points.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
           </div>
         );
       })}
