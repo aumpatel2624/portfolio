@@ -1,0 +1,24 @@
+/* Monospace parents only: 1ch is one character. The extra 2px holds the cursor. */
+.type {
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: calc(var(--chars) * 1ch + 2px);
+  border-right: 2px solid var(--acc);
+  animation:
+    typing calc(var(--chars) * 65ms) steps(var(--chars)) 0.5s both,
+    blink 0.8s step-end infinite;
+}
+/* Local on purpose: CSS Modules rename animation references, so global keyframes would not run. */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

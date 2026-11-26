@@ -1,6 +1,6 @@
 import { AsciiDivider } from '../../ascii/AsciiDivider';
-import { emailHref, links } from '../../data/links';
-import { profile } from '../../data/profile';
+import { emailHref, links, linkText } from '../../data/links';
+import { profile, statusLine } from '../../data/profile';
 import { PlaceholderLink } from '../../lib/PlaceholderLink';
 import common from '../common.module.css';
 import styles from './Contact.module.css';
@@ -9,10 +9,12 @@ export function Contact() {
   return (
     <div className={styles.body}>
       <h2 className={`${common.rise} ${styles.h2}`} style={{ animationDelay: '0.05s' }}>
-        {profile.contact.heading}
+        Contact
       </h2>
       <p className={`${common.rise} ${common.lede}`} style={{ animationDelay: '0.12s' }}>
-        {profile.contact.body}
+        {profile.location}
+        <br />
+        {statusLine}
       </p>
       <AsciiDivider pattern="·-=-·" className={styles.rule} />
       <div className={`${common.rise} ${styles.actions}`} style={{ animationDelay: '0.2s' }}>
@@ -23,10 +25,10 @@ export function Contact() {
           {links.email}
         </PlaceholderLink>
         <PlaceholderLink href={links.linkedin} className={`${common.btn} ${styles.secondary}`}>
-          LinkedIn
+          {linkText.linkedin}
         </PlaceholderLink>
         <PlaceholderLink href={links.github} className={`${common.btn} ${styles.secondary}`}>
-          GitHub
+          {linkText.github}
         </PlaceholderLink>
       </div>
     </div>

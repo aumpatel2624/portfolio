@@ -16,8 +16,8 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  width: 104px;
-  padding: 12px 6px;
+  width: 140px;
+  padding: 12px 4px;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -48,7 +48,7 @@
   font-family: var(--font-mono);
   font-size: 13px;
   text-align: center;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 /* Light wallpaper: a dark pill keeps the label readable (AA) without touching the palette. */

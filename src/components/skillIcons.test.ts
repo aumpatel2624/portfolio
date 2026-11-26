@@ -1,18 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { profile } from '../data/profile';
-import { setup } from '../data/setup';
 import { skills } from '../data/skills';
 import { skillIcons } from './skillIcons';
 
 describe('skillIcons', () => {
-  const names = new Set([
-    ...skills.flatMap((g) => g.items),
-    ...profile.build.tools,
-    ...setup.flatMap((s) => s.items.map((i) => i.name)),
-  ]);
+  const names = new Set(skills.flatMap((g) => g.rows.flatMap((r) => r.items)));
 
   it('maps only skills that exist', () => {
-    for (const name of Object.keys(skillIcons)) expect(names.has(name)).toBe(true);
+    for (const name of Object.keys(skillIcons)) expect(names.has(name), name).toBe(true);
   });
 
   it('resolves every mapped icon to a drawable path', () => {

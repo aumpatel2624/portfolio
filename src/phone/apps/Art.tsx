@@ -1,33 +1,14 @@
 import { ArtImage } from '../../desktop/illustrations/ArtImage';
+import { AiArt as DesktopAiArt } from '../../desktop/illustrations/AiArt';
+import type { ProjectArtName } from '../../data/projects';
 import styles from './Art.module.css';
 
-/** Photographic illustration panels for the project and hobby screens. */
-
-function Panel({ name, alt, className = '' }: { name: string; alt: string; className?: string }) {
+/** The illustration panel above a project screen. */
+export function ProjectArt({ name }: { name: ProjectArtName }) {
+  if (name === 'ai') return <DesktopAiArt className={styles.art} />;
   return (
-    <div className={`${styles.art} ${className}`}>
-      <ArtImage name={name} alt={alt} />
+    <div className={`${styles.art} ${name === 'more' ? styles.more : ''}`}>
+      <ArtImage name={name} />
     </div>
   );
 }
-
-export const PhoneDeckArt = () => (
-  <Panel name="phone-deck" alt="A phone paired with a laptop over an encrypted channel" />
-);
-export const DocumentsArt = () => (
-  <Panel name="documents" alt="A stack of documents on a desk beside glasses and coffee" />
-);
-export const MoreArt = () => (
-  <Panel
-    name="more"
-    alt="Laptop showing internal business tools and dashboards"
-    className={styles.more}
-  />
-);
-export const F1Art = () => <Panel name="f1" alt="A Formula 1 car on track" />;
-export const IotArt = () => (
-  <Panel name="iot" alt="An IoT development board with sensors and wiring" />
-);
-export const BooksArt = () => (
-  <Panel name="books" alt="A stack of books under a warm reading lamp" />
-);

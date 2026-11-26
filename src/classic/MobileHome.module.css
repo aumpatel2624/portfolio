@@ -31,9 +31,6 @@
 .acc {
   color: var(--c-accent);
 }
-.muted {
-  color: var(--c-muted);
-}
 
 .header {
   display: flex;
@@ -80,6 +77,10 @@
   text-transform: uppercase;
   color: var(--c-muted);
 }
+.role {
+  display: block;
+  color: var(--c-accent);
+}
 .h1 {
   margin: 0;
   font-size: 48px;
@@ -116,12 +117,14 @@
   display: inline-flex;
   align-items: center;
   min-height: 48px;
-  padding: 0 20px;
+  padding: 6px 20px;
   border: 1px solid var(--c-border);
   border-radius: 8px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
-.work {
+.section {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -132,13 +135,6 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-.label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-muted);
 }
 .h2 {
   margin: 0;
@@ -176,12 +172,6 @@
   border-radius: 6px;
   padding: 2px 8px;
 }
-.tagOn {
-  color: var(--c-accent);
-  border: 1px solid var(--c-accent);
-  border-radius: 6px;
-  padding: 2px 8px;
-}
 .h3 {
   margin: 0;
   font-size: 22px;
@@ -192,43 +182,40 @@
   color: var(--c-muted);
   font-size: 15px;
 }
-.flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-}
-.flowItem {
-  display: contents;
-}
-.step {
-  border: 1px solid var(--c-border);
-  border-radius: 6px;
-  padding: 3px 8px;
-}
 .more {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   color: var(--c-accent);
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
-.setup {
+.when {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--c-accent);
+}
+.bullets {
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  padding: 40px 0 48px;
-  border-top: 1px solid var(--c-track);
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--c-muted);
+  font-size: 15px;
 }
-.setupGroup {
+.stack {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--c-muted);
+}
+.group {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-.setupTitle {
+.groupTitle {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -236,33 +223,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--c-accent);
-}
-.specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 0;
-  padding: 14px;
-  border: 1px solid var(--c-border);
-  border-radius: 12px;
-  background: var(--c-surface);
-  font-size: 14px;
-}
-.spec {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.spec dt {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--c-muted);
-}
-.spec dd {
-  margin: 0;
-  overflow-wrap: anywhere;
 }
 .chips {
   display: flex;
@@ -281,16 +241,6 @@
   font-size: 14px;
   --skill-icon: var(--c-muted);
 }
-.planned {
-  margin-left: 8px;
-  padding: 1px 8px;
-  border: 1px dashed var(--c-accent);
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--c-accent);
-}
-
 .contact {
   display: flex;
   flex-direction: column;
@@ -299,12 +249,6 @@
   background: var(--c-accent);
   color: var(--c-bg);
   border-radius: 20px;
-}
-.contactLabel {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 .h2Contact {
   margin: 0;
@@ -322,7 +266,9 @@
   align-items: center;
   justify-content: center;
   min-height: 52px;
+  padding: 0 12px;
   border-radius: 999px;
+  overflow-wrap: anywhere;
   background: var(--c-bg);
   color: var(--c-text);
   font-weight: 600;

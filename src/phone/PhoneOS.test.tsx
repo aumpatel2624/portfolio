@@ -33,76 +33,39 @@ describe('PhoneOS', () => {
     renderPhone();
     await user.click(screen.getByRole('button', { name: 'Open Skills' }));
     const sheet = screen.getByRole('dialog', { name: 'skills' });
-    expect(within(sheet).getByRole('heading', { level: 1, name: 'Skills' })).toBeInTheDocument();
+    expect(
+      within(sheet).getByRole('heading', { level: 1, name: 'Technical skills' }),
+    ).toBeInTheDocument();
     expect(within(sheet).getByText('Node.js')).toBeInTheDocument();
     await user.click(within(sheet).getByRole('button', { name: 'Back to home' }));
     await act(async () => void (await new Promise((r) => setTimeout(r, CLOSE_MS + 20))));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('opens Setup, flags planned items and keeps private details out', async () => {
+  it('drills into an AI engineering entry and back to the list', async () => {
     const user = userEvent.setup();
     renderPhone();
-    await user.click(screen.getByRole('button', { name: 'Open Setup' }));
-    const sheet = screen.getByRole('dialog', { name: 'setup' });
-    expect(within(sheet).getByRole('heading', { level: 1, name: 'Setup' })).toBeInTheDocument();
-    expect(within(sheet).getByRole('heading', { name: 'Homelab server' })).toBeInTheDocument();
-    const wol = within(sheet).getByText('Wake-on-LAN').closest('li');
-    expect(wol).toHaveTextContent('planned');
-    expect(sheet).not.toHaveTextContent(/cloudflare|tailscale|ssh|cuda|jev/i);
-  });
-
-  it('drills into a project and back to the list', async () => {
-    const user = userEvent.setup();
-    renderPhone();
-    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
+    await user.click(screen.getByRole('button', { name: 'Open AI engineering' }));
     await user.click(screen.getByRole('button', { name: /AI content generator/ }));
     expect(screen.getByRole('dialog', { name: 'content generator' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'AI content generator' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'All projects' }));
-    expect(screen.getByRole('dialog', { name: 'projects' })).toBeInTheDocument();
-  });
-
-  it('groups projects and shows the Apidel entries', async () => {
-    const user = userEvent.setup();
-    renderPhone();
-    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
-    const apidel = screen.getByRole('region', { name: 'Apidel' });
-    expect(within(apidel).getAllByRole('button')).toHaveLength(4);
-    await user.click(within(apidel).getByRole('button', { name: /HR management/ }));
-    expect(screen.getByText(/Delivered 11 modules/)).toBeInTheDocument();
+    expect(screen.getByRole('dialog', { name: 'ai-engineering' })).toBeInTheDocument();
   });
 
   it('links the agent pipeline to its public repository', async () => {
     const user = userEvent.setup();
     renderPhone();
-    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
-    await user.click(screen.getByRole('button', { name: /Claude Code agents/ }));
-    expect(screen.getByRole('link', { name: /View on GitHub/ })).toHaveAttribute(
-      'href',
-      'https://github.com/aumpatel2624/claude-code-agents',
-    );
+    await user.click(screen.getByRole('button', { name: 'Open AI engineering' }));
+    await user.click(screen.getByRole('button', { name: /Multi-agent development pipeline/ }));
+    expect(
+      screen.getByRole('link', { name: 'github.com/aumpatel2624/claude-code-agents' }),
+    ).toHaveAttribute('href', 'https://github.com/aumpatel2624/claude-code-agents');
   });
 
-  it('links PhoneDeck to its case study and the dock to the classic site', async () => {
-    const user = userEvent.setup();
+  it('links the dock to the classic site', () => {
     renderPhone();
     expect(screen.getByRole('link', { name: 'Classic site' })).toHaveAttribute('href', '/classic');
-    await user.click(screen.getByRole('button', { name: 'Open Projects' }));
-    await user.click(screen.getByRole('button', { name: /PhoneDeck/ }));
-    expect(screen.getByRole('link', { name: /Read the full case study/ })).toHaveAttribute(
-      'href',
-      '/work/phonedeck',
-    );
-  });
-
-  it('switches hobbies with the segmented control', async () => {
-    const user = userEvent.setup();
-    renderPhone();
-    await user.click(screen.getByRole('button', { name: 'Open Hobbies' }));
-    await user.click(screen.getByRole('button', { name: 'IoT' }));
-    expect(screen.getByRole('button', { name: 'IoT' })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByRole('link', { name: /View SmartBin/ })).toBeInTheDocument();
   });
 
   it('has no wallpaper switcher, widgets or quote on the home screen', () => {
@@ -113,10 +76,10 @@ describe('PhoneOS', () => {
     expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
-  it('lays the seven apps out in the grid and the three dock links, with no page dots', () => {
+  it('lays the six apps out in the grid and the three dock links, with no page dots', () => {
     renderPhone();
     const grid = screen.getByRole('group', { name: 'Apps' });
-    expect(within(grid).getAllByRole('button')).toHaveLength(7);
+    expect(within(grid).getAllByRole('button')).toHaveLength(6);
     const dock = screen.getByRole('navigation', { name: 'Dock' });
     expect(within(dock).getAllByRole('button')).toHaveLength(2);
     expect(within(dock).getAllByRole('link')).toHaveLength(1);

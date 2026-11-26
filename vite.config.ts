@@ -20,7 +20,7 @@ function routePages(): Plugin {
       outDir = resolve(config.root, config.build.outDir);
     },
     closeBundle() {
-      for (const page of ['classic.html', 'work/phonedeck.html', '404.html']) {
+      for (const page of ['classic.html', '404.html']) {
         const target = resolve(outDir, page);
         mkdirSync(dirname(target), { recursive: true });
         copyFileSync(resolve(outDir, 'index.html'), target);

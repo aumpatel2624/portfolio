@@ -32,17 +32,16 @@ describe('phone state', () => {
     expect(phoneReducer(s, { type: 'closed' })).toMatchObject({ app: 'resume', closing: false });
   });
 
-  it('resets the open project when an app is opened, but remembers the hobby tab', () => {
-    let s = phoneReducer(initialPhoneState, { type: 'open', app: 'projects', origin });
+  it('resets the open project when an app is opened', () => {
+    let s = phoneReducer(initialPhoneState, { type: 'open', app: 'ai', origin });
     s = phoneReducer(s, { type: 'project', project: 'content' });
-    s = phoneReducer(s, { type: 'hobby', hobby: 'books' });
-    expect(s).toMatchObject({ project: 'content', hobby: 'books' });
-    s = phoneReducer(s, { type: 'open', app: 'projects', origin });
-    expect(s).toMatchObject({ project: null, hobby: 'books' });
+    expect(s.project).toBe('content');
+    s = phoneReducer(s, { type: 'open', app: 'work', origin });
+    expect(s.project).toBeNull();
   });
 
   it('goes back from a project to the list', () => {
-    let s = phoneReducer(initialPhoneState, { type: 'open', app: 'projects', origin });
+    let s = phoneReducer(initialPhoneState, { type: 'open', app: 'work', origin });
     s = phoneReducer(s, { type: 'project', project: 'hrms' });
     s = phoneReducer(s, { type: 'project', project: null });
     expect(s.project).toBeNull();

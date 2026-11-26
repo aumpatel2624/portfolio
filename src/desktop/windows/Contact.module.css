@@ -29,6 +29,8 @@
   min-height: 48px;
   padding: 0 24px;
   border-radius: 999px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .primary {
   background: var(--acc);

@@ -3,13 +3,27 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+.heading {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+.list {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 .rail {
   position: absolute;
-  left: 20px;
-  top: 40px;
-  bottom: 40px;
+  left: -16px;
+  top: 12px;
+  bottom: 12px;
   width: 2px;
   background: var(--line);
 }
@@ -18,35 +32,31 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-.first {
-  padding-bottom: 24px;
-}
-.mid {
   padding: 24px 0;
   border-top: 1px solid var(--border);
 }
-.last {
-  padding-top: 24px;
-  border-top: 1px solid var(--border);
+.entry:nth-of-type(2) {
+  padding-top: 0;
+  border-top: none;
+}
+.entry:last-child {
+  padding-bottom: 0;
+}
+.entry p {
+  margin: 0;
 }
 .dot {
   position: absolute;
-  left: -23px;
+  left: -20px;
   top: 28px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-}
-.dotFirst {
-  top: 4px;
-}
-.dotLive {
   background: var(--acc);
   animation: pulseDot 1.8s ease-out infinite;
 }
-.dotPast {
-  background: var(--border);
+.entry:nth-of-type(2) .dot {
+  top: 4px;
 }
 .when {
   font-family: var(--font-mono);

@@ -1,17 +1,18 @@
 export interface Experience {
-  when: string;
   title: string;
-  /** Employer or school sub-line. */
+  /** Employer sub-line. */
   place: string;
+  when: string;
   points: string[];
-  current: boolean;
+  /** Tech-stack line. */
+  stack: string;
 }
 
 export const experience: Experience[] = [
   {
+    title: 'Software Developer',
+    place: 'Apidel Technologies, Vadodara, India',
     when: 'Jan 2026 – Present',
-    title: 'Software Developer, Apidel Technologies',
-    place: 'Vadodara, India',
     points: [
       'Main developer of the task management platform, support ticketing backend and a single sign-on service connecting 6 internal applications.',
       'Built an 11-module in-house HR management system in under 3 weeks, on an internal starter, as its only human committer, using AI coding agents (Claude Code).',
@@ -19,23 +20,17 @@ export const experience: Experience[] = [
       'Produced role-based user guides for 4 internal products, illustrated with 3,000+ screenshots.',
       'Added Microsoft Graph email notifications, single logout and Redis query caching, and moved file storage from AWS S3 to Garage.',
     ],
-    current: true,
+    stack:
+      'TypeScript, JavaScript, Node.js, Bun, Express, React, Vite, Tailwind CSS, MongoDB, Redis, RabbitMQ, Socket.IO, AWS S3, Garage, Microsoft Graph API, JWT, Zod, Swagger, Jest, GitLab',
   },
   {
+    title: 'Co-founder (self-employed)',
+    place: 'Vyaris, software agency, Vadodara',
     when: 'Jul 2026 – Present',
-    title: 'Co-founder (self-employed), Vyaris',
-    place: 'Software agency · Vadodara',
     points: [
       'Co-founded a six-person, bootstrapped agency offering web, mobile, e-commerce, ERP, CRM and AI automation services.',
       'Developed and tuned the company website: page performance, responsive images and AI crawler support.',
     ],
-    current: true,
-  },
-  {
-    when: '2021 – 2025',
-    title: 'BTech, Computer Science and Technology (Cybersecurity and Cloud Computing)',
-    place: 'Amity University Mumbai, Mumbai, India · CGPA 8.45/10',
-    points: ['Runner-up, NIRMAN Hackathon (2023)'],
-    current: false,
+    stack: 'React, Vite, Tailwind CSS, Bun, Express, Nx, Supabase, Nginx, PM2, GitHub Actions',
   },
 ];

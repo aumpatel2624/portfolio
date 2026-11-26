@@ -11,11 +11,11 @@ for (const width of widths) {
       await page.waitForTimeout(3600);
       await page.screenshot({ path: `shots/desktop-${width}.png` });
       for (const name of [
-        'projects',
+        'ai-engineering',
         'experience',
         'skills',
-        'setup',
-        'hobbies',
+        'work-projects',
+        'education',
         'contact',
         'resume.pdf',
       ]) {
@@ -33,19 +33,20 @@ for (const width of widths) {
       await page.screenshot({ path: 'shots/phone-390.png' });
       for (const name of [
         'About',
-        'Projects',
+        'AI engineering',
         'Experience',
         'Skills',
-        'Setup',
-        'Hobbies',
-        'Photos',
+        'Work projects',
+        'Education',
       ]) {
         await page
           .getByRole('button', { name: `Open ${name}` })
           .last()
           .dispatchEvent('click');
         await page.waitForTimeout(800);
-        await page.screenshot({ path: `shots/phone-390-${name.toLowerCase()}.png` });
+        await page.screenshot({
+          path: `shots/phone-390-${name.toLowerCase().replace(' ', '-')}.png`,
+        });
         await page.getByRole('button', { name: 'Back to home' }).dispatchEvent('click');
         await page.waitForTimeout(400);
       }
@@ -53,8 +54,5 @@ for (const width of widths) {
     await page.goto('classic');
     await page.waitForTimeout(800);
     await page.screenshot({ path: `shots/classic-${width}.png`, fullPage: true });
-    await page.goto('work/phonedeck');
-    await page.waitForTimeout(800);
-    await page.screenshot({ path: `shots/case-${width}.png`, fullPage: true });
   });
 }

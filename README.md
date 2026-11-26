@@ -1,10 +1,10 @@
-# Aum's portfolio
+# Aum Patel's portfolio
 
-A desktop-OS themed home (`/`), an iPhone-style phone OS (`/` below 768px), a classic one-page site
-(`/classic`) and a PhoneDeck case study (`/work/phonedeck`). Vite, React 18, strict TypeScript, plain
-CSS Modules, react-router-dom. Below 768px `/` renders the phone OS (`src/phone/`, lazy-loaded so
-desktop visitors never download it), unless the build sets `VITE_FORCE_DESKTOP=true`
-(see [Desktop-only deploys](#desktop-only-deploys)).
+The CV as a website: a desktop-OS themed home (`/`), an iPhone-style phone OS (`/` below 768px) and a
+classic one-page site (`/classic`, with its own single-column layout below 768px). Vite, React 18,
+strict TypeScript, plain CSS Modules, react-router-dom. Below 768px `/` renders the phone OS
+(`src/phone/`, lazy-loaded so desktop visitors never download it), unless the build sets
+`VITE_FORCE_DESKTOP=true` (see [Desktop-only deploys](#desktop-only-deploys)).
 
 ## Phone OS preview
 
@@ -19,7 +19,7 @@ npm install
 npm run dev            # http://localhost:5173
 npm run typecheck && npm run lint && npm test
 npm run build          # dev build (placeholders allowed)
-npm run build:prod     # fails while [placeholders] remain in src/data
+npm run build:prod     # fails if [placeholders] appear in src/data
 npm run test:e2e       # Playwright smoke test (builds, then serves a preview)
 npm run screenshots    # 390/768/1024/1440 screenshots (plus phone OS at 390) into shots/
 ```
@@ -28,8 +28,24 @@ If Playwright has no matching browser, set `PW_CHROMIUM_PATH` to a Chromium bina
 
 ## Edit content
 
-Everything is typed data in `src/data/`; components only render it. See
-[docs/PLACEHOLDERS.md](docs/PLACEHOLDERS.md) for what is still to fill in.
+The CV is the only source of content. Every section, entry, bullet, date, tech-stack line and link in
+it appears in every view, in the CV's wording and order: header lines, Profile, AI engineering,
+Experience, Technical skills, Selected work projects, Education, Awards and Languages. The one
+deliberate omission is the phone number. Do not add details the CV does not contain.
+
+Everything is typed data in `src/data/`; components only render it. When the CV changes, update the
+data, `index.html` meta and `public/aum-patel-resume.pdf` (with the phone number redacted).
+
+## Resume
+
+Every view shows the resume inline as page images (with zoom, a collapsed text version, download and
+open-in-new-tab). After replacing the PDF, run `npm run resume` (needs `pdftoppm` from poppler-utils
+and renders only the public PDF), check the images show no phone number, and commit them.
+
+## Icons
+
+`public/favicon.svg` is the source of the "AP" monogram. `npm run icons` renders `favicon.ico`,
+`apple-touch-icon.png`, `icon-192.png` and `icon-512.png` from it.
 
 ## ASCII art
 
@@ -57,7 +73,7 @@ BASE_PATH=/portfolio/ npm run preview   # http://localhost:4173/portfolio/
 BASE_PATH=/portfolio/ npm run test:e2e  # stop the preview first
 ```
 
-The build copies `index.html` to `classic.html`, `work/phonedeck.html` and `404.html`, so direct loads
+The build copies `index.html` to `classic.html` and `404.html`, so direct loads
 of the known routes return 200 and unknown paths show the app's not-found page. Add new routes to
 `routePages` in `vite.config.ts` and to `public/sitemap.xml`. The social meta, sitemap and
 `robots.txt` URLs are written out in full.
@@ -73,11 +89,10 @@ taskbar and start menu are sized to fit phones. The flag is baked in at build, s
 
 ## Decisions
 
-- Only PhoneDeck has a "Read case study" link on the classic page: no other case studies exist.
 - The classic header has a small "Desktop view" link at 768px and above. Phones no longer redirect from `/` to `/classic`; they get the phone OS, which links to the classic site from its dock.
-- Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. On screens shorter than 800px the page dots and the paddock traffic lights are hidden and the race-day cars sit on the dock, because they would otherwise run under the icon grid. Small secondary text uses `--muted` rather than `--faint` for AA contrast.
-- Minimised windows unmount, as in the design; project and hobby selections persist.
+- Phone OS: the artboard's fixed 390x844 positions flow instead, so it fits 360px and up. Small secondary text uses `--muted` rather than `--faint` for AA contrast.
+- Minimised windows unmount, as in the design; project selections persist.
 - Window drag is not implemented (out of scope unless everything else is done).
-- Desktop and phone use the Onyx palette (`src/styles/tokens.css`: `--bg`, `--surface`, `--text`, `--accent`, `--success`, `--danger` and friends). `--acc`/`--acc2` stay as aliases of accent and its soft glow, and the `--d-*` names alias the Onyx surfaces. The desktop accent switcher keeps its mechanism but its swatches are only the palette's own accents, `#3B82F6` and `#60A5FA`. `--faint` is decorative only. Project and hobby illustrations are photographs (`public/images/*.webp`, rendered by `ArtImage`) and keep their own colours.
-- Mobile and case study colours were unified to the classic palette.
+- Desktop and phone use the Onyx palette (`src/styles/tokens.css`: `--bg`, `--surface`, `--text`, `--accent`, `--success`, `--danger` and friends). `--acc`/`--acc2` stay as aliases of accent and its soft glow, and the `--d-*` names alias the Onyx surfaces. The desktop accent switcher keeps its mechanism but its swatches are only the palette's own accents, `#3B82F6` and `#60A5FA`. `--faint` is decorative only. Project illustrations are photographs (`public/images/*.webp`, rendered by `ArtImage`) and keep their own colours.
+- Mobile colours were unified to the classic palette.
 - Skill icons come from the CC0 `simple-icons` package (individual icons imported, mapped in `src/components/skillIcons.ts`). Skills without a brand icon in simple-icons v16, such as BullMQ, AWS (v16 dropped the AWS mark) and generic concepts like REST APIs, show text only.

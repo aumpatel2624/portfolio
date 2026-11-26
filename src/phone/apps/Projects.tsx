@@ -1,23 +1,6 @@
-import { Link } from 'react-router-dom';
-import { phoneCopy } from '../../data/phone';
-import { projectGroups, projects, workCards, type ProjectKey } from '../../data/projects';
-import { AiArt } from '../../desktop/illustrations/HobbyArt';
-import { DocumentsArt, MoreArt, PhoneDeckArt } from './Art';
-import artStyles from './Art.module.css';
+import type { Project, ProjectKey } from '../../data/projects';
+import { ProjectArt } from './Art';
 import styles from './Apps.module.css';
-
-const AgentArt = () => <AiArt className={artStyles.art} />;
-
-const ART: Record<ProjectKey, () => JSX.Element> = {
-  phonedeck: PhoneDeckArt,
-  content: AgentArt,
-  podcast: AgentArt,
-  agents: AgentArt,
-  hrms: DocumentsArt,
-  taskmgmt: MoreArt,
-  helpdesk: MoreArt,
-  sso: MoreArt,
-};
 
 const delay = (s: string) => ({ animationDelay: s });
 
@@ -39,53 +22,54 @@ function Chevron() {
   );
 }
 
-function ProjectList({ onPick }: { onPick: (key: ProjectKey) => void }) {
+interface ListProps {
+  /** The CV section heading. */
+  heading: string;
+  /** Second half of the heading, set smaller. */
+  scope?: string;
+  projects: Project[];
+  onPick: (key: ProjectKey) => void;
+}
+
+function ProjectList({ heading, scope, projects, onPick }: ListProps) {
   return (
     <div className={styles.list}>
-      <h1 className={`${styles.rise} ${styles.h1}`}>Projects</h1>
-      <p className={`${styles.rise} ${styles.lede}`} style={delay('0.06s')}>
-        {phoneCopy.projectsIntro}
-      </p>
-      {projectGroups.map((group) => (
-        <section key={group} className={styles.group} aria-label={group}>
-          <h2 className={styles.groupTitle}>{group}</h2>
-          {projects
-            .filter((p) => p.group === group)
-            .map((p) => (
-              <button
-                key={p.key}
-                type="button"
-                className={`${styles.pcard} ${styles.rise}`}
-                style={delay(`${projects.indexOf(p) * 0.05}s`)}
-                onClick={() => onPick(p.key)}
-              >
-                <span className={styles.pcardText}>
-                  <span className={styles.pcardTitle}>{p.label}</span>
-                  <span className={styles.pcardSub}>{phoneCopy.projectSubs[p.key]}</span>
-                </span>
-                <Chevron />
-              </button>
-            ))}
-        </section>
+      <h1 className={`${styles.rise} ${styles.h1}`}>
+        {heading}
+        {scope && <span className={styles.scope}> · {scope}</span>}
+      </h1>
+      {projects.map((p, i) => (
+        <button
+          key={p.key}
+          type="button"
+          className={`${styles.pcard} ${styles.rise}`}
+          style={delay(`${(i * 0.05).toFixed(2)}s`)}
+          onClick={() => onPick(p.key)}
+        >
+          <span className={styles.pcardText}>
+            <span className={styles.pcardTitle}>{p.title}</span>
+            {p.context && <span className={styles.pcardSub}>{p.context}</span>}
+          </span>
+          <Chevron />
+        </button>
       ))}
     </div>
   );
 }
 
-function ProjectDetail({ projectKey }: { projectKey: ProjectKey }) {
-  const project = projects.find((p) => p.key === projectKey);
-  const href = workCards.find((c) => c.key === projectKey)?.href;
-  const Art = ART[projectKey];
-  if (!project) return null;
+function ProjectDetail({ project }: { project: Project }) {
   return (
     <div className={styles.detail}>
-      <Art />
+      <ProjectArt name={project.art} />
       <h2 className={`${styles.rise} ${styles.h2}`} style={delay('0.08s')}>
         {project.title}
       </h2>
-      <p className={`${styles.rise} ${styles.lede}`} style={delay('0.14s')}>
-        {project.summary}
-      </p>
+      {project.context && <div className={styles.when}>{project.context}</div>}
+      {project.summary && (
+        <p className={`${styles.rise} ${styles.lede}`} style={delay('0.14s')}>
+          {project.summary}
+        </p>
+      )}
       {project.bullets.length > 0 && (
         <ul className={`${styles.rise} ${styles.bullets}`} style={delay('0.2s')}>
           {project.bullets.map((b) => (
@@ -109,26 +93,16 @@ function ProjectDetail({ projectKey }: { projectKey: ProjectKey }) {
           {project.link.label}
         </a>
       )}
-      {href && (
-        <Link className={`${styles.rise} ${styles.link}`} style={delay('0.32s')} to={href}>
-          {phoneCopy.caseStudy}
-        </Link>
-      )}
     </div>
   );
 }
 
-export function Projects({
-  project,
-  onPick,
-}: {
-  project: ProjectKey | null;
-  onPick: (key: ProjectKey) => void;
-}) {
+export function Projects({ selected, ...list }: ListProps & { selected: ProjectKey | null }) {
+  const project = list.projects.find((p) => p.key === selected);
   // Re-keyed so the entrance animation replays when the project changes.
   return project ? (
-    <ProjectDetail key={project} projectKey={project} />
+    <ProjectDetail key={project.key} project={project} />
   ) : (
-    <ProjectList onPick={onPick} />
+    <ProjectList {...list} />
   );
 }

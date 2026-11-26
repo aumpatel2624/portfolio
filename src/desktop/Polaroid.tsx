@@ -22,7 +22,7 @@ export function Polaroid({ onOpen }: { onOpen: () => void }) {
       <span className={styles.photo}>
         <AsciiPhoto
           src={asset('images/aum-full.jpg')}
-          alt={profile.images.fullAlt}
+          alt={profile.photoAlt}
           width={116}
           height={116}
           objectPosition="50% 34%"
@@ -32,7 +32,7 @@ export function Polaroid({ onOpen }: { onOpen: () => void }) {
           revealed={hover || focus}
         />
       </span>
-      <span className={styles.caption}>hi, i'm aum</span>
+      <span className={styles.caption}>aum patel</span>
     </button>
   );
 }

@@ -42,11 +42,6 @@
   animation: pulseDot 1.6s ease-out infinite;
   pointer-events: none;
 }
-.caption {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
-}
 .main {
   flex: 1 1 320px;
   min-width: 0;
@@ -89,25 +84,17 @@
   font-size: 14px;
   color: var(--text);
 }
-.type {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: bottom;
-  width: 31ch;
-  border-right: 2px solid var(--acc);
-  animation:
-    typing 2s steps(31) 0.5s both,
-    blink 0.8s step-end infinite;
-}
-.intro {
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin: 0;
-  font-size: 17px;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
   color: var(--muted);
-}
-.work {
-  margin: 0;
-  color: var(--muted);
+  overflow-wrap: anywhere;
 }
 .actions {
   display: flex;
@@ -135,12 +122,12 @@
   color: var(--text);
 }
 
-.build {
+.profile {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.buildHead {
+.profileHead {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 12px;
@@ -149,28 +136,8 @@
   text-transform: uppercase;
   color: var(--acc);
 }
-.tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.summary {
   margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.tool {
-  display: flex;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  align-items: center;
-  padding: 4px 12px;
-  font-size: 13px;
-  --skill-icon: var(--muted);
-}
-
-.native {
-  margin-left: 8px;
+  font-size: 16px;
   color: var(--muted);
-  font-family:
-    var(--font-body), 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans JP', system-ui,
-    sans-serif;
 }

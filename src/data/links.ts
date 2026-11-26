@@ -10,8 +10,13 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/aum-patel-945561222',
   resume: asset('aum-patel-resume.pdf'),
   claudeAgents: 'https://github.com/aumpatel2624/claude-code-agents',
-  smartbin: 'https://github.com/aumpatel2624/SmartBin',
-  phonedeckRepo: '[repository link, public soon]',
+} as const;
+
+/** Link text as the CV prints it. */
+export const linkText = {
+  github: 'github.com/aumpatel2624',
+  linkedin: 'linkedin.com/in/aum-patel-945561222',
+  claudeAgents: 'github.com/aumpatel2624/claude-code-agents',
 } as const;
 
 export const isPlaceholder = (value: string): boolean => /^\[.+\]$/.test(value.trim());
@@ -20,8 +25,7 @@ export const isPlaceholder = (value: string): boolean => /^\[.+\]$/.test(value.t
 export const emailHref = (email: string): string | undefined =>
   isPlaceholder(email) ? undefined : `mailto:${email}`;
 
-/** Accessible name for every resume link. */
-export const resumeLabel = 'Download Aum Patel’s resume (PDF, opens in a new tab)';
+/** Accessible name for every resume download link. */
+export const resumeLabel = 'Download Aum Patel’s resume (PDF)';
 
-/** Shown in the Resume window and sheet. */
-export const resumeNote = 'My resume as a PDF: opens in a new tab and can be downloaded.';
+export const resumeOpenLabel = 'Open Aum Patel’s resume (PDF) in a new tab';

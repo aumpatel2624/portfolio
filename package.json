@@ -3,11 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Aum's personal portfolio: a desktop-OS themed home, a classic page and a case study.",
+  "description": "Aum Patel's portfolio: the CV as a desktop-OS themed home, a phone OS and a classic page.",
   "scripts": {
     "dev": "vite",
     "ascii": "node scripts/ascii.mjs",
     "icons": "node scripts/icons.mjs",
+    "resume": "node scripts/resume.mjs",
     "check:placeholders": "node scripts/check-placeholders.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
@@ -22,7 +23,6 @@
   },
   "dependencies": {
     "@fontsource/bricolage-grotesque": "^5.3.0",
-    "@fontsource/fraunces": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/ibm-plex-sans": "^5.3.0",
     "react": "^18.3.1",
