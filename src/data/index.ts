@@ -5,5 +5,6 @@ export * from './projects';
 export * from './experience';
 export * from './skills';
 export * from './education';
+export * from './certificates';
 export * from './windows';
 export * from './resume';

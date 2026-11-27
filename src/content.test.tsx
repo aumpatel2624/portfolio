@@ -6,6 +6,8 @@ import { ResumeText } from './components/ResumeText';
 import {
   aiProjects,
   awards,
+  certificates,
+  certificatesHeading,
   education,
   experience,
   languages,
@@ -66,6 +68,18 @@ const cv = [
   ...awards,
   sections.languages,
   ...languages.map((l) => `${l.name}: ${l.level}`),
+];
+
+/** The course completion badges, which are not part of the CV. */
+const badges = [
+  certificatesHeading,
+  ...certificates.flatMap((c) => [
+    c.title,
+    c.kind,
+    c.issuer,
+    `Issued ${c.issued}`,
+    c.verifyUrl.replace('https://', ''),
+  ]),
 ];
 
 /** Visible text of each screen, one after another. */
@@ -152,6 +166,37 @@ describe('CV content', () => {
   ])('is all reachable in the %s', (_, narrow, screens) => {
     stubWidth(narrow);
     const text = textOf(screens);
-    expect(cv.filter((s) => !text.includes(s))).toEqual([]);
+    expect([...cv, ...badges].filter((s) => !text.includes(s))).toEqual([]);
+  });
+});
+
+describe('certificates', () => {
+  afterEach(() => vi.unstubAllGlobals());
+
+  it.each([
+    ['desktop OS', false, <DesktopEducation />],
+    ['phone OS', true, <Education />],
+    ['classic page', false, <ClassicHome />],
+    ['classic page, mobile layout', true, <ClassicHome />],
+  ])('follow Awards, with image, verification link and PDF, in the %s', (_, narrow, screen) => {
+    stubWidth(narrow);
+    const view = render(<MemoryRouter>{screen}</MemoryRouter>);
+    const headings = view.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
+    const at = headings.indexOf(certificatesHeading);
+    expect(headings.slice(at - 1, at + 2)).toEqual([
+      sections.awards,
+      certificatesHeading,
+      sections.languages,
+    ]);
+    for (const c of certificates) {
+      expect(view.getByRole('img', { name: c.alt })).toHaveAttribute('src', c.image);
+      expect(view.getByRole('link', { name: c.verifyUrl.replace('https://', '') })).toHaveAttribute(
+        'href',
+        c.verifyUrl,
+      );
+      expect(
+        view.getByRole('link', { name: `Open the ${c.title} badge (PDF) in a new tab` }),
+      ).toHaveAttribute('href', c.pdf);
+    }
   });
 });

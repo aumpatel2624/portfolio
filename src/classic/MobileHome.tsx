@@ -3,6 +3,7 @@ import { AsciiDivider } from '../ascii/AsciiDivider';
 import {
   aiProjects,
   awards,
+  certificatesHeading,
   education,
   emailHref,
   experience,
@@ -17,6 +18,7 @@ import {
   workProjects,
   type Project,
 } from '../data';
+import { CertificateList } from '../components/CertificateList';
 import { ResumeViewer } from '../components/ResumeViewer';
 import { SkillIcon } from '../components/SkillIcon';
 import { PlaceholderLink } from '../lib/PlaceholderLink';
@@ -205,6 +207,13 @@ export function MobileHome() {
                 <li key={a}>{a}</li>
               ))}
             </ul>
+          </section>
+
+          <section id="certificates" className={styles.section} aria-labelledby="m-certificates">
+            <h2 id="m-certificates" className={styles.h2}>
+              {certificatesHeading}
+            </h2>
+            <CertificateList />
           </section>
 
           <section className={styles.section} aria-labelledby="m-languages">
