@@ -1,9 +1,11 @@
+import { CertificateList } from '../../components/CertificateList';
+import { certificatesHeading } from '../../data/certificates';
 import { awards, education, languages } from '../../data/education';
 import { sections } from '../../data/sections';
 import common from '../common.module.css';
 import styles from './Education.module.css';
 
-/** The CV's Education, Awards and Languages sections. */
+/** The CV's Education, Awards and Languages sections, with the certificates after Awards. */
 export function Education() {
   return (
     <div className={styles.body}>
@@ -26,6 +28,10 @@ export function Education() {
         </ul>
       </section>
       <section className={`${common.rise} ${styles.group}`} style={{ animationDelay: '0.19s' }}>
+        <h2 className={styles.heading}>{certificatesHeading}</h2>
+        <CertificateList />
+      </section>
+      <section className={`${common.rise} ${styles.group}`} style={{ animationDelay: '0.26s' }}>
         <h2 className={styles.heading}>{sections.languages}</h2>
         <ul className={styles.chips}>
           {languages.map((l) => (

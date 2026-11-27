@@ -28,10 +28,11 @@ If Playwright has no matching browser, set `PW_CHROMIUM_PATH` to a Chromium bina
 
 ## Edit content
 
-The CV is the only source of content. Every section, entry, bullet, date, tech-stack line and link in
-it appears in every view, in the CV's wording and order: header lines, Profile, AI engineering,
-Experience, Technical skills, Selected work projects, Education, Awards and Languages. The one
-deliberate omission is the phone number. Do not add details the CV does not contain.
+The CV is the source of all content except the [certificates](#certificates). Every section, entry,
+bullet, date, tech-stack line and link in it appears in every view, in the CV's wording and order:
+header lines, Profile, AI engineering, Experience, Technical skills, Selected work projects,
+Education, Awards and Languages. The one deliberate omission is the phone number. Do not add other
+details the CV does not contain.
 
 Everything is typed data in `src/data/`; components only render it. When the CV changes, update the
 data, `index.html` meta and `public/aum-patel-resume.pdf` (with the phone number redacted).
@@ -41,6 +42,12 @@ data, `index.html` meta and `public/aum-patel-resume.pdf` (with the phone number
 Every view shows the resume inline as page images (with zoom, a collapsed text version, download and
 open-in-new-tab). After replacing the PDF, run `npm run resume` (needs `pdftoppm` from poppler-utils
 and renders only the public PDF), check the images show no phone number, and commit them.
+
+## Certificates
+
+Course completion badges are not on the CV. Every view shows them after Awards, from
+`src/data/certificates.ts`: the PDFs are in `public/certificates/` and `npm run certificates` renders
+each page to `public/images/certificate-*.webp` (needs `pdftoppm`). Claim nothing the badge does not.
 
 ## Icons
 

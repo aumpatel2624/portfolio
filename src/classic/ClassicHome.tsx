@@ -4,11 +4,13 @@ import { AsciiDivider } from '../ascii/AsciiDivider';
 import { SkillIcon } from '../components/SkillIcon';
 import { AsciiPhoto } from '../ascii/AsciiPhoto';
 import { AsciiWordmark } from '../ascii/AsciiWordmark';
+import { CertificateList } from '../components/CertificateList';
 import { ResumeViewer } from '../components/ResumeViewer';
 import { aumWordmarkSmall, cardAscii } from '../ascii/art.generated';
 import {
   aiProjects,
   awards,
+  certificatesHeading,
   education,
   emailHref,
   experience,
@@ -295,9 +297,19 @@ function DesktopClassic() {
           </ul>
         </section>
 
-        <section id="languages" className={styles.compact}>
+        <section id="certificates" className={styles.compact}>
           <div className={styles.expHead}>
             <div className={styles.label}>07</div>
+            <h2 className={styles.h2Sec}>{certificatesHeading}</h2>
+          </div>
+          <div className={styles.expList}>
+            <CertificateList />
+          </div>
+        </section>
+
+        <section id="languages" className={styles.compact}>
+          <div className={styles.expHead}>
+            <div className={styles.label}>08</div>
             <h2 className={styles.h2Sec}>{sections.languages}</h2>
           </div>
           <div className={styles.expList}>
@@ -313,14 +325,14 @@ function DesktopClassic() {
 
         <section id="resume" className={styles.resume}>
           <div className={styles.head}>
-            <div className={styles.label}>08</div>
+            <div className={styles.label}>09</div>
             <h2 className={styles.h2Sec}>Resume</h2>
           </div>
           <ResumeViewer />
         </section>
 
         <section id="contact" className={styles.contact}>
-          <div className={styles.contactLabel}>09</div>
+          <div className={styles.contactLabel}>10</div>
           <h2 className={styles.h2Contact}>Contact</h2>
           <p className={styles.contactText}>{statusLine}</p>
           <div className={styles.contactBtns}>

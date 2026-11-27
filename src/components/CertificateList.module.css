@@ -1,0 +1,48 @@
+/* Shared by the desktop, phone and classic themes, so colours come from `--acc` and the text colour. */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+.item p {
+  margin: 0;
+}
+.badge {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  background: #fff;
+}
+.item .title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.25;
+}
+.link {
+  color: var(--acc);
+  text-decoration: underline;
+}
+.open {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  margin-top: 8px;
+  padding: 0 16px;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 999px;
+  color: inherit;
+}
